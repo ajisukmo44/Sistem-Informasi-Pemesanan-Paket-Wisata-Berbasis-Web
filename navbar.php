@@ -1,85 +1,50 @@
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-<!-- Sidebar Toggle (Topbar) -->
-<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-  <i class="fa fa-bars"></i>
-</button>
-
-<!-- Topbar Search -->
-<!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-  <div class="input-group">
-    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-primary" type="button">
-        <i class="fas fa-search fa-sm"></i>
+  <!-- Navigation -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.php">LOGO</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link mr-2" href="services.html"><b>Paket Wisata</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-2" href="contact.html"><b>Tentang Kami</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-2" href="contact.html"><b>Blog Wisata</b> </a>
+          </li>
+          <?php 
+       if(isset($_SESSION['username']))
+       {
+         echo "
+         <li class='dropdown'>
+           <a href='#' class='dropdown-toggle nav-link' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
+           <aspanclass='nav-link mr-0' href='#'>Hai, $sesen_username</span>
+           </a>
+
+           
+           <ul class='dropdown-menu'>
+               <li class='nav-item'>
+            <a class='nav-link mr-0' href='$base_url"."logout.php'>log out</a>
+          </li>
+              
+           </ul>
+         </li>";
+       } 
+          else
+          {
+            echo "<li class='nav-item'>
+            <a class='btn btn-info' href='$base_url"."login.php'>Masuk</a> 
+          </li>";
+          }
+        ?>
+        </ul>
+      </div>
     </div>
-  </div>
-</form> -->
-<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-
-<i class="fab fa-adobe "> <span style="font-family:arial;"> &nbsp;<strong> ANUGRAH TOUR DAN TRAVEL </strong></span></i>
-
-</form>
-
-
-
-
-<!-- Topbar Navbar -->
-<ul class="navbar-nav ml-auto">
-  <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-  <!-- <li class="nav-item dropdown no-arrow d-sm-none">
-    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-search fa-fw"></i>
-    </a> -->
-    <!-- Dropdown - Messages -->
-    <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-      <form class="form-inline mr-auto w-100 navbar-search">
-        <div class="input-group">
-          <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search fa-sm"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </li> -->
-
-  <!-- Nav Item - Alerts -->
-  
-
-  <!-- Nav Item - Messages -->
-  <li class="nav-item dropdown no-arrow mx-1">
-    
-    <h6><span class="badge badge-success badge-counter mt-4"><?php echo date('l, d-F-Y '); ?></span></h6>
-    <!-- Dropdown - Messages -->
-    
-  </li>
-
-  <div class="topbar-divider d-none d-sm-block"></div>
-
-  <!-- Nav Item - User Information -->
-  <li class="nav-item dropdown no-arrow">
-    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $sesen_username ?></span>
-      <img class="img-profile rounded-circle" src="img/profil.png">
-    </a>
-    <!-- Dropdown - User Information -->
-    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-      <a class="dropdown-item" href="#">
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-        Profile
-      </a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="logout.php">
-        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-        Logout
-      </a>
-    </div>
-  </li>
-
-</ul>
-
-</nav>
+  </nav>

@@ -2,6 +2,16 @@
 include '../koneksi.php';              // Panggil koneksi ke database
 include '../fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
 include '../fungsi/cek_session.php';      // Panggil data setting
+   
+$id_paket  = mysqli_real_escape_string($conn, $_GET['id_paket']);
+$sql      = "SELECT * FROM paket_wisata WHERE id_paket = '$id_paket' ";
+$result   = mysqli_query($conn, $sql);
+$data     = mysqli_fetch_array($result);
+$img = $data['img'];  
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +24,7 @@ include '../fungsi/cek_session.php';      // Panggil data setting
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin | Tambah User</title>
+  <title>Admin | Edit paket</title>
 
   <!-- Custom fonts for this template-->
   <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,9 +42,6 @@ include '../fungsi/cek_session.php';      // Panggil data setting
 
 <!-- // Sidebar -->
 <?php include 'sidebar.php'; ?>
-
-
-
 
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -60,10 +67,10 @@ include '../fungsi/cek_session.php';      // Panggil data setting
 
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-8">
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-5">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data User </h6>
+              <h6 class="m-0 font-weight-bold text-primary">Form Edit Data User </h6>
               <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -73,52 +80,53 @@ include '../fungsi/cek_session.php';      // Panggil data setting
             </div>
             <!-- Card Body -->
          
-             <!-- DataTales Example -->
-            <div class="card-body">
-            <form action="aksiuser/aksisimpanuser.php" method="post">
+        <!-- DataTales Example -->
+        <div class="card-body">
+            <form action="aksipaket/aksieditpaket.php" method="post" enctype="multipart/form-data">
   <div class="form-group row">
-    <label for="id" class="col-sm-2 col-form-label">Id User</label>
+    <label for="id" class="col-sm-2 col-form-label">Id Paket</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="id_user" id="id_user" placeholder="id user">
+      <input type="number" class="form-control" name="id_paket" id="id_paket"value="<?php echo $data['id_paket'] ?>" readonly >
     </div>
   </div>
   <div class="form-group row">
-    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+    <label for="nama_paket" class="col-sm-2 col-form-label">Nama Paket</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" require>
+      <input type="text" class="form-control" id="nama_paket" name="nama_paket"  value="<?php echo $data['nama_paket'] ?>" require>
     </div>
   </div>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Jabatan</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="jabatan" id="jabatan" value="admin" checked>
-          <label class="form-check-label" for="Admin">
-            Admin
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="jabatan" id="jabatan" value="onwer">
-          <label class="form-check-label" for="onwer">
-            Onwer
-          </label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
+   
+
   <div class="form-group row">
-    <label for="username" class="col-sm-2 col-form-label">Username</label>
+    <label for="destinasi" class="col-sm-2 col-form-label">Destinasi</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Username" require>
-    </div>
+      <input type="destinasi" class="form-control" id="destinasi"  name="destinasi" value="<?php echo $data['destinasi'] ?>">   </div>
   </div>
+
   <div class="form-group row">
-    <label for="password" class="col-sm-2 col-form-label">Password</label>
+    <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="password"  name="password" placeholder="Password">
-    </div>
+      <input type="kategori" class="form-control" id="kategori"  name="kategori" value="<?php echo $data['kategori'] ?>" readonly>   </div>
   </div>
+  
+  <div class="form-group row">
+    <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
+    <div class="col-sm-10">
+      <input type="fasilitas" class="form-control" id="fasilitas"  name="fasilitas"  value="<?php echo $data['fasilitas'] ?>">   </div>
+  </div>
+
+
+  <div class="form-group row">
+  <label for="gambar" class="col-sm-2 col-form-label">Gambar Sebelumnya</label>
+    <img style="margin-left:10px; margin-right:45px; margin-bottom:15px;" src="../images/paket/<?php echo $img ?> " width="20%" height="20%" /><br> 
+     </div>
+
+     
+    <div class="form-group row">
+    <label for="gambar" class="col-sm-2 col-form-label">Gambar Baru</label>
+    <input type="file" name="img" id="img" onchange="tampilkanPreview(this,'preview')"/> 
+            <img id="preview" src="" alt="" width="25%"/>
+    </div>
   
   
   <div class="form-group row">
@@ -127,6 +135,10 @@ include '../fungsi/cek_session.php';      // Panggil data setting
     <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
 </div>
   </div>
+
+
+
+
 </form>
 </div>
 </div>
