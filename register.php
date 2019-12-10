@@ -25,18 +25,25 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Register</title>
+  <title>Register - Pelanggan</title>
 
   <!-- Custom fonts for this template-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+ 
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
 
-<body class="bg-gradient-light">
+<body>
+  <!-- Navigation -->
+  <?php include 'navbar.php'; ?>
 
   <div class="container">
 
@@ -54,7 +61,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
               <form action="registerproses.php" class="user" method="post">
                 <div class="form-group row">
                   <div class="col-sm-3 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="id_pelanggan" id="exampleFirstName" value="<?php echo $id;?>" readonly>
+                    <input type="text" class="form-control" name="id_pelanggan" id="id_pelanggan" value="<?php echo $id;?>" readonly>
                   </div>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" name="nama" id="exampleLastName" placeholder="Nama">
@@ -63,13 +70,13 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                 <div class="form-group">
                   <input type="text" class="form-control" name="alamat" id="exampleInputEmail" placeholder="Alamat">
                 </div>
-                
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" id="exampleInputEmail" placeholder="Email ">
-                </div>
-                
-                <div class="form-group">
-                  <input type="number" class="form-control" name="no_hp" id="exampleInputEmail" placeholder="No Hp">
+                <div class="form-group row">
+                  <div class="col-sm-8 mb-3 mb-sm-0">
+                    <input type="email" name="email" class="form-control " id="email" placeholder="email">
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="no_hp" name="no_hp" class="form-control " id="no_hp" placeholder="no hp">
+                  </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -80,7 +87,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                   </div>
                 </div>
                 <hr>
-                <button name="submit" type="submit" class="btn btn-info  btn-block">
+                <button name="submit"  style="background-color:#E8191B; color:#fff" type="submit" class="btn btn-light  btn-block">
                   Daftar Akun
                     </button>
               </form>
@@ -95,9 +102,17 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
     </div>
 
   </div>
+  <footer class="py-5 bg-light ">
+    <div class="container">
+      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="admin/vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+
+
+<script src="admin/vendor/jquery/jquery.min.js"></script>
   <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -105,6 +120,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 
   <!-- Custom scripts for all pages-->
   <script src="admin/js/sb-admin-2.min.js"></script>
+
 
 </body>
 

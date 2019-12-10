@@ -1,14 +1,21 @@
+<?php session_start();
+include 'admin/koneksi.php';
+include 'admin/fungsi/base_url.php';
+include 'fungsi/cek_session_public.php'; 
+
+?>
 
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.php">LOGO</a>
+      <a class="navbar-brand" href="index.php"><img src="images/logoatt.png" alt="logo" ></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive" style="font-family:sans-serif;
+	">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link mr-2" href="services.html"><b>Paket Wisata</b></a>
@@ -24,23 +31,25 @@
        {
          echo "
          <li class='dropdown'>
-           <a href='#' class='dropdown-toggle nav-link' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
-           <aspanclass='nav-link mr-0' href='#'>Hai, $sesen_username</span>
+           <a href='#' class='dropdown-toggle btn btn-light' style='background-color:#F4F10E;'  data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Hai, $sesen_username
            </a>
-
-           
            <ul class='dropdown-menu'>
                <li class='nav-item'>
-            <a class='nav-link mr-0' href='$base_url"."logout.php'>log out</a>
+            <a class='nav-link mr-0' href='$base_url"."logout.php'>Data Profil</a>
           </li>
-              
-           </ul>
+          <li class='nav-item'>
+          <a class='nav-link mr-0' href='$base_url"."logout.php'>Data Pemesanan</a>
+        </li>
+           <li class='nav-item'>
+        <a class='nav-link mr-0' href='$base_url"."logout.php'>log out</a>
+      </li>
+       </ul>
          </li>";
        } 
           else
           {
             echo "<li class='nav-item'>
-            <a class='btn btn-info' href='$base_url"."login.php'>Masuk</a> 
+            <a class='btn btn-light' style='background-color:#F4F10E;' href='$base_url"."login.php'>Masuk</a> 
           </li>";
           }
         ?>

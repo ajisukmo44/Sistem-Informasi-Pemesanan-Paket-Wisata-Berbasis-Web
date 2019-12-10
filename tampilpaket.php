@@ -15,19 +15,15 @@
     while($data = mysqli_fetch_array($hasil))
     {
   ?>
-  
-      <div class="col-lg-4 mb-3 ">
-        <div class="card h-100">
-          <h4 class="card-header"><?= $data['nama_paket'];?></h4>
-          <div class="card-body" style="padding:2px">
-            <img style="width:100%" alt="<?php echo $data['nama_paket']; ?>" src="<?php echo $base_url ?>admin/images/paket/<?php echo $data['img']; ?>"/>
-          </div>
-          <div class="card-footer">
-           <p> <a href="#" class="btn btn-info">Pesan Sekarang</a> <a href="detailpaket.php?id_paket=<?= $data['id_paket'] ?>" class="btn btn-secondary">Lihat Detail Paket</a>  </p>
-          </div>
-        </div>
-      </div>
-     
+    <div class="col-lg-4 col-sm-4 portfolio-item">
+    <figure class="snip1104 red">
+    <img style="width:100%" alt="<?php echo $data['nama_paket']; ?>" src="<?php echo $base_url ?>admin/images/paket/<?php echo $data['img']; ?>"/>
+  <figcaption>
+    <h2> <?= $data['nama_paket'];?></h2>
+  </figcaption>
+  <a href="detailpaket.php?id_paket=<?= $data['id_paket'] ?>"></a>
+</figure>
+</div>  
     <!-- /.row -->
 <?php 
     } 
