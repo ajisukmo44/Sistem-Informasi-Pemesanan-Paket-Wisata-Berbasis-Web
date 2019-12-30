@@ -4,13 +4,14 @@ include '../../koneksi.php';                    // Panggil koneksi ke database
 if(isset($_POST['simpan']))
 { 
 
-  $id         = mysqli_real_escape_string($conn,$_POST['id_paket']);
+  $id          = mysqli_real_escape_string($conn,$_POST['id_paket']);
   $nama_paket  = mysqli_real_escape_string($conn,$_POST['nama_paket']);
-  $kategori    = mysqli_real_escape_string($conn,$_POST['kategori']);
+  $kategori    = mysqli_real_escape_string($conn,$_POST['id_kategori']);
   $destinasi   = mysqli_real_escape_string($conn,$_POST['destinasi']);
   $fasilitas   = mysqli_real_escape_string($conn,$_POST['fasilitas']);
+  $hotel       = mysqli_real_escape_string($conn,$_POST['id_hotel']);
 
-  $cekdata = "SELECT nama_paket FROM paket_wisata WHERE nama_paket = '$nama_paket' ";
+  $cekdata = "SELECT nama_paket FROM tabel_paket_wisata WHERE nama_paket = '$nama_paket' ";
   $ada     = mysqli_query($conn, $cekdata);
   if(mysqli_num_rows($ada) > 0)
   { 
@@ -32,37 +33,39 @@ if(isset($_POST['simpan']))
 
 
       // Proses insert data dari form ke db
-      $sql = "INSERT INTO paket_wisata (id_paket,
+      $sql = "INSERT INTO tabel_paket_wisata (id_paket,
                                 nama_paket,
-                                kategori,
+                                id_kategori,
                                 destinasi,
                                 fasilitas,
-                                img)
+                                img,
+                                id_hotel)
                         VALUES ('$id',
                                 '$nama_paket',
                                 '$kategori',
                                 '$destinasi',
                                 '$fasilitas',
-                                '$img')";
+                                '$img',
+                                '$hotel')";
 
-      if(mysqli_query($conn, $sql)) 
-      {
-        echo "<script>alert('Insert data berhasil! Klik ok untuk melanjutkan');location.replace('../../datapaket.php')</script>";
-      } 
-        else 
+            if(mysqli_query($conn, $sql)) 
+            {
+              echo "<script>alert('Insert data berhasil! Klik ok untuk melanjutkan');location.replace('../../datapaket.php')</script>";
+            } 
+              else 
+              {
+                echo "Error updating record: " . mysqli_error($conn);
+              }
+          }
+          
+          else
+          {
+            echo "<script>alert('Jenis file tidak sesuai!');history.go(-1)</script>";
+          }
+      }
+      }
+        else
         {
-          echo "Error updating record: " . mysqli_error($conn);
+          echo "<script>alert('Gak boleh tembak langsung ya, pencet dulu tombol uploadnya!');history.go(-1)</script>";
         }
-    }
-    
-    else
-    {
-      echo "<script>alert('Jenis file tidak sesuai!');history.go(-1)</script>";
-    }
-}
-}
-  else
-  {
-    echo "<script>alert('Gak boleh tembak langsung ya, pencet dulu tombol uploadnya!');history.go(-1)</script>";
-  }
-?>
+      ?>

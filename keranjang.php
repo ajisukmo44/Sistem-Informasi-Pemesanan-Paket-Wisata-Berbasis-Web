@@ -3,10 +3,10 @@ include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php';
 
-$no_invoice     = mysqli_real_escape_string($conn,$_GET['no_invoice']);
-$query        = "SELECT * FROM pemesanan ORDER BY no_invoice";
+$id_pemesanan = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
+$query        = "SELECT * FROM tabel_pemesanan ORDER BY id_pemesanan";
 $hasil        = mysqli_query($conn,$query);
-$data      = mysqli_fetch_array($hasil);
+$data         = mysqli_fetch_array($hasil);
 
 // Jika data tidak ditemukan maka akan muncul alert belum ada data
 if(mysqli_num_rows($hasil) == 0)
@@ -53,9 +53,9 @@ if(mysqli_num_rows($hasil) == 0)
   <div class="card-body">
 
         <?php
-            $sql = "SELECT a.no_invoice, a.tanggal_trip, b.nama, a.harga, c.nama_paket FROM detail_pemesanan a JOIN pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN paket_wisata c ON a.id_paket= c.id_paket WHERE no_invoice = '$no_invoice' ORDER BY no_invoice";
+            $sql = "SELECT a.id_pemesanan, a.tanggal_trip, e.nama, a.harga, c.nama_paket FROM tabel_detail_pemesanan a  JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan e ON e.id_pelanggan = b.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY id_pemesanan";
 
-            $hasil        = mysqli_query($conn,$sql);
+            $hasil     = mysqli_query($conn,$sql);
             $data      = mysqli_fetch_array($hasil);
           
 			     $harga1 	= $data['harga'];	  
@@ -66,17 +66,17 @@ if(mysqli_num_rows($hasil) == 0)
     if(mysqli_num_rows($hasil) == 0)
     {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
     ?>
-  <form id="form1" name="form1" method="post" action="pemesananupdate.php?no_invoice=<?= $no_invoice ?>">
+  <form id="form1" name="form1" method="post" action="pemesananupdate.php?id_pemesanan=<?= $id_pemesanan ?>">
   <div class="table-responsive">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
-                  <thead style="background-color: #17A2B8; color:#fff; line-height:8px">
+                  <thead style="background-color: #3B8686; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
-                      <th>No Invoice</th>
+                      <th>No Pemesanan</th>
                       <th>Tanggal Trip</th>
                       <th>Nama Pelanggan</th>
                       <th>Paket</th>
                       <th>Harga/Pax</th>
-                      <th>Jumlah Peserta</th>
+                      <th>Jumlah Pax</th>
                       <th>Total Harga</th>
                     </tr>
                   </thead>
@@ -84,17 +84,15 @@ if(mysqli_num_rows($hasil) == 0)
                   <input name="harga" type="hidden" id="harga" style="text-align:right" onfocus="startCalculate()" onblur="stopCalc()" value="<?= $data['harga']?>" readonly/>
 
                   <tbody style="text-align:center; background-color:#F7F7F7;">
-                      <td><?= $data['no_invoice']?></td>
+                      <td><?= $data['id_pemesanan']?></td>
                       <td><?= $tanggal ?></td>
                       <td><?= $data['nama']?></td>
                       <td><?= $data['nama_paket']?></td>
                       <td><?= $harga ?></td>
-
-    
                       <?php
-            $sql = "SELECT * FROM harga_paket WHERE harga = $harga1 ORDER BY id";
+            $sql = "SELECT * FROM tabel_harga_paket WHERE harga = $harga1 ORDER BY id_harga";
 
-            $hasil        = mysqli_query($conn,$sql);
+            $hasil     = mysqli_query($conn,$sql);
             $data      = mysqli_fetch_array($hasil);
 
             $min = $data['min'];
@@ -106,12 +104,21 @@ if(mysqli_num_rows($hasil) == 0)
     {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
     ?>
 
-                      <td><input name="jumlah_pax" type="number" style="width:117px" min="<?= $min; ?>" max="<?= $max;?>" id="jumlah_pax"  onfocus="startCalculate()" onblur="stopCalc()" require/></td>
-                    <td><input name="total_harga" type="text" id="total_harga" style="text-align:right; background-color:#F7F7F7" onfocus="startCalculate()" onblur="stopCalc()"  readonly/></td>
+          <td ><input name="jumlah_pax" type="number" style="width:117px; text-align:center;" min="<?= $min; ?>" max="<?= $max;?>" id="jumlah_pax"  onfocus="startCalculate()" onblur="stopCalc()" value="<?= $min; ?>"  require/></td>
+
+
+          <?php
+          $a = $data['harga'];
+          $b = $min ;
+          $total = $a * $b ;           
+          ?>
+
+          <td><input name="total_harga" type="text" id="total_harga" style="text-align:right; background-color:#F7F7F7" onfocus="startCalculate()" onblur="stopCalc()"  value="<?= $total; ?>" readonly/></td>
    
 </tbody>
                 </table>
-  <button type="submit" name="submit" class="btn btn-primary float-right">Selesaikan Pemesanan</button> <button type="submit" class="btn btn-danger float-right mr-2">Hapus Data Pemesanan</button>
+  <button type="submit" name="submit" class="btn btn-primary float-right">Selesaikan Pemesanan</button> 
+  <a href="modul/hapusdatapemesanan.php?id_pemesanan=<?= $id_pemesanan ?>" class="btn btn-danger float-right mr-2">Hapus Data Pemesanan </a>
 
   
 </form>
@@ -131,9 +138,9 @@ if(mysqli_num_rows($hasil) == 0)
 <div class="card-body">
 
 <?php
-  $sql = "SELECT a.no_invoice, b.id_pelanggan, b.nama, b.alamat, b.no_hp, b.email  FROM detail_pemesanan a JOIN pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN paket_wisata c ON a.id_paket= c.id_paket WHERE no_invoice = '$no_invoice' ORDER BY no_invoice";
+  $sql = "SELECT a.id_pemesanan, a.tanggal_trip, e.nama, e.alamat, e.no_hp, e.id_pelanggan, a.harga, c.nama_paket FROM tabel_detail_pemesanan a  JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan e ON e.id_pelanggan = b.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY id_pemesanan";
 
-  $hasil        = mysqli_query($conn,$sql);
+  $hasil     = mysqli_query($conn,$sql);
   $data      = mysqli_fetch_array($hasil);
   
   // Jika data tidak ditemukan maka akan muncul alert belum ada data
@@ -143,22 +150,21 @@ if(mysqli_num_rows($hasil) == 0)
 <form id="form" name="form" method="post" action="#">
 <div class="table-responsive">
               <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
-                <thead style="background-color: #17A2B8; color:#fff; line-height:8px">
+                <thead style="background-color: #3B8686; color:#fff; line-height:8px">
                   <tr style="text-align:center;">
                     <th>Id Pelanggan</th>
+                    <th>Nama</th>
                     <th>Alamat</th>
-                    <th>Email</th>
                     <th>No Hp</th>
-                    <th>Alamat</th>
                   </tr>
                 </thead>
                 
                 <tbody style="text-align:center; background-color:#F7F7F7;">
+                
                     <td><?= $data['id_pelanggan']?></td>
                     <td><?= $data['nama']?></td>
-                    <td><?= $data['email']?></td>
-                    <td><?= $data['no_hp']?></td>
                     <td><?= $data['alamat']?></td>
+                    <td><?= $data['no_hp']?></td>
                     
  
 </tbody>

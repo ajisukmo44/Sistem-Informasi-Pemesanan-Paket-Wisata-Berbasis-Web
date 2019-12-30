@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
   $username   = mysqli_real_escape_string($conn,$_POST['username']);
   $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-  $sql = "SELECT * FROM pelanggan WHERE email = '$email' AND status = 'aktif' ";
+  $sql = "SELECT * FROM tabel_pelanggan WHERE email = '$email' AND status = 'aktif' ";
   $cekdata  = mysqli_query($conn, $sql);
           if(empty($nama))
           {
@@ -21,6 +21,10 @@ if(isset($_POST['submit']))
           elseif(empty($username))
           {
             echo "<script>alert('Username harus diisi!');history.go(-1)</script>";
+          }
+          elseif(empty($alamat))
+          {
+            echo "<script>alert('alamat harus diisi!');history.go(-1)</script>";
           }
           elseif(empty($email))
           {
@@ -43,7 +47,7 @@ if(isset($_POST['submit']))
             {     
                
               // Proses insert data
-              $create = "INSERT INTO pelanggan ( id_pelanggan,
+              $create = "INSERT INTO tabel_pelanggan ( id_pelanggan,
                                                 nama,
                                                 alamat,
                                                 email,
@@ -58,7 +62,7 @@ if(isset($_POST['submit']))
                                                 '$no_hp',
                                                 '$username',
                                                 '$password',
-                                                'aktif')";
+                                                '1')";
 
               if (mysqli_query($conn, $create)) 
               {

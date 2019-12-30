@@ -18,7 +18,7 @@
 </form> -->
 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 
-<i class="fab fa-adobe "> <span style="font-family:arial;"> &nbsp;<strong> ANUGRAH TOUR DAN TRAVEL </strong></span></i>
+<span style="font-family:arial;"> &nbsp;<strong><img src="../images/logoatt.png" alt="logo" ></strong></span>
 
 </form>
 
@@ -75,7 +75,7 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="logout.php">
         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-        Logout
+        Log Out
       </a>
     </div>
   </li>

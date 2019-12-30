@@ -18,13 +18,13 @@ include 'fungsi/cek_session_public.php';
 	">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link mr-2" href="services.html"><b>Paket Wisata</b></a>
+            <a class="nav-link mr-2" href="#"><b>Paket Wisata</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mr-2" href="contact.html"><b>Tentang Kami</b></a>
+            <a class="nav-link mr-2" href="#"><b>Tentang Kami</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mr-2" href="contact.html"><b>Blog Wisata</b> </a>
+            <a class="nav-link mr-2" href="#"><b>Blog Wisata</b> </a>
           </li>
           <?php 
        if(isset($_SESSION['username']))
@@ -35,13 +35,13 @@ include 'fungsi/cek_session_public.php';
            </a>
            <ul class='dropdown-menu'>
                <li class='nav-item'>
-            <a class='nav-link mr-0' href='$base_url"."logout.php'>Data Profil</a>
+            <a class='nav-link mr-0' href='$base_url"."dataprofil.php'>Data Profil</a>
           </li>
           <li class='nav-item'>
-          <a class='nav-link mr-0' href='$base_url"."logout.php'>Data Pemesanan</a>
+          <a class='nav-link mr-0' href='$base_url"."datatransaksi.php'>Data Transaksi</a>
         </li>
            <li class='nav-item'>
-        <a class='nav-link mr-0' href='$base_url"."logout.php'>log out</a>
+        <a class='nav-link mr-0' href='$base_url"."logout.php'>Log Out</a>
       </li>
        </ul>
          </li>";

@@ -76,7 +76,7 @@ include 'fungsi/cek_session_public.php';
   <div class="container">
 
   <div class=" mt-4">
-  <p style="background-color:#E8191B; color:#fff; font-family:sans-serif; font-size:31px; text-align:center; "> DESTINASI PAKET WISATA &nbsp; ANUGERAH TOUR & TAVEL </p>
+  <p style="background-color:#E8191B; color:#fff; font-family:sans-serif; font-size:31px; text-align:center; "> DESTINASI PAKET WISATA &nbsp; ANUGERAH TOUR & TRAVEL </p>
 </div>
 
     <!--    ambil data paket    -->
@@ -86,24 +86,13 @@ include 'fungsi/cek_session_public.php';
 
     <!-- Portfolio Section -->
     <!-- /.row -->
-
+<hr>
     <!-- Features Section -->
-    <div class="row">
+    <div class="row mt-4 mb-3">
       <div class="col-lg-6">
-        <h2>Modern Business Features</h2>
-        <p>The Modern Business template by Start Bootstrap includes:</p>
-        <ul>
-          <li>
-            <strong>Bootstrap v4</strong>
-          </li>
-          <li>jQuery</li>
-          <li>Font Awesome</li>
-          <li>Working contact form with validation</li>
-          <li>Unstyled page elements for easy customization</li>
-        </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
-          reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum
-          ducimus unde.</p>
+        <h2>KEINDAHAN CANDI PRAMBANAN</h2>
+        <p>oleh: <a href=""> anugerah tour dan travel </a></p>
+        <p style="text-align:justify">Candi Prambanan atau Candi Roro Jonggrang adalah kompleks candi Hindu terbesar di Indonesia yang dibangun pada abad ke-9 masehi. Candi ini dipersembahkan untuk Trimurti, tiga dewa utama Hindu yaitu Brahma sebagai dewa pencipta, Wishnu sebagai dewa pemelihara, dan Siwa sebagai dewa pemusnah. Berdasarkan prasasti Siwagrha nama asli kompleks candi ini adalah Siwagrha (bahasa Sanskerta yang bermakna 'Rumah Siwa'), dan memang di garbagriha (ruang utama) candi ini bersemayam arca Siwa Mahadewa setinggi tiga meter yang menujukkan bahwa di candi ini dewa Siwa lebih diutamakan.</p>
       </div>
       <div class="col-lg-6">
         <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
@@ -116,11 +105,10 @@ include 'fungsi/cek_session_public.php';
     <!-- Call to Action Section -->
     <div class="row mb-4">
       <div class="col-md-8">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti
-          beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+        <p>Hubungi kami untuk pertanyaan seputar anugerah tour dan travel atau request destinasi paket wisata sesuai dengan kebutuhan dan keinginan anda.</p>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+        <a class="btn btn-lg btn-success btn-block" href="#">Fast Respon</a>
       </div>
     </div>
 
@@ -128,12 +116,8 @@ include 'fungsi/cek_session_public.php';
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-light">
-    <div class="container">
-      <p class="m-0 text-center">Copyright &copy; Anugrah019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+<?php include 'footer.php' ?>
+  <!-- footer -->
 <script>
   $("figure").mouseleave(
     function() {

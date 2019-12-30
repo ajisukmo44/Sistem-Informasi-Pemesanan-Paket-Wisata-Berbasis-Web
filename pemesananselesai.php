@@ -3,8 +3,8 @@ include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php';
 
-$no_invoice     = mysqli_real_escape_string($conn,$_GET['no_invoice']);
-$query        = "SELECT * FROM pemesanan ORDER BY no_invoice";
+$id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
+$query        = "SELECT * FROM tabel_pemesanan ORDER BY id_pemesanan";
 $hasil        = mysqli_query($conn,$query);
 $data      = mysqli_fetch_array($hasil);
 
@@ -48,27 +48,27 @@ if(mysqli_num_rows($hasil) == 0)
 
   <div class="card">
   <div class="card-header">
-  <p align="right"> <a href='invoice.php?no_invoice=<?php echo $no_invoice; ?>'><button>Download Invoice</button> </a>
+  <p align="right"> <a href='invoice.php?id_pemesanan=<?php echo $id_pemesanan; ?>'><button>Download Invoice</button> </a>
 </p>
   <div class="card-body">
 
         <?php
-            $sql = "SELECT a.no_invoice, a.tanggal_trip, a.jumlah_pax, a.keterangan, a.total_harga, b.nama, a.harga, c.nama_paket FROM detail_pemesanan a JOIN pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN paket_wisata c ON a.id_paket= c.id_paket WHERE no_invoice = '$no_invoice' ORDER BY no_invoice";
+            $sql = "SELECT a.id_pemesanan, a.tanggal_trip, a.jumlah_pax, a.keterangan, a.total_harga, b.nama, a.harga, c.nama_paket FROM tabel_detail_pemesanan a JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY a.id_pemesanan";
 
-            $hasil        = mysqli_query($conn,$sql);
+            $hasil     = mysqli_query($conn,$sql);
             $data      = mysqli_fetch_array($hasil);
             
             $harga 	= number_format($data['harga'], 0, ',', '.');	
-			$total_harga 	= number_format($data['total_harga'], 0, ',', '.');	
+			      $total_harga 	= number_format($data['total_harga'], 0, ',', '.');	
             $tanggal = date('d-m-Y', strtotime($data['tanggal_trip']));
     
     // Jika data tidak ditemukan maka akan muncul alert belum ada data
     if(mysqli_num_rows($hasil) == 0)
     {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
     ?>
-    <center><h5>NO. INVOICE: <strong>#<?php echo $no_invoice ?></strong></h5></center>
+    <center><h5>NO. PEMESANAN: <strong>#<?php echo $id_pemesanan ?></strong></h5></center>
 
-  <form id="form1" name="form1" method="post" action="pemesananupdate.php?no_invoice=<?= $no_invoice ?>">
+  <form id="form1" name="form1" method="post" action="pemesananupdate.php?id_pemesanan=<?= $id_pemesanan ?>">
   <div class="table-responsive mt-4">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                   <thead style="background-color: #17A2B8; color:#fff; line-height:8px">
@@ -100,16 +100,27 @@ if(mysqli_num_rows($hasil) == 0)
  </form>
  
 <hr/> <br>
+<?php
+$sql = "SELECT * FROM tabel_bank ORDER BY no_rekening";
+$hasil  = mysqli_query($conn,$sql);
+$data1  = mysqli_fetch_array($hasil);
+
+// Jika data tidak ditemukan maka akan muncul alert belum ada data
+if(mysqli_num_rows($hasil) == 0)
+{echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
+        ?> 
+
 <p>Total Pembayaran adalah sebesar <strong>Rp, <?php echo $total_harga ?> </strong></p>
           <p>Batas Pembayaran Sebelum jam <strong style="color: red"><?php $besok = date('G:i ', strtotime("+1 day", strtotime(date("G:i ")))); echo $besok ?> </strong>tanggal<strong style="color: red"> <?php $besok = date('d-m-Y, ', strtotime("+1 day", strtotime(date("d-m-Y ")))); echo $besok ?> </strong></p>  
         <hr/>
 
         <p>Pembayaran di tujukan kepada: </p>
-        <p><img src="images/bni1.png" class="img-responsive" style="width: 120px"> <br> <br>
-        <strong> 126.031.4331 </strong>AN : Anugerah Tour & Travel</p>
+     
+        <P align="left"><img src="admin/images/bank/<?php echo $data1['img'];?>" alt="logo" style="width:140px; height:50px" ></P>
+        <P><strong> <?php echo $data1['no_rekening'] ?> </strong>AN : <?php echo $data1['nama_rekening'] ?></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="<?php echo $base_url.'konfirpembayaran.php?no_invoice='?> <?php echo $no_invoice ?> ">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="<?php echo $base_url.'konfirpembayaran.php?id_pemesanan='?> <?php echo $id_pemesanan ?> ">klik disini</a></p>
         <hr>
   </div>
 </div>
@@ -128,9 +139,9 @@ if(mysqli_num_rows($hasil) == 0)
 <div class="card-body">
 
 <?php
-  $sql = "SELECT a.no_invoice, b.id_pelanggan, b.nama, b.alamat, b.no_hp, b.email  FROM detail_pemesanan a JOIN pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN paket_wisata c ON a.id_paket= c.id_paket WHERE no_invoice = '$no_invoice' ORDER BY no_invoice";
+  $sql = "SELECT a.id_pemesanan, b.nama,b.id_pelanggan, b.email, b.no_hp, b.alamat FROM tabel_detail_pemesanan a JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY a.id_pemesanan";
 
-  $hasil        = mysqli_query($conn,$sql);
+  $hasil     = mysqli_query($conn,$sql);
   $data      = mysqli_fetch_array($hasil);
   
   // Jika data tidak ditemukan maka akan muncul alert belum ada data

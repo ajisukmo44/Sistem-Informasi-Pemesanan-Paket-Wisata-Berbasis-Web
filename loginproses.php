@@ -8,20 +8,7 @@ include 'admin/fungsi/base_url.php';
         $username   = mysqli_real_escape_string($conn, $_POST['username']);
         $pass       = mysqli_real_escape_string($conn, $_POST['password']);
 
-        if (empty($username) && empty($pass)) 
-        {
-          echo "<script language='javascript'>alert('Isikan USERNAME dan PASSWORD'); history.go(-1)</script>";
-        }
-        elseif (empty($username))
-        {
-          echo "<script language='javascript'>alert('Isikan USERNAME'); history.go(-1)</script>";
-        }
-        elseif (empty($pass)) 
-        {
-          echo "<script language='javascript'>alert('Isikan PASSWORD'); history.go(-1)</script>";
-        }
-        
-        $sql    = "SELECT * FROM pelanggan WHERE username = '$username' ";
+        $sql    = "SELECT * FROM tabel_pelanggan WHERE username = '$username' ";
         $result = mysqli_query($conn, $sql);
         $data   = mysqli_fetch_array($result);
         
@@ -29,7 +16,7 @@ include 'admin/fungsi/base_url.php';
         {
           echo "<script>alert('Username yang Anda masukkan tidak terdaftar!');history.go(-1)</script>";
         }
-        elseif($data['status'] == 'non aktif')
+        elseif($data['status'] == '2')
         {
           echo "<script>alert('Akun Anda telah di blokir!');history.go(-1)</script>";
         }

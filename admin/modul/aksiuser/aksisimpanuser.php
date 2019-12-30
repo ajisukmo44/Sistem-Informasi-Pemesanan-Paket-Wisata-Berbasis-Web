@@ -10,7 +10,7 @@ if(isset($_POST['simpan']))
   $username   = mysqli_real_escape_string($conn,$_POST['username']);
   $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-  $cekdata = "SELECT username FROM user WHERE username = '$username' ";
+  $cekdata = "SELECT username FROM tabel_user WHERE username = '$username' ";
   $ada     = mysqli_query($conn, $cekdata);
   if(mysqli_num_rows($ada) > 0)
   { 
@@ -19,7 +19,7 @@ if(isset($_POST['simpan']))
     else
     {
       // Proses insert data dari form ke db
-      $sql = "INSERT INTO user (id_user,
+      $sql = "INSERT INTO tabel_user (id_user,
                                 nama,
                                 jabatan,
                                 username,

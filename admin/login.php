@@ -20,7 +20,7 @@ if(isset($_POST['submit']))
     echo "<script language='javascript'>alert('Isikan PASSWORD'); location.replace('index.html')</script>";
   }
   
-  $sql    = "SELECT * FROM user WHERE username = '$username' ";
+  $sql    = "SELECT * FROM tabel_user WHERE username = '$username' ";
   $result = mysqli_query($conn, $sql);
   $data   = mysqli_fetch_array($result);
   if (mysqli_num_rows($result) > 0)
@@ -35,9 +35,9 @@ if(isset($_POST['submit']))
         $_SESSION['username']   = $data['username'];  // username user
         $_SESSION['jabatan']   = $data['jabatan'];  // tipe user
         
-        if($data['jabatan'] == 'onwer')
+        if($data['jabatan'] == 'pemilik')
         {
-          echo "<script language='javascript'>alert('Anda berhasil Login sebagai Owner'); location.replace('home.php')</script>";
+          echo "<script language='javascript'>alert('Anda berhasil Login sebagai Pemilik'); location.replace('home.php')</script>";
         }
         elseif($data['jabatan'] == 'admin')
         {

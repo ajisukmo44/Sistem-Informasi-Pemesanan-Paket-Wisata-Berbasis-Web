@@ -155,7 +155,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h6 class="m-0 font-weight-bold text-primary">Data User 
-          <a href='modul/tambahuser.php' class='badge badge-success'>Tambah Data User</a> </h6>
+          <a href='tambahuser.php' class='badge badge-success'>Tambah Data User</a> </h6>
               <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -182,7 +182,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                   <tbody>
                       <!-- ambil data dari database -->
     <?php
-      $sql = "SELECT * FROM user ORDER BY id_user ASC";
+      $sql = "SELECT * FROM tabel_user ORDER BY id_user ASC";
       $result = mysqli_query($conn, $sql);
       if (mysqli_num_rows($result) > 0)
       {
@@ -194,7 +194,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td style='font-family:verdana; text-align: center'>".$data['jabatan']."</td>
           <td style='font-family:verdana; text-align: center'>".$data['username']."</td>
           <td style='font-family:verdana; text-align: center'>
-          <a href='modul/edituser.php?id_user=$data[id_user]' class='badge badge-warning'>edit</a>
+          <a href='edituser.php?id_user=$data[id_user]' class='badge badge-warning'>edit</a>
           <a href='#' data-href='modul/aksiuser/aksiuserhapus.php?id_user=$data[id_user]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
           </td>
          

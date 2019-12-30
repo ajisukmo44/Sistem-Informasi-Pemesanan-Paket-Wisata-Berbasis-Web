@@ -23,7 +23,6 @@ include '../fungsi/cek_session.php';      // Panggil data setting
 
 
 
-        <!-- Nav Item - Messages -->
         <!-- Counter - Messages -->
         <h5><span class="badge badge-success badge-counter mt-4"><?php echo date('l, d-F-Y '); ?></span></h5>
         </a>

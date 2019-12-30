@@ -2,7 +2,7 @@
 <br>
 <br>
   <?php 
-  $query   = "SELECT a.id_paket, a.nama_paket, a.img, c.nama_kategori FROM paket_wisata a JOIN  kategori c  ON a.kategori = c.id_kategori ORDER BY a.id_paket DESC LIMIT 0,4";
+  $query   = "SELECT a.id_paket, a.nama_paket, a.img, c.nama_kategori FROM tabel_paket_wisata a JOIN  tabel_kategori c  ON a.id_kategori = c.id_kategori ORDER BY a.id_paket DESC LIMIT 0,3";
 
   $hasil   = mysqli_query($conn, $query);
   $numrows = mysqli_num_rows($hasil);

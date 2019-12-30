@@ -29,7 +29,12 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="datauser.php">Data User</a>
+        <a class="collapse-item" href="datapelanggan.php">Data Pelanggan</a>
         <a class="collapse-item" href="datapaket.php">Data Paket</a>
+        <a class="collapse-item" href="datakategori.php">Data Kategori</a>
+        <a class="collapse-item" href="dataharga.php">Data Harga Paket</a>
+        <a class="collapse-item" href="databank.php">Data Bank</a>
+        <a class="collapse-item" href="datahotel.php">Data Hotel</a>
       </div>
     </div>
   </li>

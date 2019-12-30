@@ -64,7 +64,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h6 class="m-0 font-weight-bold text-primary">Data Paket 
-          <a href='modul/tambahpaket.php' class='badge badge-success'>Tambah Data Paket</a> </h6>
+          <a href='tambahpaket.php' class='badge badge-success'>Tambah Data Paket</a> </h6>
               <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -84,8 +84,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                       <th>Gambar</th>
                       <th>Nama Paket</th>
                       <th>Kategori</th>
-                      <th>Destinasi</th>
-                      <th>Fasilitas</th>
+                      <th>Detail</th>
+                      <th>Hotel</th>
                         <th>Aksi</th>
                     </tr>
                   </thead>
@@ -93,7 +93,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                   <tbody>
                       <!-- ambil data dari database -->
     <?php
-      $sql = "SELECT * FROM paket_wisata LEFT JOIN kategori ON kategori.id_kategori = paket_wisata.kategori ORDER BY id_paket ASC";
+      $sql = "SELECT a.id_paket, a.img, a.nama_paket, b.nama_kategori, c.nama_hotel FROM tabel_paket_wisata a JOIN tabel_kategori b ON a.id_kategori = b.id_kategori JOIN tabel_hotel c ON c.id_hotel = a.id_hotel ORDER BY id_paket ASC";
 
       $result = mysqli_query($conn, $sql);
       if (mysqli_num_rows($result) > 0)
@@ -105,12 +105,17 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td style='text-align: center'><img src='images/paket/".$data['img']."' width='50px' height='50px'></td>
           <td style='font-family:verdana; text-align: center'>".$data['nama_paket']."</td>
           <td style='font-family:verdana; text-align: center'>".$data['nama_kategori']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['destinasi']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['fasilitas']."</td>
           <td style='font-family:verdana; text-align: center'>
-          <a href='modul/editpaket.php?id_paket=$data[id_paket]' class='badge badge-warning'>edit</a>
+          <a href='modul/editpaket.php?id_paket=$data[id_paket]' class='badge badge-info'>destinasi</a>
+            <a href='#' data-href='modul/aksipaket/aksihapuspaket.php?id_paket=$data[id_paket]' class='badge badge-primary' data-toggle='modal' data-target='#confirm-delete'> fasilitas </a>
+          </td>
+          
+          <td style='font-family:verdana; text-align: center'>".$data['nama_hotel']."</td>
+            <td style='font-family:verdana; text-align: center'>
+          <a href='editpaket.php?id_paket=$data[id_paket]' class='badge badge-warning'>edit</a>
             <a href='#' data-href='modul/aksipaket/aksihapuspaket.php?id_paket=$data[id_paket]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
           </td>
+         
           </td>
          
         </tr>";
@@ -121,6 +126,7 @@ else
   echo "Belum ada data";
 }
 ?>
+
 </tbody>
                 </table>
               </div>

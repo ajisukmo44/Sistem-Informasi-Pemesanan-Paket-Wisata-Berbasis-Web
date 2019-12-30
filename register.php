@@ -2,7 +2,7 @@
 mysql_connect("localhost","root","");
 mysql_select_db("anugrahtravel");
 
-$cari_kd=mysql_query("select max(id_pelanggan)as kode from pelanggan"); //mencari kode yang paling besar atau kode yang baru masuk
+$cari_kd=mysql_query("select max(id_pelanggan)as kode from tabel_pelanggan"); //mencari kode yang paling besar atau kode yang baru masuk
 $tm_cari=mysql_fetch_array($cari_kd);
 $kode=substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
 $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
@@ -45,14 +45,13 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <!-- Navigation -->
   <?php include 'navbar.php'; ?>
 
-  <div class="container">
+  <div class="container col-lg-8">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
+          <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Form Register!</h1>
@@ -64,26 +63,26 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                     <input type="text" class="form-control" name="id_pelanggan" id="id_pelanggan" value="<?php echo $id;?>" readonly>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="nama" id="exampleLastName" placeholder="Nama">
+                    <input type="text" class="form-control" name="nama" id="exampleLastName" placeholder="Nama" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="alamat" id="exampleInputEmail" placeholder="Alamat">
+                  <input type="text" class="form-control" name="alamat" id="exampleInputEmail" placeholder="Alamat" required>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-8 mb-3 mb-sm-0">
-                    <input type="email" name="email" class="form-control " id="email" placeholder="email">
+                    <input type="email" name="email" class="form-control " id="email" placeholder="email" required>
                   </div>
                   <div class="col-sm-4">
-                    <input type="no_hp" name="no_hp" class="form-control " id="no_hp" placeholder="no hp">
+                    <input type="number" name="no_hp" class="form-control " id="no_hp" placeholder="no hp" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="username" name="username" class="form-control " id="exampleInputPassword" placeholder="Username">
+                    <input type="username" name="username" class="form-control " id="exampleInputPassword" placeholder="Username" required>
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" name="password" class="form-control " id="exampleRepeatPassword" placeholder="Password">
+                    <input type="password" name="password" class="form-control " id="exampleRepeatPassword" placeholder="Password" required>
                   </div>
                 </div>
                 <hr>

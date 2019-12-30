@@ -5,9 +5,9 @@ include 'fungsi/cek_session_public.php';
 
 $id_paket     = mysqli_real_escape_string($conn,$_GET['id_paket']);
 $query        = "SELECT a.id_paket, a.nama_paket, a.destinasi, a.fasilitas, a.img, b.harga,  
-                c.nama_kategori FROM paket_wisata a JOIN kategori c ON c.id_kategori = a.kategori JOIN harga_paket b ON  a.id_paket = b.id_paket WHERE a. id_paket = '$id_paket' ";
+                c.nama_kategori FROM tabel_paket_wisata a JOIN tabel_kategori c ON c.id_kategori = a.id_kategori JOIN tabel_harga_paket b ON  a.id_paket = b.id_paket WHERE a. id_paket = '$id_paket' ";
 
-$hasil        = mysqli_query($conn,$query);
+$hasil     = mysqli_query($conn,$query);
 $data      = mysqli_fetch_array($hasil);
 
 // Jika data tidak ditemukan maka akan muncul alert belum ada data
@@ -63,7 +63,7 @@ if(mysqli_num_rows($hasil) == 0)
   <div class="container mt-5 mb-5">
 
   
-  <form action="pemesananproses.php"  method="post">
+  <form action="modul/pemesananproses.php"  method="post">
   <div class="row mt-4 ml-0">
   <div class="col-sm-4 ">
     <div class="card">
@@ -73,27 +73,27 @@ if(mysqli_num_rows($hasil) == 0)
   </div>
   <div class="col-sm-8">
     <div class="card">
-    <div class="card-header" style="background-color: #17A2B8; color:#fff;">
+    <div class="card-header" style="background-color: #3B8686; color:#fff;">
   <h5>FORM PEMESANAN # <?= $data['nama_paket']?></h5>
   </div>
   <?php
 mysql_connect("localhost","root","");
 mysql_select_db("anugrahtravel");
 
-$cari_kd=mysql_query("select max(no_invoice)as kode from pemesanan"); //mencari kode yang paling besar atau kode yang baru masuk
+$cari_kd=mysql_query("select max(id_pemesanan)as kode from tabel_pemesanan"); //mencari kode yang paling besar atau kode yang baru masuk
 $tm_cari=mysql_fetch_array($cari_kd);
 $kode=substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
 $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   if($tambah<10){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
-    $id="INV00".$tambah;
+    $id="PSN00".$tambah;
     }else{
-    $id="INV0".$tambah;
+    $id="PSN0".$tambah;
     }
 ?>
       <div class="card-body">
       <div class="form-group row"> 
     <div class="col-sm-10">
-      <input type="hidden" class="form-control" name="no_invoice" id="no_invoice"  value="<?php echo $id;?>" readonly>
+      <input type="hidden" class="form-control" name="id_pemesanan" id="id_pemesanan"  value="<?php echo $id;?>" readonly>
     </div>
   </div>
       <div class="form-group row"> 
@@ -104,19 +104,19 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <label for="tanggal_trip" class="col-sm-2 col-form-label">Tanggal Trip</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="tanggal_trip" name="tanggal_trip" placeholder="pilih tanggal tip" require>
+      <input type="text" class="form-control" id="tanggal_trip" name="tanggal_trip" placeholder="-- pilih tanggal trip -- " require>
     </div>
   </div>
 
 
 
   <div class="form-group row">
-    <label for="harga" class="col-sm-2 col-form-label">Jumlah Peserta</label>
+    <label for="harga" class="col-sm-2 col-form-label">Jumlah Peserta </label>
     <div class="col-sm-10">
     <select name="harga" id="harga_paket" onchange="price()" class="form-control" required>
               <option value=""><center><p style="text-align:cente;">--  Jumlah Pax --</p></option>
                 <?php
-                $query = "SELECT * FROM harga_paket WHERE id_paket=$id_paket  ORDER BY id";
+                $query = "SELECT * FROM tabel_harga_paket WHERE id_paket = '$id_paket' ORDER BY id_harga";
                 $sql = mysqli_query($conn, $query);
                 while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['harga'].'">'.$data['keterangan'].'</option>';}
                 ?>
@@ -131,6 +131,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
       <input type="text" class="form-control" id="harga"  name="harga" readonly> 
     </div>
   </div>
+
   <div class="form-group row">
     <label for="destinasi" class="col-sm-2 col-form-label">Keterangan </label>
     <div class="col-sm-10">
@@ -150,7 +151,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   
   <div class="form-group row">
     <div class="col-sm-12">
-    <button type="submit" name="submit" style="background-color:#E8191B; color:#fff"  class="btn btn-light float-right"></span><i class="fa fa-check"></i> Buat Pesanan</button>
+    <button type="submit" name="submit" style=" color:#fff; width:100%"  class="btn btn-primary float-right"></span> Buat Pesanan</button>
 </div>
   </div>
 
@@ -167,8 +168,8 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 <?php
 
 $id_paket     = mysqli_real_escape_string($conn,$_GET['id_paket']);
-$query        = "SELECT a.id_paket, a.nama_paket, a.destinasi, a.fasilitas, a.img, b.harga,  
-                c.nama_kategori FROM paket_wisata a JOIN kategori c ON c.id_kategori = a.kategori JOIN harga_paket b ON  a.id_paket = b.id_paket WHERE a. id_paket = '$id_paket' ";
+$query        = "SELECT a.id_paket, e.nama_hotel, e.fasilitas as fas, e.deskripsi, e.bintang, a.nama_paket, a.destinasi, a.fasilitas, a.img, b.harga,  
+                c.nama_kategori FROM tabel_paket_wisata a JOIN tabel_hotel e ON e.id_hotel = a.id_hotel  JOIN tabel_kategori c ON c.id_kategori = a.id_kategori  JOIN tabel_harga_paket b ON  a.id_paket = b.id_paket WHERE a. id_paket = '$id_paket' ";
 
 $hasil        = mysqli_query($conn,$query);
 $data      = mysqli_fetch_array($hasil);
@@ -181,20 +182,21 @@ if(mysqli_num_rows($hasil) == 0)
     <!--    ambil data paket    -->
     <hr>
   <div class="card ">
-  <div class="card-header" style="background-color: #17A2B8; color:#fff;">
+  <div class="card-header" style="background-color: #3B8686; color:#fff;">
   <h5>DETAIL PAKET WISATA</h5>
   </div>
   <div class="card-body">
     
     <p class="card-title"><b>Kategori :</b> <?= $data['nama_kategori']?></p> <hr>
-    <p class="card-text"> <b>Destinasi :</b> <?= $data['destinasi']?></p> <hr>
+    <p class="card-text"><b>Destinasi :</b> <?= $data['destinasi']?></p> <hr>
     <p class="card-text"><b>Fasilitas : </b> <?= $data['fasilitas']?></p> <hr>
+    <p class="card-text"><b>Hotel :  </b> <?= $data['nama_hotel']?> |  <?= $data['deskripsi']?>  |  <?= $data['fas']?> | <?= $data['bintang']?></p> <hr>
     <div class="table-responsive">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                   <thead style="background-color: #E8191B; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
-                      <th>Min Peserta</th>
-                      <th>Max Peserta</th>
+                      <th>Min Pax</th>
+                      <th>Max Pax</th>
                       <th>Harga / Pax</th>
                     </tr>
                   </thead>
@@ -203,17 +205,20 @@ if(mysqli_num_rows($hasil) == 0)
                       <!-- ambil data dari database -->
     <?php
     
-      $sql = "SELECT * FROM harga_paket WHERE id_paket = '$id_paket' ORDER BY id_paket  ";
+      $sql = "SELECT * FROM tabel_harga_paket WHERE id_paket = '$id_paket' ORDER BY id_paket  ";
 
       $result = mysqli_query($conn, $sql);
+
       if (mysqli_num_rows($result) > 0)
       {
         while ($data = mysqli_fetch_array($result))
-        {
+        { 
+          
+          $harga 	= number_format($data['harga'], 0, ',', '.');	
           echo "<tr style='text-align:center;line-height:9px'>
           <td style='font-family:verdana; text-align: center'>".$data['min']."</td>
           <td style='font-family:verdana; text-align: center'>".$data['max']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['harga']."</td>         
+          <td style='font-family:verdana; text-align: center'>Rp, ".$harga."</td>         
         </tr>";
 }
 }
@@ -229,14 +234,13 @@ else
 </div>
 </div>
 </div> 
-<hr>
   
   <!-- /.container -->
 
   <!-- Footer -->
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+      <p class="m-0 text-center ">Copyright ©2019 | Anugerah Tour dan Travel</p>
     </div>
     <!-- /.container -->
   </footer>
