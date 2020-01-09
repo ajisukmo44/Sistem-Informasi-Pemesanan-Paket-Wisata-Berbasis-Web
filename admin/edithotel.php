@@ -52,11 +52,6 @@ $data     = mysqli_fetch_array($result);
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -94,13 +89,13 @@ $data     = mysqli_fetch_array($result);
   <div class="form-group row">
     <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="deskripsi" id="deskripsi" value="<?php echo $data['deskripsi'] ?>">
+      <input type="text" class="form-control" name="deskripsi" id="deskripsi" value="<?php echo $data['deskripsi_hotel'] ?>">
     </div>
   </div>
   <div class="form-group row">
     <label for="fasilitas" class="col-sm-3 col-form-label">Fasilitas</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="fasilitas" id="fasilitas" value="<?php echo $data['fasilitas'] ?>">
+      <input type="text" class="form-control" name="fasilitas" id="fasilitas" value="<?php echo $data['fasilitas_hotel'] ?>">
     </div>
   </div>
   <div class="form-group row">
@@ -115,7 +110,7 @@ $data     = mysqli_fetch_array($result);
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="submit" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="datahotel.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 </form>

@@ -84,7 +84,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <select name="id_paket" id="id_paket" class="form-control" required>
               <option value="">--Pilih Paket--</option>
                 <?php
-                $query = "SELECT * FROM tabel_paket_wisata ORDER BY nama_paket";
+                $query = "SELECT * FROM tabel_paket ORDER BY nama_paket";
                 $sql = mysqli_query($conn, $query);
                 while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_paket'].'">'.$data['nama_paket'].'</option>';}
                 ?>
@@ -92,9 +92,16 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     </div>
   </div>
   <div class="form-group row">
-    <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+    <label for="id_hotel" class="col-sm-2 col-form-label">Nama Hotel</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" required>
+    <select name="id_hotel" id="id_hotel" class="form-control" required>
+              <option value="">--Pilih Hotel--</option>
+                <?php
+                $query = "SELECT * FROM tabel_hotel ORDER BY nama_hotel";
+                $sql = mysqli_query($conn, $query);
+                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_hotel'].'">'.$data['nama_hotel'].'</option>';}
+                ?>
+              </select>
     </div>
   </div>
   <div class="form-group row">
@@ -119,7 +126,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="dataharga.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 </form>

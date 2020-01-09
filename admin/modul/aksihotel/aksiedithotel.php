@@ -13,8 +13,8 @@ if(isset($_POST['submit']))
 
   $sql = "UPDATE tabel_hotel SET  id_hotel       = '$idhtl',
                                   nama_hotel     = '$nht',
-                                  deskripsi      = '$des',
-                                  fasilitas      = '$fas',
+                                  deskripsi_hotel      = '$des',
+                                  fasilitas_hotel      = '$fas',
                                   bintang        = '$bin'
                            WHERE  id_hotel       = '$idhtl' ";
 

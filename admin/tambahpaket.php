@@ -8,7 +8,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 mysql_connect("localhost","root","");
 mysql_select_db("anugrahtravel");
 
-$cari_kd = mysql_query("select max(id_paket) as kode from tabel_paket_wisata"); //mencari kode yang paling besar atau kode yang baru masuk
+$cari_kd = mysql_query("select max(id_paket) as kode from tabel_paket"); //mencari kode yang paling besar atau kode yang baru masuk
 $tm_cari=mysql_fetch_array($cari_kd);
 $kode=substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
 $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
@@ -49,8 +49,6 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 <?php include 'modul/sidebar.php'; ?>
 
 
-
-
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -66,10 +64,6 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 
       <!-- Page Heading -->
     
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -97,12 +91,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
       <input type="text" class="form-control" name="id_paket" id="id_paket" value="<?= $id; ?>" readonly>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="nama_paket" class="col-sm-2 col-form-label">Nama Paket</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="nama_paket" name="nama_paket" placeholder="nama paket" require>
-    </div>
-  </div>
+  
   <div class="form-group row">
     <label for="id_kategori" class="col-sm-2 col-form-label">Kategori</label>
     <div class="col-sm-10">
@@ -116,52 +105,33 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
               </select>
     </div>
   </div>
-
-  
   <div class="form-group row">
-    <label for="destinasi" class="col-sm-2 col-form-label">Destinasi</label>
+    <label for="nama_paket" class="col-sm-2 col-form-label">Nama Paket</label>
     <div class="col-sm-10">
-      <input type="destinasi" class="form-control" id="destinasi"  name="destinasi" placeholder="destinasi">
+      <input type="text" class="form-control" id="nama_paket" name="nama_paket" placeholder="nama paket" require>
     </div>
   </div>
-  
   <div class="form-group row">
     <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
     <div class="col-sm-10">
-      <input type="fasilitas" class="form-control" id="fasilitas"  name="fasilitas" placeholder="fasilitas">
+      <input type="text" class="form-control" id="fasilitas"  name="fasilitas" placeholder="fasilitas">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="id_hotel" class="col-sm-2 col-form-label">Hotel</label>
+    <label for="disclaimer" class="col-sm-2 col-form-label">Disclaimer</label>
     <div class="col-sm-10">
-    <select name="id_hotel" id="id_hotel" class="form-control" required>
-              <option value="">--Pilih Hotel--</option>
-                <?php
-                $query = "SELECT * FROM tabel_hotel ORDER BY nama_hotel";
-                $sql = mysqli_query($conn, $query);
-                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_hotel'].'">'.$data['nama_hotel'].'</option>';}
-                ?>
-              </select>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="fasilitas" class="col-sm-2 col-form-label">Foto Paket</label>
-    <div class="col-sm-10">
-    <input type="file" name="img" id="img" onchange="tampilkanPreview(this,'preview')" required/>
-            <br><b>Preview Gambar</b><br>
-            <img id="preview" src="" alt="" width="25%"/>
+      <input type="text" class="form-control" id="disclaimer"  name="disclaimer" placeholder="disclaimer">
     </div>
   </div>
 
 
-  
+  <hr>
   
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="datapaket.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 
@@ -176,7 +146,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 
   </div>
   <!-- End of Main Content -->
-
+  <br><br><br>
   <!-- Footer -->
 
 <?php 

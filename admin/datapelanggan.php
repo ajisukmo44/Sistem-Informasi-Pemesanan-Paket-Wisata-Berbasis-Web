@@ -29,14 +29,10 @@ include 'fungsi/cek_session.php';      // Panggil data setting
  <!-- Page Wrapper -->
 
 
-
  <div id="wrapper">
-
 
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
-
-
 
 
 <!-- Content Wrapper -->
@@ -53,11 +49,6 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -80,14 +71,14 @@ include 'fungsi/cek_session.php';      // Panggil data setting
               <div class="table-responsive">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                 <thead style="background-color: #3b8686; color:#fff; line-height:8px; text-align: center">
-                               <th>Id</th>
+                               <th>Id PLG</th>
                                <th>Nama</th>
                                <th>Alamat</th>
                                <th>Email</th>
                                <th>No Hp</th>
                                <th>Username</th>
                                <th>Status</th>
-                               <th>Aksi</th>
+                               <th>Tindakan</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -98,12 +89,12 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 
                             // Jika data tidak ditemukan maka akan muncul alert belum ada data
                             if(mysqli_num_rows($result) == 0)
-                            {echo "<script>alert('Belum ada data');location.replace('index.php')</script>";}
+                            {echo "Belum ada data";}
                             ?>
                             
 
             <?php while (  $data = mysqli_fetch_assoc($result) ) : ?>
-          <tr style='font-family:calibri; color:#000; text-align: center'>
+          <tr style='font-family:verdana; text-align: center'>
             <td><?= $data['id_pelanggan'] ?></td>
             <td><?= $data['nama'] ?></td>
             <td><?= $data['alamat'] ?></td>
@@ -123,9 +114,9 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     
     
     if ($status==1) {
-              echo " <h6> <a href='modul/aksipelanggan/pelangganblokir.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-danger'  data-target='#confirm-delete'> blokir </a></h6>";
+              echo " <h6> <a href='modul/aksipelanggan/pelangganblokir.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-danger'  data-target='#confirm-delete'> <i class='fa fa-times'></i> blokir </a></h6>";
             } else {
-              echo "<a href='modul/aksipelanggan/pelangganaktive.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-success'> aktifkan </a> </h6>";
+              echo "<a href='modul/aksipelanggan/pelangganaktive.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-success'> <i class='fa fa-check'></i>  aktifkan </a> </h6>";
             }; ?>
            </td>   
           </tr>
@@ -149,24 +140,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 
 <!-- Modal HTML -->
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-body">
-                    <p class="text-center mt-4">Apakah anda yakin ingin memblokir pelanggan ini?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-info" data-dismiss="modal">Batal</button>
-                    <a style="margin-right:145px" class="btn btn-danger btn-ok">blokir</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  <!-- End of Main Content -->
+<?php include 'alerthapus.php' ?>
 
   <!-- Footer -->
 

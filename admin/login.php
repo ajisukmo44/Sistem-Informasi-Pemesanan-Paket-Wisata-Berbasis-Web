@@ -33,11 +33,11 @@ if(isset($_POST['submit']))
         $_SESSION['id_user']    = $data['id_user'];   // id user
         $_SESSION['nama']       = $data['nama'];      // nama user
         $_SESSION['username']   = $data['username'];  // username user
-        $_SESSION['jabatan']   = $data['jabatan'];  // tipe user
+        $_SESSION['jabatan']    = $data['jabatan'];  // tipe user
         
         if($data['jabatan'] == 'pemilik')
         {
-          echo "<script language='javascript'>alert('Anda berhasil Login sebagai Pemilik'); location.replace('home.php')</script>";
+          echo "<script language='javascript'>alert('Anda berhasil Login sebagai Pemilik'); location.replace('homepemilik.php')</script>";
         }
         elseif($data['jabatan'] == 'admin')
         {

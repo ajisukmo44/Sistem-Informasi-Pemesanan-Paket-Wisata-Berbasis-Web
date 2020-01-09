@@ -6,7 +6,7 @@ if(isset($_POST['simpan']))
 
   $no      = mysqli_real_escape_string($conn,$_POST['no_rekening']);
   $nama    = mysqli_real_escape_string($conn,$_POST['nama_rekening']);
-  $bank    = mysqli_real_escape_string($conn,$_POST['bank']);
+  $bank    = mysqli_real_escape_string($conn,$_POST['nama_bank']);
 
   $cekdata = "SELECT no_rekening FROM tabel_bank WHERE no_rekening = '$no' ";
   $ada     = mysqli_query($conn, $cekdata);
@@ -33,7 +33,7 @@ if(isset($_POST['simpan']))
           // Proses insert data dari form ke db
           $sql = "INSERT INTO tabel_bank (no_rekening,
                                     nama_rekening,
-                                    bank,
+                                    nama_bank,
                                     img)
                             VALUES ('$no',
                                     '$nama',

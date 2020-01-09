@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 include 'admin/koneksi.php';
 ?>
 
@@ -42,8 +42,10 @@ include 'admin/koneksi.php';
                 <h1 class="h4 text-gray-900 mb-4">Data Profil Pelanggan</h1>
               </div>
               <hr>
+              
+              <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped">
-              <thead style="background-color:#E8191B; font-family:calibri;  color:#fff; line-height:8px">
+              <thead style="background-color:#3B8686; font-family:calibri;  color:#fff; line-height:8px">
                     <tr style="text-align:center;">
                                <th  style="color: #fff; background:#000">Id Pelanggan</th>
                                <th>Nama</th>
@@ -75,7 +77,6 @@ include 'admin/koneksi.php';
                                             <a href='dataprofilubah.php?id_pelanggan=$data[id_pelanggan]'>
                                               <button type='submit' class='btn btn-light btn-sm' style='background-color:#F4F10E;'>Edit</button>
                                             </a>
-                                           
                                           </td>
                                              
                                   </tr>";
@@ -88,6 +89,7 @@ include 'admin/koneksi.php';
               <hr>
             </div>
           </div>
+            </div>
         </div>
       </div>
     </div>

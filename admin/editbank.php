@@ -54,11 +54,6 @@ $img = $data['img'];
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -95,9 +90,9 @@ $img = $data['img'];
    
 
   <div class="form-group row">
-    <label for="bank" class="col-sm-3 col-form-label">Bank</label>
+    <label for="nama_bank" class="col-sm-3 col-form-label">Bank</label>
     <div class="col-sm-9">
-      <input type="bank" class="form-control" id="bank"  name="bank" value="<?php echo $data['bank'] ?>">   </div>
+      <input type="nama_bank" class="form-control" id="nama_bank"  name="nama_bank" value="<?php echo $data['nama_bank'] ?>">   </div>
   </div>
 
   <div class="form-group row">
@@ -116,7 +111,7 @@ $img = $data['img'];
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="databank.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 
@@ -134,4 +129,4 @@ $img = $data['img'];
 
   <!-- Footer -->
 
-<?php include '../footer.php' ?>
+<?php include 'footer.php' ?>

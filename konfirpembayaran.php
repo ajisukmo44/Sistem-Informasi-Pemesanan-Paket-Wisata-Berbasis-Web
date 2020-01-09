@@ -1,16 +1,15 @@
-<?php
+<?php session_start();
 include 'admin/koneksi.php';
 include "admin/fungsi/imgpreview.php";
 
 $id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id_pemesanan']);
 ?>
-<?php
-mysql_connect("localhost","root","");
-mysql_select_db("anugrahtravel");
 
-$cari_kd=mysql_query("select max(id_pembayaran)as kode from tabel_bayar"); //mencari kode yang paling besar atau kode yang baru masuk
-$tm_cari=mysql_fetch_array($cari_kd);
-$kode=substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
+<?php
+$query     = "select max(id_pembayaran)as kode from tabel_bayar"; 
+$cari_kd   = mysqli_query($conn,$query);
+$tm_cari   = mysqli_fetch_array($cari_kd);
+$kode      = substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
 $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   if($tambah<10){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
     $id="PBY00".$tambah;
@@ -59,11 +58,11 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                 <h1 class="h4 text-gray-900 mb-4">Form Konfirmasi Pembayaran</h1>
               </div>
               <hr>
-              <form action="modul/konfirpembayaranproses.php"method="post">
+              <form action="modul/konfirpembayaranproses.php" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                   <div class="col-sm-3 mb-3 mb-sm-0">
                   <label for="">ID PEMBAYARAN</label>
-                    <input type="text" class="form-control" name="id_pembayaran" id="id_pembayaran" value="<?= $id ?>" readonly>
+                    <input type="text" class="form-control" name="id_bayar" id="id_bayar" value="<?= $id ?>" readonly>
                   </div>
                   <div class="col-sm-3 mb-3 mb-sm-0">
                   
@@ -78,7 +77,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                 <?php
                 $query = "SELECT * FROM tabel_bank ORDER BY no_rekening";
                 $sql = mysqli_query($conn, $query);
-                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['no_rekening'].'">'.$data['bank'].' - '.$data['no_rekening'].' - '.$data['nama_rekening'].'</option>';}
+                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['no_rekening'].'">'.$data['nama_bank'].' - '.$data['no_rekening'].' - '.$data['nama_rekening'].'</option>';}
                 ?>
               </select>
                   </div>
@@ -104,8 +103,12 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                   </div>
 
                 </div>
+                <hr>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="bukti_transfer" id="bukti_transfer" placeholder="bukti_transfer">
+                <label for="img" >BUKTI TRANSFER </label> <BR>
+                <input type="file" name="img" id="img" required/>
+                  
+               
                 </div>
            
 

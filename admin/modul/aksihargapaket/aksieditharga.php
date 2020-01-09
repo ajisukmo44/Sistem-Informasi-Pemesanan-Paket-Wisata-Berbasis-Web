@@ -4,7 +4,6 @@ include '../../koneksi.php';                    // Panggil koneksi ke database
 if(isset($_POST['submit']))
 {
   $id      = mysqli_real_escape_string($conn,$_POST['id_harga']);
-  $ket     = mysqli_real_escape_string($conn,$_POST['keterangan']);
   $min     = mysqli_real_escape_string($conn,$_POST['min']);
   $max     = mysqli_real_escape_string($conn,$_POST['max']);
   $harga   = mysqli_real_escape_string($conn,$_POST['harga']);
@@ -12,7 +11,6 @@ if(isset($_POST['submit']))
   // Proses update data dari form ke db
 
   $sql = "UPDATE tabel_harga_paket SET  id_harga       = '$id',
-                                        keterangan     = '$ket',
                                         min            = '$min',
                                         max            = '$max',
                                         harga          = '$harga'

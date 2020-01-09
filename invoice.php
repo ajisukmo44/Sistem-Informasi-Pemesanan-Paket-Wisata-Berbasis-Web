@@ -6,7 +6,7 @@ include 'fungsi/tgl_indo.php';
 
 $id_pemesanan 	 = 	mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
 // Membuat join query 3 tabel: reservasi, detail_reservasi 
-$sql = "SELECT a.id_pemesanan, a.jumlah_pax, a.total_harga, a.tanggal_trip, b.nama, b.id_pelanggan, c.nama_paket, b.alamat, z.harga FROM tabel_detail_pemesanan a JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket LEFT JOIN tabel_harga_paket z ON z.id_paket = c.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY a.id_pemesanan";
+$sql = "SELECT *FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
 
 $hasil        = mysqli_query($conn,$sql);
 $data         = mysqli_fetch_array($hasil);
@@ -50,7 +50,7 @@ if(mysqli_num_rows($hasil) == 0)
 <P align="center"><img src="images/logo11.png" alt="logo" ></P>
 <p align="center">Nama Pemesan : <b><?= $data['nama']; ?></b>  | Tanggal Trip : <b><?= $tanggal; ?></b></p>
 <table class="tabel2" align="center">
-            		    <tr style="background-color:#17A2B8; color:#fff">
+            		    <tr style="background-color:#3B8686; color:#fff">
                       <th align="center" style="width:35%;">Paket Wisata</th>
                       <th align="center"  style="width:20%;">Harga / Pax</th>
                       <th align="center"  style="width:20%;">Jumlah Peserta</th>

@@ -1,7 +1,7 @@
  <?php session_start();
-include 'koneksi.php';              // Panggil koneksi ke database
-include 'fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
-include 'fungsi/cek_session.php';      // Panggil data setting
+include 'koneksi.php';               // Panggil koneksi ke database
+include 'fungsi/cek_login.php';      // Panggil fungsi cek sudah login/belum
+include 'fungsi/cek_session.php';    // Panggil data setting
 ?>
 
 <!DOCTYPE html>
@@ -14,21 +14,21 @@ include 'fungsi/cek_session.php';      // Panggil data setting
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin | Data Bank</title>
+  <title> Admin | Data Bank</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      <!-- Custom styles for this template-->
+      <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
  <!-- Page Wrapper -->
  <div id="wrapper">
-
 
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
@@ -43,18 +43,13 @@ include 'fungsi/cek_session.php';      // Panggil data setting
   <div id="content">
 
     <!-- Topbar -->
-<?php include 'navbar.php'; ?>
+    <?php include 'navbar.php'; ?>
     <!-- End of Topbar -->
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -84,7 +79,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                       <th>Nama Rekening</th>
                       <th>Bank</th>
                       <th>Foto</th>
-                        <th>Aksi</th>
+                      <th>Tindakan</th>
                     </tr>
                   </thead>
                   
@@ -98,38 +93,31 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       {
         while ($data = mysqli_fetch_array($result))
         {
-          echo "<tr style='text-align:center;line-height:9px'>
-          <td style='font-family:verdana; text-align: center'>".$data['no_rekening']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['nama_rekening']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['bank']."</td>
-          <td style='text-align: center'><img src='images/bank/".$data['img']."' width='50px' height='50px'></td>
-         
-          <td style='font-family:verdana; text-align: center'>
-          <a href='editbank.php?no_rekening=$data[no_rekening]' class='badge badge-warning'>edit</a>
-            <a href='#' data-href='modul/aksibank/aksihapusbank.php?no_rekening=$data[no_rekening]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
+          echo "<tr style='font-family:verdana; text-align:center'>
+          <td>".$data['no_rekening']."</td>
+          <td>".$data['nama_rekening']."</td>
+          <td>".$data['nama_bank']."</td>
+          <td style='text-align: center'><img src='images/bank/".$data['img']."' width='50px' height='30px'></td>
+          <td>
+          <a href='editbank.php?no_rekening=$data[no_rekening]'class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+         <a href='#' data-href='modul/aksibank/aksihapusbank.php?no_rekening=$data[no_rekening]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> </a>
           </td>
          
-          </td>
-         
-        </tr>";
-}
-}
-else
-{
-  echo "Belum ada data";
-}
-?>
-</tbody>
+          </tr>";
+              }
+              }
+              else
+              {
+                echo "Belum ada data";
+              }
+              ?>
+                </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
-
-
-
-          </div>
+      </div>
         </div>
 
 
@@ -141,22 +129,7 @@ else
   </div>
 <!-- Modal HTML -->
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-body">
-                    <p class="text-center mt-4">Apakah anda yakin ingin menghapus data ini?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-info" data-dismiss="modal">Batal</button>
-                    <a style="margin-right:145px" class="btn btn-danger btn-ok">Hapus</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<?php include 'alerthapus.php' ?>
 
   <!-- Footer -->
 

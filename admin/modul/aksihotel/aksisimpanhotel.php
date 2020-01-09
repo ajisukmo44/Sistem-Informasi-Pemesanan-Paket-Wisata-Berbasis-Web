@@ -19,7 +19,7 @@ if(isset($_POST['simpan']))
     else
     {
       // Proses insert data dari form ke db
-                      $sql = "INSERT INTO tabel_hotel ( id_hotel, nama_hotel, deskripsi, fasilitas, bintang )
+                      $sql = "INSERT INTO tabel_hotel ( id_hotel, nama_hotel, deskripsi_hotel, fasilitas_hotel, bintang )
                               VALUES ('$idhtl','$nht','$des','$fas','$bin')";
 
             if(mysqli_query($conn, $sql)) 

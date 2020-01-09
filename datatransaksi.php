@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php'; 
@@ -18,7 +18,7 @@ include 'fungsi/cek_session_public.php';
   <title>Data Transaksi</title>
 
   <!-- Custom fonts for this template-->
-  
+  <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -39,7 +39,7 @@ include 'fungsi/cek_session_public.php';
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Data Transaksi</h1>
+                <h1 class="h4 text-gray-900 mb-4">Data Transaksi Pemesanan</h1>
               </div>
               <hr>
               <div class="table-responsive">
@@ -75,7 +75,9 @@ include 'fungsi/cek_session_public.php';
             <td><?= $tanggal ?></td>
             <td><a href="invoice.php?id_pemesanan=<?= $data['id_pemesanan'] ?>"  class="badge badge-primary">lihat detail</a></h6></td>
             <td> 
-           <?php if ($status==1) {
+           <?php if ($status==0) {
+              echo ' <h6> <span class="badge badge-danger">pemesanan gagal</span></h6>';
+            } elseif ($status==1) {
               echo ' <h6> <span class="badge badge-danger">belum di bayar</span></h6>';
             } elseif ($status==2) {
               echo ' <h6> <span class="badge badge-warning">Menunggu validasi pembayaran</span></h6>';
@@ -85,14 +87,23 @@ include 'fungsi/cek_session_public.php';
               echo ' <h6> <span class="badge badge-success">selesai</span></h6>';
             } elseif ($status==5) {
               echo ' <h6> <span class="badge badge-danger">di batalkan</span></h6>';
-            }; ?>
+            } elseif ($status==6) {
+              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
+            } elseif ($status==7) {
+              echo ' <h6> <span class="badge badge-danger">pembatalan ditolak</span></h6>';
+            } 
+            elseif ($status==8) {
+              echo ' <h6> <span class="badge badge-success">pembatalan disetujui</span></h6>';
+            };?>
            </td>
             <td>
-                    <a href="konfirpembayaran.php?id_pemesanan=<?= $data['id_pemesanan']?> ">
-                      <button type='submit' class='btn btn-secondary btn-sm mr-1'> Konfir Pembayaran</button>
+                    <a href='konfirpembayaran.php?id_pemesanan=<?= $data['id_pemesanan']?> '>
+                      <button type='submit' class='btn btn-secondary btn-sm mr-1'><i class='fa fa-edit'></i> Konfir Pembayaran</button>
+                    </a> <a href='pembatalan.php?id_pemesanan=<?= $data['id_pemesanan']?> '>
+                      <button type='submit' class='btn btn-danger btn-sm mr-1'><i class='fa fa-times'></i> Batalkan </button>
                     </a> 
-                    <a href='modul/statuspemesanan_acc.php?id_pemesanan=<?= $data['id_pemesanan']?>'>
-                      <button type='submit' class='btn btn-success btn-sm'>selesai</button>
+                    <a href='modul/statuspemesanan_acc.php?id_pemesanan=<?= $data['id_pemesanan'] ?>'>
+                      <button type='submit' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Selesai</button>
                     </a>
                   </td>      
           </tr>

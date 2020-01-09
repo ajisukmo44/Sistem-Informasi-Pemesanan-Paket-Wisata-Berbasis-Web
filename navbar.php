@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php'; 
@@ -6,7 +6,7 @@ include 'fungsi/cek_session_public.php';
 ?>
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.php"><img src="images/logoatt.png" alt="logo" ></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"

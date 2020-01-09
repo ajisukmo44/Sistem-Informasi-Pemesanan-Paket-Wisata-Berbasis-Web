@@ -2,7 +2,9 @@
 <br>
 <br>
   <?php 
-  $query   = "SELECT a.id_paket, a.nama_paket, a.img, c.nama_kategori FROM tabel_paket_wisata a JOIN  tabel_kategori c  ON a.id_kategori = c.id_kategori ORDER BY a.id_paket DESC LIMIT 0,3";
+  $query   = "SELECT * FROM tabel_paket_detail a JOIN tabel_paket b ON a.id_paket = b.id_paket JOIN
+  tabel_destinasi c ON a.id_destinasi = c.id_destinasi
+  GROUP BY b.id_paket  ORDER BY a.id_paket_detail DESC LIMIT 0,6";
 
   $hasil   = mysqli_query($conn, $query);
   $numrows = mysqli_num_rows($hasil);
@@ -15,20 +17,22 @@
     while($data = mysqli_fetch_array($hasil))
     {
   ?>
-    <div class="col-lg-4 col-sm-4 portfolio-item">
+    <div class="col-lg-4 portfolio-item">
     <figure class="snip1104 red">
-    <img style="width:100%" alt="<?php echo $data['nama_paket']; ?>" src="<?php echo $base_url ?>admin/images/paket/<?php echo $data['img']; ?>"/>
+    <img style="width:450px; height:450px;" alt="<?php echo $data['nama_paket']; ?>" src="<?php echo $base_url ?>admin/images/paket/<?php echo $data['img']; ?>"/>
   <figcaption>
     <h2> <?= $data['nama_paket'];?></h2>
   </figcaption>
-  <a href="detailpaket.php?id_paket=<?= $data['id_paket'] ?>"></a>
+  <a href="detailpaket.php?id_paket_detail=<?= $data['id_paket_detail'] ?>&id_paket=<?= $data['id_paket'] ?>"></a>
 </figure>
 </div>  
     <!-- /.row -->
+
 <?php 
     } 
   } 
 ?>
+
 
 </div>
 <br>

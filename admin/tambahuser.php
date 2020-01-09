@@ -67,10 +67,6 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
       <!-- Page Heading -->
     
 
-      <!-- Content Row -->
-
-      <!-- Content Row -->
-
       <div class="row">
 
         <!-- Area Chart -->
@@ -139,7 +135,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="datauser.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 </form>

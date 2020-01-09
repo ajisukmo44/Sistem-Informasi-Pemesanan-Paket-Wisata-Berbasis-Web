@@ -1,7 +1,9 @@
 <?php
+session_start();
 include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php';
+include 'fungsi/cek_login_public.php'; 
 
 $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
 $query        = "SELECT * FROM tabel_pemesanan ORDER BY id_pemesanan";
@@ -46,14 +48,14 @@ if(mysqli_num_rows($hasil) == 0)
 
   <div class="container mt-5 mb-4">
 
-  <div class="card">
+  <div class="card ">
   <div class="card-header">
   <p align="right"> <a href='invoice.php?id_pemesanan=<?php echo $id_pemesanan; ?>'><button>Download Invoice</button> </a>
 </p>
   <div class="card-body">
 
         <?php
-            $sql = "SELECT a.id_pemesanan, a.tanggal_trip, a.jumlah_pax, a.keterangan, a.total_harga, b.nama, a.harga, c.nama_paket FROM tabel_detail_pemesanan a JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY a.id_pemesanan";
+            $sql = "SELECT *FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
 
             $hasil     = mysqli_query($conn,$sql);
             $data      = mysqli_fetch_array($hasil);
@@ -64,14 +66,14 @@ if(mysqli_num_rows($hasil) == 0)
     
     // Jika data tidak ditemukan maka akan muncul alert belum ada data
     if(mysqli_num_rows($hasil) == 0)
-    {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
+    {echo "<script>alert('Belum ada data');</script>";}
     ?>
     <center><h5>NO. PEMESANAN: <strong>#<?php echo $id_pemesanan ?></strong></h5></center>
 
   <form id="form1" name="form1" method="post" action="pemesananupdate.php?id_pemesanan=<?= $id_pemesanan ?>">
   <div class="table-responsive mt-4">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
-                  <thead style="background-color: #17A2B8; color:#fff; line-height:8px">
+                  <thead style="background-color: #3B8686; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
                       <th>Tanggal Trip</th>
                       <th>Nama Pelanggan</th>
@@ -120,7 +122,7 @@ if(mysqli_num_rows($hasil) == 0)
         <P><strong> <?php echo $data1['no_rekening'] ?> </strong>AN : <?php echo $data1['nama_rekening'] ?></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="<?php echo $base_url.'konfirpembayaran.php?id_pemesanan='?> <?php echo $id_pemesanan ?> ">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id_pemesanan=<?php echo $id_pemesanan ?> ">klik disini</a></p>
         <hr>
   </div>
 </div>
@@ -130,65 +132,19 @@ if(mysqli_num_rows($hasil) == 0)
 
 </div>
 
-<div class="container mt-5 mb-5">
-
-<div class="card">
-<div class="card-header">
-  Data Pelanggan
 </div>
-<div class="card-body">
-
-<?php
-  $sql = "SELECT a.id_pemesanan, b.nama,b.id_pelanggan, b.email, b.no_hp, b.alamat FROM tabel_detail_pemesanan a JOIN tabel_paket_wisata c ON a.id_paket= c.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY a.id_pemesanan";
-
-  $hasil     = mysqli_query($conn,$sql);
-  $data      = mysqli_fetch_array($hasil);
-  
-  // Jika data tidak ditemukan maka akan muncul alert belum ada data
-  if(mysqli_num_rows($hasil) == 0)
-  {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
-  ?>
-<form id="form" name="form" method="post" action="#">
-<div class="table-responsive">
-              <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
-                <thead style="background-color: #17A2B8; color:#fff; line-height:8px">
-                  <tr style="text-align:center;">
-                    <th>Id Pelanggan</th>
-                    <th>Alamat</th>
-                    <th>Email</th>
-                    <th>No Hp</th>
-                    <th>Alamat</th>
-                  </tr>
-                </thead>
-                
-                <tbody style="text-align:center; background-color:#F7F7F7;">
-                    <td><?= $data['id_pelanggan']?></td>
-                    <td><?= $data['nama']?></td>
-                    <td><?= $data['email']?></td>
-                    <td><?= $data['no_hp']?></td>
-                    <td><?= $data['alamat']?></td>
-                    
- 
-</tbody>
-              </table>
-</form>
-</div>
-</div>
-
-</div>
-
-</div>
-
+<br><br><br><br>
   <!-- Footer -->
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+      <p class="m-0 text-center ">Copyright &copy; Anugrah2019</p>
     </div>
     <!-- /.container -->
   </footer>
 
   <!-- Bootstrap core JavaScript -->
 
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script type="text/javascript">
 function startCalculate(){

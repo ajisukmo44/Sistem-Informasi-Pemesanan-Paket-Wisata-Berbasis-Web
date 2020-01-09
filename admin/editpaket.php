@@ -4,10 +4,13 @@ include 'fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
 include 'fungsi/cek_session.php';      // Panggil data setting
    
 $id_paket  = mysqli_real_escape_string($conn, $_GET['id_paket']);
-$sql      = "SELECT * FROM tabel_paket_wisata WHERE id_paket = '$id_paket' ";
+$sql      = "SELECT * FROM tabel_paket a JOIN tabel_kategori b ON a.id_kategori = b.id_kategori WHERE a.id_paket = '$id_paket' ";
 $result   = mysqli_query($conn, $sql);
 $data     = mysqli_fetch_array($result);
-$img = $data['img'];  
+$np      = $data['nama_paket']; 
+$fas      = $data['fasilitas'];
+$dis       = $data['disclaimer'];
+$nk       = $data['nama_kategori'];
 
 ?>
 
@@ -54,11 +57,6 @@ $img = $data['img'];
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -89,57 +87,43 @@ $img = $data['img'];
   <div class="form-group row">
     <label for="nama_paket" class="col-sm-2 col-form-label">Nama Paket</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="nama_paket" name="nama_paket"  value="<?php echo $data['nama_paket'] ?>" require>
+      <input type="text" class="form-control" id="nama_paket" name="nama_paket"  value="<?php echo $np ?>" require>
     </div>
   </div>
-   
-
-  <div class="form-group row">
-    <label for="destinasi" class="col-sm-2 col-form-label">Destinasi</label>
-    <div class="col-sm-10">
-      <input type="destinasi" class="form-control" id="destinasi"  name="destinasi" value="<?php echo $data['destinasi'] ?>">   </div>
-  </div>
-
   <div class="form-group row">
     <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
     <div class="col-sm-10">
-      <input type="kategori" class="form-control" id="id_kategori"  name="id_kategori" value="<?php echo $data['id_kategori'] ?>" readonly>   </div>
+    <select name="id_kategori" id="id_kategori" class="form-control" required>
+              <option value="<?php echo $data['id_kategori'] ?>"><?php echo $data['nama_kategori'] ?></option>
+              <?php
+                $query = "SELECT * FROM tabel_kategori ORDER BY nama_kategori";
+                $sql = mysqli_query($conn, $query);
+                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_kategori'].'">'.$data['nama_kategori'].'</option>';}
+                ?>
+              </select>
+     </div>
   </div>
+
   
   <div class="form-group row">
     <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
     <div class="col-sm-10">
-      <input type="fasilitas" class="form-control" id="fasilitas"  name="fasilitas"  value="<?php echo $data['fasilitas'] ?>">   </div>
+      <input type="fasilitas" class="form-control" id="fasilitas"  name="fasilitas"  value="<?php echo $fas ?>">   </div>
   </div>
 
+  
   <div class="form-group row">
-    <label for="id_hotel" class="col-sm-2 col-form-label">Hotel</label>
+    <label for="disclaimer" class="col-sm-2 col-form-label">Disclaimer</label>
     <div class="col-sm-10">
-      <input type="id_hotel" class="form-control" id="id_hotel"  name="id_hotel"  value="<?php echo $data['id_hotel'] ?>">   </div>
+      <input type="disclaimer" class="form-control" id="disclaimer"  name="disclaimer" value="<?php echo $dis ?>">   </div>
   </div>
 
-  <div class="form-group row">
-  <label for="gambar" class="col-sm-2 col-form-label">Gambar Sebelumnya</label>
-    <img style="margin-left:10px; margin-right:45px; margin-bottom:15px;" src="images/paket/<?php echo $img ?> " width="20%" height="20%" /><br> 
-     </div>
-
-     
-    <div class="form-group row">
-    <label for="gambar" class="col-sm-2 col-form-label">Gambar Baru</label>
-    <input type="file" name="img" id="img" onchange="tampilkanPreview(this,'preview')"/> 
-            <img id="preview" src="" alt="" width="25%"/>
-    </div>
-  
-  
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="datapaket.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
-
-
-
 
 </form>
 </div>
@@ -152,4 +136,4 @@ $img = $data['img'];
 
   <!-- Footer -->
 
-<?php include '../footer.php' ?>
+<?php include 'footer.php' ?>

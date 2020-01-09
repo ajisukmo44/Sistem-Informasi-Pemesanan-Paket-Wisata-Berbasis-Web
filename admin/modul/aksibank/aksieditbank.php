@@ -6,7 +6,7 @@ if(isset($_POST['simpan']))
   
   $id      = mysqli_real_escape_string($conn,$_POST['no_rekening']);
   $nama    = mysqli_real_escape_string($conn,$_POST['nama_rekening']);
-  $bank    = mysqli_real_escape_string($conn,$_POST['bank']);
+  $bank    = mysqli_real_escape_string($conn,$_POST['nama_bank']);
 
 
       $allowed_ext  = array('jpg', 'jpeg', 'png', 'gif');
@@ -48,7 +48,7 @@ if(isset($_POST['simpan']))
             // Proses update data dari form ke db
             $sql = "UPDATE tabel_bank SET no_rekening     = '$id',
                                           nama_rekening   = '$nama',
-                                          bank            = '$bank'                 
+                                          nama_bank       = '$bank'                 
                                     WHERE no_rekening     = '$id' ";
 
             if(mysqli_query($conn, $sql)) 

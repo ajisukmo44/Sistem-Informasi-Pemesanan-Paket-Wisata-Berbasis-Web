@@ -3,7 +3,7 @@ include '../../koneksi.php';                  // Panggil koneksi ke database
 
 $idpkt   = mysqli_real_escape_string($conn, $_GET['id_paket']);
 
-$sql = "DELETE FROM tabel_paket_wisata WHERE id_paket = '$idpkt' ";
+$sql = "DELETE FROM tabel_paket WHERE id_paket = '$idpkt' ";
    
 if (mysqli_query($conn, $sql)) 
     {

@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
   
   // Proses update data dari form ke db
 
-  $sql = "UPDATE tabel_user SET id_user     = '$id_user',
+  $sql = "UPDATE tabel_user SET id_user   = '$id_user',
                           nama        = '$nama',
                           username    = '$username',
                           jabatan    =  '$jabatan'

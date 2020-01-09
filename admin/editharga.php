@@ -4,7 +4,7 @@ include 'fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
 include 'fungsi/cek_session.php';      // Panggil data setting
    
 $id_harga  = mysqli_real_escape_string($conn, $_GET['id_harga']);
-$sql      = "SELECT a.id_harga, b.nama_paket, a.keterangan, a.min, a.max, a.harga FROM tabel_harga_paket a JOIN tabel_paket_wisata b ON a.id_paket = b.id_paket WHERE id_harga = '$id_harga' ORDER BY a.id_harga ASC";
+$sql      = "SELECT * FROM tabel_harga_paket a JOIN tabel_paket b ON a.id_paket = b.id_paket JOIN tabel_hotel c ON a.id_hotel = c.id_hotel WHERE a.id_harga = '$id_harga' ORDER BY a.id_harga ASC";
 $result   = mysqli_query($conn, $sql);
 $data     = mysqli_fetch_array($result);
 ?>
@@ -52,11 +52,6 @@ $data     = mysqli_fetch_array($result);
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -92,9 +87,9 @@ $data     = mysqli_fetch_array($result);
     </div>
   </div>
   <div class="form-group row">
-    <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
+    <label for="nama" class="col-sm-3 col-form-label">Nama Hotel</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" name="keterangan" id="keterangan" value="<?php echo $data['keterangan'] ?>">
+      <input type="text" class="form-control" name="nama_paket" id="nama_paket" value="<?php echo $data['nama_hotel'] ?>" readonly>
     </div>
   </div>
   <div class="form-group row">
@@ -119,7 +114,7 @@ $data     = mysqli_fetch_array($result);
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="submit" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="dataharga.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 </form>

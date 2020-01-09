@@ -34,8 +34,6 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 <?php include 'modul/sidebar.php'; ?>
 
 
-
-
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -50,11 +48,6 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -80,91 +73,62 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                   <thead style="background-color: #3b8686; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
-                      <th>ID Paket</th>
-                      <th>Gambar</th>
-                      <th>Nama Paket</th>
+                      <th>IDPaket</th>
                       <th>Kategori</th>
-                      <th>Detail</th>
-                      <th>Hotel</th>
-                        <th>Aksi</th>
+                      <th>Nama Paket</th>
+                      <th>Fasilitas</th>
+                      <th>Disclaimer</th>
+                      <th>Tindakan</th>
                     </tr>
                   </thead>
                   
                   <tbody>
                       <!-- ambil data dari database -->
     <?php
-      $sql = "SELECT a.id_paket, a.img, a.nama_paket, b.nama_kategori, c.nama_hotel FROM tabel_paket_wisata a JOIN tabel_kategori b ON a.id_kategori = b.id_kategori JOIN tabel_hotel c ON c.id_hotel = a.id_hotel ORDER BY id_paket ASC";
+      $sql = "SELECT * FROM tabel_paket a JOIN tabel_kategori b ON a.id_kategori = b.id_kategori ORDER BY a.id_paket ASC";
 
       $result = mysqli_query($conn, $sql);
       if (mysqli_num_rows($result) > 0)
       {
         while ($data = mysqli_fetch_array($result))
         {
-          echo "<tr style='text-align:center;line-height:9px'>
-          <td style='font-family:verdana; text-align: center'>".$data['id_paket']."</td>
-          <td style='text-align: center'><img src='images/paket/".$data['img']."' width='50px' height='50px'></td>
-          <td style='font-family:verdana; text-align: center'>".$data['nama_paket']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['nama_kategori']."</td>
-          <td style='font-family:verdana; text-align: center'>
-          <a href='modul/editpaket.php?id_paket=$data[id_paket]' class='badge badge-info'>destinasi</a>
-            <a href='#' data-href='modul/aksipaket/aksihapuspaket.php?id_paket=$data[id_paket]' class='badge badge-primary' data-toggle='modal' data-target='#confirm-delete'> fasilitas </a>
-          </td>
-          
-          <td style='font-family:verdana; text-align: center'>".$data['nama_hotel']."</td>
-            <td style='font-family:verdana; text-align: center'>
-          <a href='editpaket.php?id_paket=$data[id_paket]' class='badge badge-warning'>edit</a>
-            <a href='#' data-href='modul/aksipaket/aksihapuspaket.php?id_paket=$data[id_paket]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
+          echo "<tr style='font-family:verdana;  text-align:center'>
+          <td>".$data['id_paket']."</td>
+          <td>".$data['nama_kategori']."</td>
+          <td>".$data['nama_paket']."</td>
+          <td>".$data['fasilitas']."</td>
+          <td>".$data['disclaimer']."</td>
+            <td>
+          <a href='editpaket.php?id_paket=$data[id_paket]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+            <a href='#' data-href='modul/aksipaket/aksihapuspaket.php?id_paket=$data[id_paket]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
           </td>
          
-          </td>
-         
-        </tr>";
-}
-}
-else
-{
-  echo "Belum ada data";
-}
-?>
+             </tr>";
+                }
+                }
+                else
+                {
+                  echo "Belum ada data";
+                }
+                ?>
 
-</tbody>
+              </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
-
-
-
-          </div>
         </div>
-
-
-         </div>
-
-    </div>
+        </div>
+       </div>
+        </div>
     <!-- /.container-fluid -->
 
   </div>
+
 <!-- Modal HTML -->
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-body">
-                    <p class="text-center mt-4">Apakah anda yakin ingin menghapus data ini?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-info" data-dismiss="modal">Batal</button>
-                    <a style="margin-right:145px" class="btn btn-danger btn-ok">Hapus</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<?php include 'alerthapus.php' ?>
 
   <!-- Footer -->
 

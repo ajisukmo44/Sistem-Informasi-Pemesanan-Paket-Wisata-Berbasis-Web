@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 include 'admin/koneksi.php';
 include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php';
@@ -92,7 +92,7 @@ if(mysqli_num_rows($hasil) == 0)
 
                 </div>
                 <hr>
-                <button name="submit"  type="submit" class="btn btn-success  btn-block">
+                <button name="submit"  type="submit" style="background-color: #3B8686; color:#fff" class="btn btn-light  btn-block">
                  Simpan
                     </button>
               </form>

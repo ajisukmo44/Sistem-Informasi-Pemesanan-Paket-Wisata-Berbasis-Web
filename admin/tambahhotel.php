@@ -117,9 +117,15 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
     </div>
   </div>
   <div class="form-group row">
-    <label for="bintang" class="col-sm-2 col-form-label">bintang</label>
+    <label for="bintang" class="col-sm-2 col-form-label">Bintang</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="bintang" id="bintang" placeholder="bintang" required>
+    <select name="bintang" id="bintang" class="form-control" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              </select>
     </div>
   </div>
   
@@ -129,7 +135,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
-    <button type="reset" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</button>
+    <a href="datahotel.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
 </form>

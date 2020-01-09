@@ -1,6 +1,5 @@
-<?php 
+<?php session_start();
 include 'admin/koneksi.php';
-include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php'; 
 
 ?>
@@ -8,7 +7,6 @@ include 'fungsi/cek_session_public.php';
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -23,41 +21,53 @@ include 'fungsi/cek_session_public.php';
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
-  <link href="css/tampilpaket.css" rel="stylesheet">
-
-
-
+  <link href="css/tampilpaket1.css" rel="stylesheet">
 </head>
-
 <body>
 
 
-  
+<!-- navbar -->
+
 <?php include 'navbar.php'; ?>
 
+<!-- navbar end -->
 
-<!-- //SLIDER -->
+<!--SLIDER -->
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
       </ol>
+      
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('admin/images/1.jpg')">
+        <div class="carousel-item active" style="background-image: url('admin/images/3.jpg')">
           <div class="carousel-caption d-none d-md-block">
+            <h3>Candi Ratu Boko</h3>
+            <p>Paket Wisata Jogja 1 Hari</p>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('admin/images/2.jpg')">
+        <div class="carousel-item" style="background-image: url('admin/images/8.jpg')">
           <div class="carousel-caption d-none d-md-block">
+          <h3>Candi Parambanan</h3>
+            <p>Paket Wisata Jogja 2 Hari</p>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('admin/images/2.jpg')">
+        <div class="carousel-item" style="background-image: url('admin/images/7.jpg')">
           <div class="carousel-caption d-none d-md-block">
+          <h3>Kawah Bromo</h3>
+            <p>Paket Wisata Bromo 2 Hari</p>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('admin/images/5.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+          <h3>Pantai Indrayanti</h3>
+            <p>Paket Wisata Jogja 4 Hari</p>
           </div>
         </div>
       </div>
@@ -71,54 +81,53 @@ include 'fungsi/cek_session_public.php';
       </a>
     </div>
   </header>
+<!-- end slider -->
+
 
   <!-- Page Content -->
+
   <div class="container">
-
-  <div class=" mt-4">
-  <p style="background-color:#E8191B; color:#fff; font-family:sans-serif; font-size:31px; text-align:center; "> DESTINASI PAKET WISATA &nbsp; ANUGERAH TOUR & TRAVEL </p>
+  <div class=" mt-4 mr-2 col-md-12">
+  <p style="background-color:#E8191B; color:#fff; font-family:sans-serif; font-size:31px; text-align:center; "> DAFTAR PILIHAN PAKET WISATA &nbsp;- ANUGERAH TOUR & TRAVEL </p>
 </div>
-
     <!--    ambil data paket    -->
-
 
     <?php include 'tampilpaket.php' ?>
 
-    <!-- Portfolio Section -->
-    <!-- /.row -->
+    <!-- selesai tambil paket -->
 <hr>
-    <!-- Features Section -->
+    <!-- blog -->
     <div class="row mt-4 mb-3">
       <div class="col-lg-6">
-        <h2>KEINDAHAN CANDI PRAMBANAN</h2>
-        <p>oleh: <a href=""> anugerah tour dan travel </a></p>
-        <p style="text-align:justify">Candi Prambanan atau Candi Roro Jonggrang adalah kompleks candi Hindu terbesar di Indonesia yang dibangun pada abad ke-9 masehi. Candi ini dipersembahkan untuk Trimurti, tiga dewa utama Hindu yaitu Brahma sebagai dewa pencipta, Wishnu sebagai dewa pemelihara, dan Siwa sebagai dewa pemusnah. Berdasarkan prasasti Siwagrha nama asli kompleks candi ini adalah Siwagrha (bahasa Sanskerta yang bermakna 'Rumah Siwa'), dan memang di garbagriha (ruang utama) candi ini bersemayam arca Siwa Mahadewa setinggi tiga meter yang menujukkan bahwa di candi ini dewa Siwa lebih diutamakan.</p>
+        <h2>KEINDAHAN CANDI PRAMBANAN</h2> 
+        <p> <a href="#" class="btn btn-light btn-sm">Diposkan oleh : admin </a> <a href="#" class="btn btn-light btn-sm ">11-November-2018</a></p>
+        <p style="text-align:justify">Candi Prambanan atau Candi Roro Jonggrang adalah kompleks candi Hindu terbesar di Indonesia yang dibangun pada abad ke-9 masehi. Candi ini dipersembahkan untuk Trimurti, tiga dewa utama Hindu yaitu Brahma sebagai dewa pencipta, Wishnu sebagai dewa pemelihara, dan Siwa sebagai dewa pemusnah. Berdasarkan prasasti Siwagrha nama asli kompleks candi ini adalah Siwagrha (bahasa Sanskerta yang bermakna 'Rumah Siwa'), dan memang di garbagriha (ruang utama) candi ini bersemayam arca Siwa Mahadewa setinggi tiga meter yang menujukkan bahwa di candi ini dewa Siwa lebih diutamakan. <a href="#" class="btn btn btn-outline-primary btn-sm">Baca Selengkapnya</a>
+             </p>
       </div>
       <div class="col-lg-6">
-        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        <img class="img-fluid rounded" src="images/n955.jpg" style="width:600px; height:330px">
       </div>
     </div>
-    <!-- /.row -->
-
+  
+<!-- selesai blog -->
     <hr>
 
-    <!-- Call to Action Section -->
+    <!-- kontak person -->
     <div class="row mb-4">
       <div class="col-md-8">
         <p>Hubungi kami untuk pertanyaan seputar anugerah tour dan travel atau request destinasi paket wisata sesuai dengan kebutuhan dan keinginan anda.</p>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-lg btn-success btn-block" href="#">Fast Respon</a>
+        <a class="btn btn-lg btn-success btn-block" href="https://wa.me/6287841177337?text=Halo%20admin%20mau%20pesan%20paket%20wisata"><img src="images/icon/wa1.png" alt="" style="width:10%"> Fast Respon  </a>
       </div>
     </div>
-
   </div>
-  <!-- /.container -->
 
   <!-- Footer -->
 <?php include 'footer.php' ?>
   <!-- footer -->
 <script>
+
   $("figure").mouseleave(
     function() {
       $(this).removeClass("hover");

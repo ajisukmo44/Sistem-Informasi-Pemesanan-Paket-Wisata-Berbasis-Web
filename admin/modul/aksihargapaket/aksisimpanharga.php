@@ -5,7 +5,7 @@ if(isset($_POST['simpan']))
 { 
 
     $idpkt  = mysqli_real_escape_string($conn,$_POST['id_paket']);
-    $ket     = mysqli_real_escape_string($conn,$_POST['keterangan']);
+    $idhtl   = mysqli_real_escape_string($conn,$_POST['id_hotel']);
     $min     = mysqli_real_escape_string($conn,$_POST['min']);
     $max     = mysqli_real_escape_string($conn,$_POST['max']);
     $harga   = mysqli_real_escape_string($conn,$_POST['harga']);
@@ -19,8 +19,8 @@ if(isset($_POST['simpan']))
       else
       {
       // Proses insert data dari form ke db
-            $sql = "INSERT INTO tabel_harga_paket ( id_paket, keterangan, min, max, harga )
-                              VALUES ('$idpkt','$ket','$min','$max','$harga')";
+            $sql = "INSERT INTO tabel_harga_paket ( id_paket, id_hotel,  min, max, harga )
+                              VALUES ('$idpkt','$idhtl','$min','$max','$harga')";
 
                 if(mysqli_query($conn, $sql)) 
                 {

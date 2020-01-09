@@ -4,8 +4,8 @@ include 'admin/koneksi.php';                    // Panggil koneksi ke database
 if(isset($_POST['submit']))
 { 
   $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
-  $jp            = mysqli_real_escape_string($conn,$_POST['jumlah_pax']);
-  $th            = mysqli_real_escape_string($conn,$_POST['total_harga']);
+  $jp            = mysqli_real_escape_string($conn,$_POST['total_pax']);
+  $th            = mysqli_real_escape_string($conn,$_POST['total_harga1']);
   
   // Proses update data dari form ke db
 

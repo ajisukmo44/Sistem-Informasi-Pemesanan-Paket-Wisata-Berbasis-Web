@@ -83,12 +83,12 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                   <thead style="background-color: #3b8686; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
-                      <th>ID Hotel</th>
+                      <th>ID</th>
                       <th>Nama Hotel</th>
                       <th>Deskripsi</th>
                       <th>Fasilitas</th>
                       <th>Bintang</th>
-                      <th>Aksi</th>
+                      <th>Tindakan</th>
                     </tr>
                   </thead>
                   
@@ -101,65 +101,44 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       {
         while ($data = mysqli_fetch_array($result))
         {
-          echo "<tr style='text-align:center;line-height:9px'>
-          <td style='font-family:verdana; text-align: center'>".$data['id_hotel']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['nama_hotel']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['deskripsi']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['fasilitas']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['bintang']."</td>
-          <td style='font-family:verdana; text-align: center'>
-          <a href='edithotel.php?id_hotel=$data[id_hotel]' class='badge badge-warning'>edit</a>
-          <a href='#' data-href='modul/aksihotel/aksihapushotel.php?id_hotel=$data[id_hotel]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
+          $bintang = $data['bintang'];
+
+          echo "<tr style='font-family:verdana; text-align:center;'>
+          <td>".$data['id_hotel']."</td>
+          <td>".$data['nama_hotel']."</td>
+          <td>".$data['deskripsi_hotel']."</td>
+          <td>".$data['fasilitas_hotel']."</td>
+          <td>".$data['bintang']."</td>
+          <td>
+          <a href='edithotel.php?id_hotel=$data[id_hotel]'class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+          <a href='#' data-href='modul/aksihotel/aksihapushotel.php?id_hotel=$data[id_hotel]'  class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> </a>
           </td>
          
         </tr>";
-}
-}
-else
-{
-  echo "Belum ada data";
-}
-?>
-</tbody>
-                </table>
+              }
+              }
+              else
+              {
+                echo "Belum ada data";
+              }
+              ?>
+              </tbody>
+              </table>
               </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-          </div>
-        </div>
-
-
-         </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
+              </div>
 
     <!-- /.container-fluid -->
     
 
 <!-- Modal HTML -->
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-body">
-                    <p class="text-center mt-4">Apakah anda yakin ingin menghapus data ini?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-info" data-dismiss="modal">Batal</button>
-                    <a style="margin-right:145px" class="btn btn-danger btn-ok">Hapus</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  <!-- End of Main Content -->
-
+    <?php include 'alerthapus.php' ?>
+    
   <!-- Footer -->
 
 <?php include 'footer.php' ?>

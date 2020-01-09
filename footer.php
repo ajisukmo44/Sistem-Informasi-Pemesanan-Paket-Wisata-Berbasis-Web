@@ -1,14 +1,14 @@
 
 <footer class="page-footer font-small  bg-light">
-
+<hr>
 <!-- Footer Links -->
-<div class="container-fluid text-center text-md-left mt-4">
+<div class="container-fluid text-center text-md-left mt-3">
 
   <!-- Grid row -->
   <div class="row">
 
     <!-- Grid column -->
-    <div class="col-md-5 mt-md-4 mt-4" style="margin-left:95px">
+    <div class="col-md-5 mt-md-4 mt-3" style="margin-left:95px">
 
       <!-- Content -->
       <h5 class="text-uppercase">Alamat Kami :</h5>
@@ -21,7 +21,7 @@
     <hr class="clearfix w-100 d-md-none pb-3">
 
     <!-- Grid column -->
-    <div class="col-md-3 mb-md-0 mb-2  mt-4">
+    <div class="col-md-3 mb-md-0 mb-2  mt-3">
 
       <!-- Links -->
       <h5 class="text-uppercase">OFFICE HOURS</h5>
@@ -36,15 +36,16 @@
     <!-- Grid column -->
 
     <!-- Grid column -->
-    <div class="col-md-2 mb-md-0 mb-3 mt-4 " style="margin-right:95px">
+    <div class="col-md-2 mb-md-0 mb-3 mt-3 " style="margin-right:95px">
 
       <!-- Links -->
-      <h5 class="text-uppercase">Social Media</h5>
+      <h5 class="text-uppercase ml-1">Social Media</h5>
 
-      <ul class="list-unstyled">
-      
-      <li><a href="#!">Link 1</a> </li>
-        <li><a href="#!">Link 2</a> </li>
+      <ul class="list-unstyled ">
+      <li> <a href="https://www.instagram.com"><img src="images/icon/igg.png" alt="" style="width:20%"> </a>
+      <a href="https://www.facebook.com"> <img src="images/icon/fb.png" alt="" style="width:20%"> </a>
+      <a href="https://www.youtube.com"> <img src="images/icon/yt.png" alt="" style="width:20%"> </a> </li>
+        <li><i class='fa fa-times'></i> </li>
       </ul>
 
     </div>

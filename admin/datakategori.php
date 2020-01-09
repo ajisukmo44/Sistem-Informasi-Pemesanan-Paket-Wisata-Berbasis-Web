@@ -28,15 +28,11 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 </head>
  <!-- Page Wrapper -->
 
-
-
  <div id="wrapper">
 
 
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
-
-
 
 
 <!-- Content Wrapper -->
@@ -53,11 +49,6 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <div class="container-fluid">
 
       <!-- Page Heading -->
-    
-
-      <!-- Content Row -->
-
-      <!-- Content Row -->
 
       <div class="row">
 
@@ -85,7 +76,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                     <tr style="text-align:center;">
                       <th>ID Kategori</th>
                       <th>Nama Kategori</th>
-                      <th>Aksi</th>
+                      <th>Tindakan</th>
                     </tr>
                   </thead>
                   
@@ -98,23 +89,23 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       {
         while ($data = mysqli_fetch_array($result))
         {
-          echo "<tr style='text-align:center;line-height:9px'>
-          <td style='font-family:verdana; text-align: center'>".$data['id_kategori']."</td>
-          <td style='font-family:verdana; text-align: center'>".$data['nama_kategori']."</td>
-          <td style='font-family:verdana; text-align: center'>
-          <a href='editkategori.php?id_kategori=$data[id_kategori]' class='badge badge-warning'>edit</a>
-          <a href='#' data-href='modul/aksikategori/aksihapuskategori.php?id_kategori=$data[id_kategori]' class='badge badge-danger' data-toggle='modal' data-target='#confirm-delete'> hapus </a>
+          echo "<tr style='text-align:center; font-family:verdana; '>
+          <td>".$data['id_kategori']."</td>
+          <td>".$data['nama_kategori']."</td>
+          <td>
+          <a href='editkategori.php?id_kategori=$data[id_kategori]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i> edit</a>
+          <a href='#' data-href='modul/aksikategori/aksihapuskategori.php?id_kategori=$data[id_kategori]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> hapus </a>
           </td>
          
-        </tr>";
-}
-}
-else
-{
-  echo "Belum ada data";
-}
-?>
-</tbody>
+            </tr>";
+                }
+                }
+                else
+                {
+                  echo "Belum ada data";
+                }
+                ?>
+                </tbody>
                 </table>
               </div>
             </div>
@@ -134,25 +125,8 @@ else
     
 
 <!-- Modal HTML -->
-
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-body">
-                    <p class="text-center mt-4">Apakah anda yakin ingin menghapus data ini?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button  type="button" class="btn btn-info" data-dismiss="modal">Batal</button>
-                    <a style="margin-right:145px" class="btn btn-danger btn-ok">Hapus</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  <!-- End of Main Content -->
+ 
+<?php include 'alerthapus.php' ?>
 
   <!-- Footer -->
 
