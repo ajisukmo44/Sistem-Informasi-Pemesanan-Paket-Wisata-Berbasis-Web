@@ -34,13 +34,7 @@ if(mysqli_num_rows($hasil) == 0)
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="tgl/date/bootstrap-datetimepicker.min.css" type="text/css" />
   <!-- end  -->
-  <script src="tgl/date/jquery.min.js"></script>
-  <!-- Bootstrap Core CSS -->
-  <link href="tgl/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <script src="tgl/newdate/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="tgl/newdate/datepicker.css">
-  <script src="tgl/newdate/datepicker.js"></script>
+  
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
