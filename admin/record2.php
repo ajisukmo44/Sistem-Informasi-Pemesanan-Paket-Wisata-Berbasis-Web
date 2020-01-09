@@ -11,7 +11,7 @@
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Laporan Pembayaran</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800"><h3>
-                 <a href=""> <i class="fas fa-file-invoice-dollar fa-2x mr-1 text-gray-300"></i></a>  </h3></div>
+                 <a href="laporanpembayaran.php"> <i class="fas fa-file-invoice-dollar fa-2x mr-1 text-gray-300"></i></a>  </h3></div>
                 </div>
               </div>
             </div>
@@ -24,7 +24,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-success text-uppercase mb-2">Laporan Pemesanan</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"> <h3><a href=""> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"> <h3><a href="#"> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
                 </div>
               </div>
             </div>
@@ -38,7 +38,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Laporan Pembatalan</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href=""> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href="laporanpembatalan.php"> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Laporan Paket wisata</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href=""> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href="#"> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Paket wisata Best Seller</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href=""> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href="#"> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
                 </div>
               </div>
             </div>
@@ -77,7 +77,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Laporan Pelanggan</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href=""> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><h3><a href="laporanpelanggan.php"> <i class="fas fa-file-invoice fa-2x mr-1 text-gray-300"></i></a> </h3></div>
                 </div>
               </div>
             </div>

@@ -53,7 +53,7 @@ include 'fungsi/cek_session.php';    // Panggil data setting
   <div id="content">
 
     <!-- Topbar -->
-    <?php include 'navbar.php'; ?>
+    <?php include 'navbar2.php'; ?>
     <!-- End of Topbar -->
 
     <!-- Begin Page Content -->

@@ -65,7 +65,7 @@ $result = mysqli_query($conn, $sql);
   <div id="content">
 
     <!-- Topbar -->
-    <?php include 'navbar.php'; ?>
+    <?php include 'navbar2.php'; ?>
     <!-- End of Topbar -->
 
     <!-- Begin Page Content -->

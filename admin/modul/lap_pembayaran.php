@@ -57,8 +57,8 @@ include '../fungsi/time.php';
 		  <tbody>
 	
    	  <?php
-      $tanggalakhir    = date('Y-m-d', strtotime($_POST['tanggal1']));
-      $tanggalawal     = date('Y-m-d', strtotime($_POST['tanggal']));
+      $tanggalakhir  = date('Y-m-d', strtotime($_POST['tanggal1']));
+      $tanggalawal   = date('Y-m-d', strtotime($_POST['tanggal']));
       $sql = "SELECT * FROM tabel_bayar a JOIN tabel_bank b ON a.norek_tujuan = b.no_rekening WHERE tanggal_transfer between '$tanggalawal' AND '$tanggalakhir' ORDER BY id_pembayaran ASC";
 
       $result = mysqli_query($conn, $sql);

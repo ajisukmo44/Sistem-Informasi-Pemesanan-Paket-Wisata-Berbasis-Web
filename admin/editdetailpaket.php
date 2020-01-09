@@ -4,7 +4,7 @@ include 'fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
 include 'fungsi/cek_session.php';      // Panggil data setting
    
 $id_paket  = mysqli_real_escape_string($conn, $_GET['id_paket_detail']);
-$sql      = "SELECT * FROM tabel_paket_detail a JOIN tabel_destinasi b ON a.id_destinasi= b.id_destinasi JOIN tabel_paket d ON a.id_paket = d.id_paket  WHERE a.id_paket_detail = '$id_paket' ";
+$sql      = "SELECT * FROM tabel_paket_detail a JOIN tabel_destinasi b ON a.id_destinasi= b.id_destinasi JOIN tabel_paket d ON a.id_paket = d.id_paket  JOIN tabel_hotel z ON a.id_hotel = z.id_hotel WHERE a.id_paket_detail = '$id_paket' ";
 
 $result   = mysqli_query($conn, $sql);
 $data     = mysqli_fetch_array($result);
@@ -15,6 +15,11 @@ $des      = $data['nama_destinasi'];
 $pkt1      = $data['id_paket']; 
 $des1      = $data['id_destinasi']; 
 
+$hot      = $data['id_hotel']; 
+$hot11      = $data['nama_hotel']; 
+$min = $data['min'];
+$max = $data['max'];
+$har = $data['harga'];
 ?>
 
 <!DOCTYPE html>
@@ -114,6 +119,39 @@ $des1      = $data['id_destinasi'];
               </select>
     </div>
   </div>
+  
+  <div class="form-group row">
+    <label for="id_hotel" class="col-sm-2 col-form-label">Nama Hotel</label>
+    <div class="col-sm-10">
+    <select name="id_hotel" id="id_hotel" class="form-control" required>
+              <option value="<?= $hot ?>"><?= $hot11 ?></option>
+                <?php
+                $query = "SELECT * FROM tabel_hotel ORDER BY nama_hotel";
+                $sql = mysqli_query($conn, $query);
+                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_hotel'].'">'.$data['nama_hotel'].'</option>';}
+                ?>
+              </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="min" class="col-sm-2 col-form-label ">Min Peserta</label>
+    <div class="col-sm-2">
+      <input type="number" class="form-control " name="min" id="min" value="<?=$min ?>" required>
+    </div>
+    <label for="max" class="col-sm-1.5 col-form-label ml-5">Max </label>
+    <div class="col-sm-2">
+      <input type="number" class="form-control" name="max" id="max"  value="<?=$max ?>"required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="nama" class="col-sm-2 col-form-label">Harga Paket</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="harga" id="harga" value="<?=$har ?>" required>
+    </div>
+  </div>
+    
+
+  <hr>
   
   
   <div class="form-group row">
