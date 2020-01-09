@@ -84,7 +84,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <select name="id_paket_detail" id="id_paket_detail" class="form-control" required>
               <option value="">--Pilih Paket-</option>
                 <?php
-                $query = "SELECT * FROM tabel_paket_detail a JOIN tabel_paket b ON a.id_paket = b.id_paket ORDER BY a.id_paket_detail";
+                $query = "SELECT * FROM tabel_paket_detail a JOIN tabel_paket b ON a.id_paket = b.id_paket GROUP BY b.id_paket ORDER BY a.id_paket_detail";
                 $sql = mysqli_query($conn, $query);
                 while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['id_paket_detail'].'">'.$data['nama_paket'].'</option>';}
                 ?>
