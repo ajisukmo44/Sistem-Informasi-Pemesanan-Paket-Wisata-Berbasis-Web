@@ -34,13 +34,7 @@ if(mysqli_num_rows($hasil) == 0)
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="tgl/date/bootstrap-datetimepicker.min.css" type="text/css" />
   <!-- end  -->
-  <script src="tgl/date/jquery.min.js"></script>
-  <!-- Bootstrap Core CSS -->
-  <link href="tgl/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
-  <script src="tgl/newdate/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="tgl/newdate/datepicker.css">
-  <script src="tgl/newdate/datepicker.js"></script>
+  
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
@@ -103,7 +97,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <label for="tanggal_trip" class="col-sm-3 col-form-label">Tanggal Trip</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="tanggal_trip" name="tanggal_trip" placeholder="-- pilih tanggal trip --" required>
+      <input type="date" class="form-control" id="tanggal_trip" name="tanggal_trip" placeholder="-- pilih tanggal trip --" required>
     </div>
   </div>
 
@@ -373,24 +367,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   </footer>
   <!-- Bootstrap core JavaScript -->
 
-  <script>
-          Date.prototype.addDays = function(days) { 
-          var date = new Date(this.valueOf());
-          date.setDate(date.getDate() + days);
-          return date;
-        }
-        var date = new Date();
-
-        $(function() {
-          $('#tanggal_trip').datepicker({
-            autoHide: true,
-            zIndex: 2048,
-            format:'dd-mm-yyyy',
-            startDate : date.addDays(2),
-            endDate : date.addDays(90)
-          });
-        });
-      </script>
+ 
 </body>
 </html>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
