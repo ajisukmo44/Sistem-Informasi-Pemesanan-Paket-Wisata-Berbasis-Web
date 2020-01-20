@@ -77,20 +77,20 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       <div class="table-responsive">
         <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
         <thead style="background-color: #e01507; color:#fff; line-height:8px; text-align: center">
-                       <th>Id Bayar</th>
-                       <th>No Pemesanan</th>
-                       <th>Rek Tujuan</th>
-                       <th>Nama Pengirim</th>
+                       <th>Id&nbsp;Bayar</th>
+                       <th>No&nbsp;Pemesanan</th>
+                       <th>Rek&nbsp;Tujuan</th>
+                       <th>Nama&nbsp;Pengirim</th>
                        <th>Bank</th>
-                       <th>Jumlah Transfer</th>
-                       <th>Tgl Transfer</th>
+                       <th>Jumlah&nbsp;Transfer</th>
+                       <th>Tgl&nbsp;Transfer</th>
                        <th>Detail</th>
                        <th>Acc</th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php 
-                     $query = mysqli_query($conn,"SELECT * FROM tabel_bayar a JOIN tabel_bank b ON a.norek_tujuan = b.no_rekening JOIN tabel_pemesanan c ON a.id_pemesanan = c.id_pemesanan WHERE c.status = 1 OR c.status = 2 ORDER BY a.id_pembayaran ASC");
+                     $query = mysqli_query($conn,"SELECT * FROM tabel_bayar a JOIN tabel_bank b ON a.norek_tujuan = b.no_rekening JOIN tabel_pemesanan c ON a.id_pemesanan = c.id_pemesanan WHERE a.status = 1 ORDER BY a.id_pembayaran ASC");
                      if(mysqli_num_rows($query) == 0)
                      {echo "
                        
@@ -102,8 +102,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                   $tgl = date('d-m-Y', strtotime($data['tanggal_transfer']));  
                   $jt  = number_format($data['jumlah_transfer'], 0, ',', '.');	 ?>
                    
-                       <tr style="text-align:center;">
-                       <td><?= $data['id_pembayaran'] ?></td>
+     <tr style="text-align:center;">
+    <td><?= $data['id_pembayaran'] ?></td>
     <td><?= $data['id_pemesanan'] ?></td>
     <td><?= $data['norek_tujuan'] ?></td>
     <td><?= $data['nama_pengirim'] ?></td>
@@ -181,20 +181,20 @@ include 'fungsi/cek_session.php';      // Panggil data setting
               <div class="table-responsive">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                 <thead style="background-color: #e01507; color:#fff; line-height:8px; text-align: center">
-                               <th>Id Bayar</th>
-                               <th>No Pemesanan</th>
-                               <th>Rek Tujuan</th>
-                               <th>Nama Pengirim</th>
+                               <th>Id&nbsp;Bayar</th>
+                               <th>No&nbsp;Pemesanan</th>
+                               <th>Rek&nbsp;Tujuan</th>
+                               <th>Nama&nbsp;Pengirim</th>
                                <th>Bank</th>
-                               <th>Jumlah Transfer</th>
-                               <th>Tgl Transfer</th>
+                               <th>Jumlah&nbsp;Transfer</th>
+                               <th>Tgl&nbsp;Transfer</th>
                                <th>Detail</th>
                                 </tr>
                               </thead>
                               <tbody>
 
                       <?php 
-                      $query = mysqli_query($conn,"SELECT * FROM tabel_bayar a JOIN tabel_bank b ON a.norek_tujuan = b.no_rekening JOIN tabel_pemesanan c ON a.id_pemesanan = c.id_pemesanan  WHERE c.status = 3 OR c.status = 4 OR c.status = 5 OR c.status = 6 OR c.status = 7 OR c.status = 8  ORDER BY a.id_pembayaran ASC");
+                      $query = mysqli_query($conn,"SELECT * FROM tabel_bayar a JOIN tabel_bank b ON a.norek_tujuan = b.no_rekening JOIN tabel_pemesanan c ON a.id_pemesanan = c.id_pemesanan  WHERE a.status=2  ORDER BY a.id_pembayaran ASC");
                       if(mysqli_num_rows($query) == 0)
                       {echo "
                         

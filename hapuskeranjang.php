@@ -6,7 +6,7 @@ $id   = mysqli_real_escape_string($conn, $_GET['id_pemesanan']);
 $sql = "DELETE FROM tabel_pemesanan WHERE id_pemesanan = '$id' ";
     if (mysqli_query($conn, $sql)) 
     {
-      echo "<script>alert('Hapus data berhasil! Klik ok untuk melanjutkan');location.replace('index.php')</script>"; 
+      echo "<script>location.replace('index.php')</script>"; 
     }
       else 
       {

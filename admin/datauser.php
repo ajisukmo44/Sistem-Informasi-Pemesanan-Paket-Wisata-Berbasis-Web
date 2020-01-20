@@ -97,8 +97,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td>".$data['jabatan']."</td>
           <td>".$data['username']."</td>
           <td>
-          <a href='edituser.php?id_user=$data[id_user]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i> edit </a>
-          <a href='#' data-href='modul/aksiuser/aksiuserhapus.php?id_user=$data[id_user]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> hapus </a>
+          <a href='edituser.php?id_user=$data[id_user]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+          <a href='#' data-href='modul/aksiuser/aksiuserhapus.php?id_user=$data[id_user]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
           
           </td>
          

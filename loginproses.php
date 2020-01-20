@@ -30,7 +30,7 @@ include 'admin/fungsi/base_url.php';
               $_SESSION['username']   = $data['username'];
               $_SESSION['nama']       = $data['nama'];
               
-              echo "<script language='javascript'>alert('Anda berhasil Login'); location.replace('index.php')</script>";
+              echo "<script language='javascript'> location.replace('index.php')</script>";
             } 
           }
             else

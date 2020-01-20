@@ -104,8 +104,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td>".$data['max']."</td>
           <td>".$data['harga']."</td>
             <td>
-          <a href='editdetailpaket.php?id_paket_detail=$data[id_paket_detail]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i> edit</a>
-            <a href='#' data-href='modul/aksipaketdetail/aksihapuspaket.php?id_paket_detail=$data[id_paket_detail]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> hapus  </a>
+          <a href='editdetailpaket.php?id_paket_detail=$data[id_paket_detail]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+            <a href='#' data-href='modul/aksipaketdetail/aksihapuspaket.php?id_paket_detail=$data[id_paket_detail]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
           </td>
          
              </tr>";

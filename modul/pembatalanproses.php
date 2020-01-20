@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
       
       if(mysqli_multi_query($conn, $sql)) 
       {
-        echo "<script>alert('Insert data berhasil! Klik ok untuk melanjutkan');location.replace('../datatransaksi.php')</script>";
+        echo "<script>location.replace('../datatransaksi.php')</script>";
       } 
         else 
         {

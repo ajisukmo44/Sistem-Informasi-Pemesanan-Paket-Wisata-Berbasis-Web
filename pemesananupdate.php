@@ -6,12 +6,15 @@ if(isset($_POST['submit']))
   $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
   $jp            = mysqli_real_escape_string($conn,$_POST['total_pax']);
   $th            = mysqli_real_escape_string($conn,$_POST['total_harga1']);
+  $nt            = mysqli_real_escape_string($conn,$_POST['norek_tujuan']);
+
   
   // Proses update data dari form ke db
 
   $sql = "UPDATE tabel_detail_pemesanan SET id_pemesanan  = '$id_pemesanan',
                           jumlah_pax    = '$jp',
-                          total_harga    =  '$th'
+                          total_harga    =  '$th',
+                          norek_tujuan    = '$nt'
                           WHERE id_pemesanan = '$id_pemesanan'; ";
 
 $sql .= "UPDATE tabel_pemesanan SET status  = '1'
@@ -19,7 +22,7 @@ $sql .= "UPDATE tabel_pemesanan SET status  = '1'
 
   if(mysqli_multi_query($conn, $sql)) 
   {
-    echo "<script>alert('Proses Pemesanan berhasil! Klik ok untuk melanjutkan');location.replace('pemesananselesai.php?id_pemesanan=$id_pemesanan')</script>";
+    echo "<script>location.replace('pemesananselesai.php?id_pemesanan=$id_pemesanan')</script>";
   } 
     else 
     {

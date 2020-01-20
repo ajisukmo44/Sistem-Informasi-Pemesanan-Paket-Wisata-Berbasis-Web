@@ -8,7 +8,6 @@ include 'fungsi/cek_session_public.php';
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,9 +55,8 @@ include 'fungsi/cek_session_public.php';
              <tbody>
 
       <?php
-    $sql = "SELECT * FROM tabel_pemesanan  WHERE id_pelanggan ='$sesen_id_pelanggan' ORDER BY id_pemesanan ASC";
+    $sql = "SELECT * FROM tabel_pemesanan a JOIN tabel_detail_pemesanan b ON a.id_pemesanan = b.id_pemesanan WHERE a.id_pelanggan ='$sesen_id_pelanggan' ORDER BY a.id_pemesanan ASC";
       $result = mysqli_query($conn, $sql);
-     
 
     // Jika data tidak ditemukan maka akan muncul alert belum ada data
     if(mysqli_num_rows($result) == 0)
@@ -69,7 +67,7 @@ include 'fungsi/cek_session_public.php';
       ";}
     ?>
            <?php while (  $data = mysqli_fetch_assoc($result) ) : $tanggal =  date('d-m-Y', strtotime($data['tgl_pesan']));
-      $status = $data['status']; ?>
+      $status = $data['status']; $norek = $data['norek_tujuan'] ?>
           <tr style='font-family:verdana; color:#000; text-align: center'>
             <td><?= $data['id_pemesanan'] ?></td>
             <td><?= $tanggal ?></td>
@@ -89,23 +87,49 @@ include 'fungsi/cek_session_public.php';
               echo ' <h6> <span class="badge badge-danger">di batalkan</span></h6>';
             } elseif ($status==6) {
               echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
-            } elseif ($status==7) {
-              echo ' <h6> <span class="badge badge-danger">pembatalan ditolak</span></h6>';
-            } 
-            elseif ($status==8) {
-              echo ' <h6> <span class="badge badge-success">pembatalan disetujui</span></h6>';
             };?>
            </td>
             <td>
-                    <a href='konfirpembayaran.php?id_pemesanan=<?= $data['id_pemesanan']?> '>
-                      <button type='submit' class='btn btn-secondary btn-sm mr-1'><i class='fa fa-edit'></i> Konfir Pembayaran</button>
+
+          <?php
+          $id = $data['id_pemesanan'];
+          $a1 = "<a href='konfirpembayaran.php?id=$id&norek=$norek'>
+                      <button type='submit' class='btn btn-info btn-sm mr-1'><i class='fa fa-edit'></i> Konfir Pembayaran</button>
+                    </a>";
+          $a2 = "<a href='pembatalan.php?id_pemesanan=$id '>
+                      <button type='submit' class='btn btn-danger btn-sm mr-1'><i class='fa fa-times'></i> Batalkan </button>
+                    </a> 
+                    <a href='modul/statuspemesanan_acc.php?id_pemesanan=$id'>
+                      <button type='submit' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Selesai</button>
+                    </a>";
+
+          if ($status==1 ){
+          echo $a1;
+          } else if ($status==2 ) 
+          {
+              echo '-';
+          } else if ($status==3 ) 
+          {
+              echo $a2;
+          } else if ($status==4 ) 
+          {
+              echo'-';
+          } else   
+          {
+              echo '-';
+          };
+           
+           ?>
+           </td> 
+               <!--      <a href='konfirpembayaran.php?id=<?= $data['id_pemesanan']?>&norek=<?=$norek;?> '>
+                      <button type='submit' class='btn btn-info btn-sm mr-1'><i class='fa fa-edit'></i> Konfir Pembayaran</button>
                     </a> <a href='pembatalan.php?id_pemesanan=<?= $data['id_pemesanan']?> '>
                       <button type='submit' class='btn btn-danger btn-sm mr-1'><i class='fa fa-times'></i> Batalkan </button>
                     </a> 
                     <a href='modul/statuspemesanan_acc.php?id_pemesanan=<?= $data['id_pemesanan'] ?>'>
                       <button type='submit' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Selesai</button>
-                    </a>
-                  </td>      
+                    </a> -->
+    
           </tr>
           <?php endwhile; ?>
     </tbody>

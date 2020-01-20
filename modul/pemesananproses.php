@@ -19,12 +19,12 @@ if(isset($_POST['submit']))
       // Proses insert data dari form ke db
       $sql = "INSERT INTO tabel_pemesanan (id_pemesanan,id_pelanggan, tgl_pesan, status) VALUES ('$id_pemesanan','$id_plg',now(),'0');";
 
-      $sql .= "INSERT INTO tabel_detail_pemesanan (id_pemesanan, id_paket_detail, tanggal_trip, harga, jumlah_pax, total_harga, keterangan) VALUES ('$id_pemesanan','$id_paket_detail','$tgl','$harga','','','$ket')";
+      $sql .= "INSERT INTO tabel_detail_pemesanan (id_pemesanan, id_paket_detail, tanggal_trip, harga, jumlah_pax, total_harga, keterangan, norek_tujuan) VALUES ('$id_pemesanan','$id_paket_detail','$tgl','$harga','','','$ket','')";
 
       
       if(mysqli_multi_query($conn, $sql)) 
       {
-        echo "<script>alert('Insert data berhasil! Klik ok untuk melanjutkan');location.replace('../keranjang.php?id_pemesanan=$id_pemesanan')</script>";
+        echo "<script>location.replace('../keranjang.php?id_pemesanan=$id_pemesanan')</script>";
       } 
         else 
         {

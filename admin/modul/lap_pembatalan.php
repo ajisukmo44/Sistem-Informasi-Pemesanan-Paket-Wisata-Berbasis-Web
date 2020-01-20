@@ -48,6 +48,7 @@ include '../fungsi/time.php';
           <th style="text-align: center; background-color:#f5f5f5">Norek Refund</th>
           <th style="text-align: center; background-color:#f5f5f5">Nama Rek</th>
           <th style="text-align: center; background-color:#f5f5f5">Bank</th>
+          <th style="text-align: center; background-color:#f5f5f5">Status</th>
         </tr>
 		  </thead>
 		  <tbody>
@@ -69,6 +70,8 @@ include '../fungsi/time.php';
                   <td style='text-align: center'>".$data['no_rekening_refund']."</td>
                   <td style='text-align: center'>".$data['nama_rekening']."</td>
                   <td style='text-align: center'>".$data['bank']."</td>
+                  <td style='text-align: center'>".$data['status']."</td>
+                  
                 </tr>";
                 $no++;
         }

@@ -87,13 +87,14 @@ if(mysqli_num_rows($hasil) == 0)
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
                   <thead style="background-color: #3B8686; color:#fff; line-height:8px">
                     <tr style="text-align:center;">
-                      <th>Id Pemesanan</th>
-                      <th>Tanggal Trip</th>
+                      <th>Id&nbsp;Pemesanan</th>
+                      <th>Tanggal&nbsp;Trip</th>
                       <th>Pelanggan</th>
-                      <th>Nama Paket</th>
+                      <th>Nama&nbsp;Paket</th>
                       <th>Harga/Pax</th>
-                      <th>Jumlah Pax</th>
+                      <th>Jumlah&nbsp;Pax</th>
                       <th>Total Harga</th>
+                      <th>Pilih&nbsp;Pembayaran</th>
                     </tr>
                   </thead>
                   
@@ -128,6 +129,14 @@ if(mysqli_num_rows($hasil) == 0)
           ?>
 
           <td><input name="total_harga1" type="text" id="total_harga1" style="text-align:right; background-color:#F7F7F7; width:110px" onfocus="startCalculate()" onblur="stopCalc()"  value="<?= $total; ?>" readonly/></td>
+          <td> <select name="norek_tujuan" id="norek_tujuan" class="form-control" required>
+              <option value="">-- Pilih bank tujuan --</option>
+                <?php
+                $query = "SELECT * FROM tabel_bank ORDER BY no_rekening";
+                $sql = mysqli_query($conn, $query);
+                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['no_rekening'].'">'.$data['nama_bank'].' - '.$data['no_rekening'].' - '.$data['nama_rekening'].'</option>';}
+                ?>
+              </select></td>
 
    
 </tbody>

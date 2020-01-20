@@ -2,7 +2,10 @@
 include 'admin/koneksi.php';
 include "admin/fungsi/imgpreview.php";
 
-$id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id_pemesanan']);
+$id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id']);
+$norek  = mysqli_real_escape_string($conn, $_GET['norek']);
+
+
 ?>
 
 <?php
@@ -36,10 +39,16 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="tgl/date/bootstrap-datetimepicker.min.css" type="text/css" />
+  <!-- end  -->
+  <script src="tgl/date/jquery.min.js"></script>
+  <!-- Bootstrap Core CSS -->
+  <link href="tgl/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <script src="tgl/newdate/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="tgl/newdate/datepicker.css">
+  <script src="tgl/newdate/datepicker.js"></script>
+  
 
 </head>
 
@@ -67,22 +76,24 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
                   <div class="col-sm-3 mb-3 mb-sm-0">
                   
                   <label for="">KODE PEMESANAN</label>
-                    <input type="text" class="form-control" name="id_pemesanan" id="id_pemesanan" value="<?= $id_pemesanan ?>" >
+                    <input type="text" class="form-control" name="id_pemesanan" id="id_pemesanan" value="<?= $id_pemesanan ?>" readonly>
                   </div>
-                  
+                     <?php
+                $query = "SELECT * FROM tabel_bank WHERE no_rekening = '$norek' ORDER BY no_rekening";
+                $sql = mysqli_query($conn, $query);
+                $data = mysqli_fetch_array($sql);
+                $no = $data['no_rekening'];
+                $nb = $data['nama_bank'];
+                $nr = $data['nama_rekening'];
+                $isi =  $no. ' - ' .$nb. ' - ' .$nr;
+                ?>
                 <div class="col-sm-6">
                 <label for="">BANK TUJUAN</label>
-                  <select name="norek_tujuan" id="norek_tujuan" class="form-control" required>
-              <option value="">-- Pilih bank tujuan --</option>
-                <?php
-                $query = "SELECT * FROM tabel_bank ORDER BY no_rekening";
-                $sql = mysqli_query($conn, $query);
-                while($data = mysqli_fetch_array($sql)){echo '<option value="'.$data['no_rekening'].'">'.$data['nama_bank'].' - '.$data['no_rekening'].' - '.$data['nama_rekening'].'</option>';}
-                ?>
-              </select>
+                   <input type="text" class="form-control" name="norek" id="norek" value="<?= $isi ?>" readonly>
                   </div>
                 </div>
-
+                   <input type="hidden" class="form-control" name="norek_tujuan" id="norek_tujuan" value="<?= $no ?>" readonly>
+                  
                 <div class="form-group">
                   <input type="text" class="form-control" name="nama_pengirim" id="nama_pengirim" placeholder="Nama Pengirim">
                 </div>
@@ -121,7 +132,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="datapemesanan.php">Lihat Data Pemesanan!</a>
+                <a class="small" href="datatransaksi.php">Lihat Data Pemesanan!</a>
               </div>
             </div>
           </div>
@@ -139,12 +150,6 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 
   <!-- Bootstrap core JavaScript -->
 
-  <script>
-    $('#tanggal_transfer').datepicker({
-            uiLibrary: 'bootstrap4',
-            format:'dd-mm-yyyy'
-        });
-        </script>
 
 
   <!-- Custom scripts for all pages-->
@@ -152,3 +157,23 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 </body>
 
 </html>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+  <script>
+          Date.prototype.addDays = function(days) { 
+          var date = new Date(this.valueOf());
+          date.setDate(date.getDate() + days);
+          return date;
+        }
+        var date = new Date();
+
+        $(function() {
+          $('#tanggal_transfer').datepicker({
+            autoHide: true,
+            zIndex: 2048,
+            format:'dd-mm-yyyy',
+            startDate : date.addDays(-10),
+            endDate : date.addDays(90)
+          });
+        });
+      </script>

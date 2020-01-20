@@ -14,7 +14,9 @@ $harga 	      = number_format($data['harga'], 0, ',', '.');
 $total_harga 	= number_format($data['total_harga'], 0, ',', '.');	
 $tanggal      = date('d F Y', strtotime($data['tanggal_trip']));
 $paket        = $data['nama_paket'];
+$norek        = $data['norek_tujuan'];
 
+$id1 = $id_pemesanan;
 // Jika data tidak ditemukan maka akan muncul alert belum ada data
 if(mysqli_num_rows($hasil) == 0)
 {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
@@ -73,7 +75,7 @@ if(mysqli_num_rows($hasil) == 0)
         <hr/>
 
 <?php
-$sql = "SELECT * FROM tabel_bank ORDER BY no_rekening";
+$sql = "SELECT * FROM tabel_bank a JOIN tabel_detail_pemesanan b ON a.no_rekening = b.norek_tujuan WHERE no_rekening='$norek' ORDER BY no_rekening";
 $hasil  = mysqli_query($conn,$sql);
 $data1  = mysqli_fetch_array($hasil);
 
@@ -86,10 +88,10 @@ if(mysqli_num_rows($hasil) == 0)
         <p>Pembayaran di tujukan kepada: </p>
         
         <P align="left"><img src="admin/images/bank/<?php echo $data1['img'];?>" alt="logo" style="width:140px; height:50px" ></P>
-        <P><strong> <?php echo $data1['no_rekening'] ?> </strong>AN : <?php echo $data1['nama_rekening'] ?></p>
+        <P><strong> <?php echo $data1['no_rekening'] ?> </strong> | <strong> <?php echo $data1['nama_bank'] ?> </strong> | AN :  <strong><?php echo $data1['nama_rekening'] ?> </strong></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="<?php echo $base_url.'konfirpembayaran.php?id_pemesanan='?><?php echo $id_pemesanan?>">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>&norek=<?=$norek ?>">klik disini</a></p>
         <hr>
         <br>
         <p align="center"><b>Anugerah Tour & Travel</b> </p> 

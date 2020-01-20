@@ -108,16 +108,18 @@ include 'fungsi/cek_session.php';      // Panggil data setting
             } else {
               echo ' <h6> <span class="badge badge-danger">di blokir</span></h6>';
             }; ?>
+
+
            </td> 
-           <td> 
-    <?php 
-    
-    
+   
+            <td>
+            <?php 
     if ($status==1) {
-              echo " <h6> <a href='modul/aksipelanggan/pelangganblokir.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-danger'  data-target='#confirm-delete'> <i class='fa fa-times'></i> blokir </a></h6>";
+              echo " <h6> <a href='modul/aksipelanggan/pelangganblokir.php?id_pelanggan=$data[id_pelanggan]' class='btn btn-secondary btn-sm'  data-target='#confirm-delete'> <i class='fa fa-times'></i></a> <a href='#' data-href='modul/aksipelanggan/aksihapuspelanggan.php?id_pelanggan=$data[id_pelanggan]'  class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-trash'></i></a></h6>";
             } else {
-              echo "<a href='modul/aksipelanggan/pelangganaktive.php?id_pelanggan=$data[id_pelanggan]' class='badge badge-success'> <i class='fa fa-check'></i>  aktifkan </a> </h6>";
+              echo "<a href='modul/aksipelanggan/pelangganaktive.php?id_pelanggan=$data[id_pelanggan]' class='btn btn-success btn-sm'> <i class='fa fa-check'></i></a>  <a href='#' data-href='modul/aksipelanggan/aksihapuspelanggan.php?id_pelanggan=$data[id_pelanggan]'  class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-trash'></i></a> </h6>";
             }; ?>
+
            </td>   
           </tr>
           

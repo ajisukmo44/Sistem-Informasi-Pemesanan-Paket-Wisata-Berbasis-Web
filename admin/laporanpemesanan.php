@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $sql);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Admin | Laporan Pembatalan</title>
+  <title> Admin | Laporan Pemesanan</title>
 
   <!-- Custom fonts for this template-->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -80,23 +80,17 @@ $result = mysqli_query($conn, $sql);
           <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Pilih Range Tanggal Laporan
+              <h6 class="m-0 font-weight-bold text-primary">Laporan Data Pemesanan
         
              </div>
              <?php
-      $sql = "SELECT SUM(jumlah_transfer) AS total_pembayaran  FROM tabel_bayar";
-
-      $result = mysqli_query($conn, $sql);
-      if (mysqli_num_rows($result) > 0)
-      {
-        while ($data = mysqli_fetch_array($result))
-        { 
-          $total_pembayaran = number_format($data['total_pembayaran'], 0, ',', '.');
-;
-        }
-      }else{  echo "Belum ada data";}
-    ?>
-     <form action="modul/lap_pembayaran.php" method="post" enctype="multipart/form-data">
+      
+      $sql 	= "SELECT * FROM tabel_pemesanan WHERE status = 3 OR status = 4 OR status = 5 OR status = 6 OR status = 7 OR status = 8";
+      $data 	= mysqli_query($conn, $sql);
+      $tb = mysqli_num_rows($data);
+      ?>
+  
+     <form action="modul/lap_pemesanan.php" method="post" enctype="multipart/form-data">
              <div class="form-group row mt-3 ml-3">
                   <div class="col-sm-3 mb-3 mb-sm-0">
                   Tanggal Awal <input type="date" class="form-control" name="tanggal" id="tanggal" value="<?php echo $tanggal ?>">
@@ -108,7 +102,7 @@ $result = mysqli_query($conn, $sql);
                   </div>
 
                   <div class="col-sm-3">
-                  Total Pembayaran Masuk<input type="text" class="form-control" name="total" id="total" value=" Rp. <?php echo $total_pembayaran?>" readonly>
+                  Total Pemesanan Masuk<input type="text" class="form-control" name="total" id="total" value="  <?php echo $tb ?>" readonly>
                   </div>
                   </div>
             <hr>

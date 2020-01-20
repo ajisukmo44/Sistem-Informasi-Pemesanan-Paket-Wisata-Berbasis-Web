@@ -101,8 +101,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td>".$data['jam_mulai']."</td>
           <td>".$data['jam_selesai']."</td>
           <td>
-          <a href='edititinerary.php?id_itinerary=$data[id_itinerary]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i> edit</a>
-          <a href='#' data-href='modul/aksiitinerary/aksihapusitinerary.php?id_itinerary=$data[id_itinerary]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> hapus </a>
+          <a href='edititinerary.php?id_itinerary=$data[id_itinerary]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+          <a href='#' data-href='modul/aksiitinerary/aksihapusitinerary.php?id_itinerary=$data[id_itinerary]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
           </td>
          
             </tr>";

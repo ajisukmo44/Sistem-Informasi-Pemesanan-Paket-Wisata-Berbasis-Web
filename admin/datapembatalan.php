@@ -77,10 +77,10 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       <div class="table-responsive">
         <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
         <thead style="background-color: #e01507; color:#fff; line-height:8px; text-align: center">
-                       <th>Id Batal</th>
-                       <th>No Pemesanan</th>
-                       <th>NoRek Refund</th>
-                       <th>Nama Rekening</th>
+                       <th>Id&nbsp;Batal</th>
+                       <th>No&nbsp;Pemesanan</th>
+                       <th>NoRek&nbsp;Refund</th>
+                       <th>Nama&nbsp;Rekening</th>
                        <th>Bank</th>
                        <th>Keterangan</th>
                        <th>Status</th>

@@ -73,12 +73,12 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       <div class="table-responsive">
         <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
         <thead style="background-color: #e01507; color:#fff; line-height:8px; text-align: center">
-                       <th>Tgl Pesan</th>
-                       <th>Id Pesan</th>
+                       <th>Tanggal&nbsp;Pesan</th>
+                       <th>Id&nbsp;Pesan</th>
                        <th>Pelanggan</th>
-                       <th>Nama Paket</th>
-                       <th>Jml Pax</th>
-                       <th>Total Harga</th>
+                       <th>Nama&nbsp;Paket</th>
+                       <th>Jml&nbsp;Pax</th>
+                       <th>Total&nbsp;Harga</th>
                        <th>status</th>
                        <th>Acc</th>
                         </tr>
@@ -122,11 +122,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
             } elseif ($status==5) {
               echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
             } elseif ($status==6) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            }  elseif ($status==7) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            } elseif ($status==8) {
-              echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
+              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
             };
              ?>
            </td>
@@ -191,12 +187,12 @@ include 'fungsi/cek_session.php';      // Panggil data setting
       <div class="table-responsive">
         <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
         <thead style="background-color: #e01507; color:#fff; line-height:8px; text-align: center">
-                       <th>Tgl Pesan</th>
-                       <th>Id Pesan</th>
+                       <th>Tanggal&nbsp;Pesan</th>
+                       <th>Id&nbsp;Pesan</th>
                        <th>Pelanggan</th>
-                       <th>Nama Paket</th>
-                       <th>Jml Pax</th>
-                       <th>Total Harga</th>
+                       <th>Nama&nbsp;Paket</th>
+                       <th>Jml&nbsp;Pax</th>
+                       <th>Total&nbsp;Harga</th>
                        <th>status</th>
                        <th>Aksi</th>
                         </tr>
@@ -206,7 +202,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                      <?php 
                      $query = mysqli_query($conn,"SELECT a.id_pemesanan, a.jumlah_pax, f.tgl_pesan, a.total_harga, a.tanggal_trip, b.nama, b.id_pelanggan, r.nama_paket, b.alamat, f.status 
                      FROM tabel_detail_pemesanan a JOIN tabel_paket_detail c ON a.id_paket_detail = c.id_paket_detail LEFT JOIN tabel_paket r ON c.id_paket = r.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan 
-                     LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE f.status = 3 OR f.status = 4 OR f.status = 5 OR f.status = 6 OR f.status = 7 OR f.status = 8  ORDER BY a.id_pemesanan");
+                     LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE f.status = 3 OR f.status = 4 OR f.status = 5 OR f.status = 6 OR f.status = 7 OR f.status = 8  ORDER BY a.id_pemesanan DESC");
                      if(mysqli_num_rows($query) == 0)
                      {echo "
                        
@@ -228,7 +224,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <td><?= $th ?></td>
    
     <td> 
-           <?php if ($status==1) {
+    <?php if ($status==1) {
               echo ' <h6> <span class="badge badge-danger">belum di bayar</span></h6>';
             } elseif ($status==2) {
               echo ' <h6> <span class="badge badge-warning">Menunggu pembayaran</span></h6>';
@@ -239,16 +235,39 @@ include 'fungsi/cek_session.php';      // Panggil data setting
             } elseif ($status==5) {
               echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
             } elseif ($status==6) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            }  elseif ($status==7) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            } elseif ($status==8) {
-              echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
+              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
             };
              ?>
            </td>
 
-           <td><a href="#" type="button" class="badge badge-primary" data-toggle="modal" data-target="#myModal<?php echo $data['id_pemesanan']; ?>"><i class='fa fa-edit'></i> update</a></td> 
+           <td>
+           <?php
+          $id = $data['id_pemesanan'];
+          $a1 = "<a href='#' type='button' class='badge badge-primary' data-toggle='modal' data-target='#myModal$id'><i class='fa fa-edit'></i> update</a>";
+          $a2 = "<a href='#' type='button' class='badge badge-secondary' data-toggle='modal' data-target='#'><i class='fa fa-edit'></i> update</a>";
+
+          if ($status==4 ){
+          echo $a2;
+          } else if ($status==5 ) 
+          {
+              echo $a2;
+          } else if ($status==6 ) 
+          {
+              echo $a2;
+          } else if ($status==8 ) 
+          {
+              echo $a2;
+          } else   
+          {
+              echo $a1;
+          };
+           
+           ?>
+           </td> 
+
+
+
+
   </tr>
                          
                        <!-- Modal Edit -->

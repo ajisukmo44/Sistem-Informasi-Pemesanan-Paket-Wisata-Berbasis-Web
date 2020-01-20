@@ -30,10 +30,11 @@
     <div id="collaplaporan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <a class="collapse-item" href="laporanpelanggan.php">Laporan Pelanggan</a>
+        <a class="collapse-item" href="laporanpaket.php">Laporan Paket Wisata</a>
         <a class="collapse-item" href="laporanpembayaran.php">Laporan Pembayaran</a>
-        <a class="collapse-item" href="#">Laporan Pemesanan</a>
+        <a class="collapse-item" href="laporanpemesanan.php">Laporan Pemesanan</a>
         <a class="collapse-item" href="laporanpembatalan.php">Laporan Pembatalan</a>
-      </div>
+       </div>
     </div>
   </li>
 

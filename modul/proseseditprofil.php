@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
 
   if(mysqli_query($conn, $sql)) 
   {
-    echo "<script>alert('Update data berhasil! Klik ok untuk melanjutkan');location.replace('../dataprofil.php')</script>";
+    echo "<script>location.replace('../dataprofil.php')</script>";
   } 
     else 
     {

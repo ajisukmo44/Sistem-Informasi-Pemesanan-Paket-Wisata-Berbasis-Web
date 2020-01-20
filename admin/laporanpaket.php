@@ -14,7 +14,7 @@ include 'fungsi/cek_session.php';    // Panggil data setting
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Admin | Laporan Pelanggan</title>
+  <title> Admin | Laporan Paket</title>
 
   <!-- Custom fonts for this template-->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,6 +24,14 @@ include 'fungsi/cek_session.php';    // Panggil data setting
 
       <!-- Custom styles for this template-->
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      
+  <script src="../tgl/date/jquery.min.js"></script>
+  <!-- Bootstrap Core CSS -->
+  <link href="../tgl/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <script src="../tgl/newdate/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="../tgl/newdate/datepicker.css">
+  <script src="../tgl/newdate/datepicker.js"></script>
 
 </head>
 <body>
@@ -59,46 +67,35 @@ include 'fungsi/cek_session.php';    // Panggil data setting
           <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              <h6 class="m-0 font-weight-bold text-primary">Laporan Data Pelanggan
+              <h6 class="m-0 font-weight-bold text-primary">Laporan Data Paket
         
              </div>
              <?php
-      $sql = "SELECT * FROM tabel_pelanggan";
+      $sql = "SELECT * FROM tabel_paket";
       $result = mysqli_query($conn, $sql);
-      $plg = mysqli_num_rows($result);
+      $pkt = mysqli_num_rows($result);
       
     ?>
-      <?php
-      $sql = "SELECT * FROM tabel_pelanggan WHERE status = 1";
+        <?php
+      $sql = "SELECT sum(jumlah_pax) AS jumlah FROM tabel_detail_pemesanan";
       $result = mysqli_query($conn, $sql);
-      $pa = mysqli_num_rows($result);
+      $data = mysqli_fetch_array($result);
+      $pax = $data['jumlah'];
+
       
     ?>
-      <?php
-      $sql = "SELECT * FROM tabel_pelanggan WHERE status = 2";
-      $result = mysqli_query($conn, $sql);
-      $pb = mysqli_num_rows($result);
-      
-    ?>
-     <form action="modul/lap_pelanggan.php" method="post" enctype="multipart/form-data">
+  
+     <form action="modul/lap_paket.php" method="post" enctype="multipart/form-data">
              <div class="form-group row mt-3 ml-3">
-                  <div class="col-sm-3 mb-3 mb-sm-0">
-                  Pelanggan Aktif<input type="text" class="form-control" name="pa" id="pa" value="<?php echo $pa ?>" readonly>
-                  </div>
-                
-
-                  <div class="col-sm-3 mr-2">
-                  Pelanggan Di Blokir <input type="text" class="form-control" name="pb" id="pb" value="<?php echo $pb ?>" readonly>
-                  </div>
-
+             
                   <div class="col-sm-3">
-                  Total Pelanngan<input type="text" class="form-control" name="total" id="total" value="  <?php echo $plg?>" readonly>
+                 Jumlah Paket<input type="text" class="form-control" name="total" id="total" value="<?php echo $pkt?>" readonly>
+                  </div>
+                  <div class="col-sm-3">
+                 Total Pax Terpesan<input type="text" class="form-control" name="total" id="total" value="<?php echo $pax?>" readonly>
                   </div>
                   </div>
             <hr>
-
-
-
             <button type="submit" name="submit" class="btn btn-success ml-4 mr-4 mt-3 mb-4 col-md-11">CETAK LAPORAN</button>
           
               </div>

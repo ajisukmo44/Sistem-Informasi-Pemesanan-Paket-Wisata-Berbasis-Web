@@ -9,7 +9,7 @@ if(isset($id_pemesanan))
 
   if(mysqli_query($conn, $sql)) 
   {
-    echo "<script>alert('Update berhasil! Klik ok untuk melanjutkan');location.replace('../datatransaksi.php')</script>";
+    echo "<script>location.replace('../datatransaksi.php')</script>";
   } 
     else 
     {

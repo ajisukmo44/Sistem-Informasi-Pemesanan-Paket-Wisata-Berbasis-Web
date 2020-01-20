@@ -9,7 +9,7 @@ $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
 $query        = "SELECT * FROM tabel_pemesanan ORDER BY id_pemesanan";
 $hasil        = mysqli_query($conn,$query);
 $data      = mysqli_fetch_array($hasil);
-
+$id1 = $id_pemesanan;
 // Jika data tidak ditemukan maka akan muncul alert belum ada data
 if(mysqli_num_rows($hasil) == 0)
 {echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
@@ -103,26 +103,27 @@ if(mysqli_num_rows($hasil) == 0)
  
 <hr/> <br>
 <?php
-$sql = "SELECT * FROM tabel_bank ORDER BY no_rekening";
+$norek = $data['norek_tujuan'];
+$sql = "SELECT * FROM tabel_bank a JOIN tabel_detail_pemesanan b ON a.no_rekening = b.norek_tujuan WHERE no_rekening = '$norek' ORDER BY no_rekening";
 $hasil  = mysqli_query($conn,$sql);
 $data1  = mysqli_fetch_array($hasil);
 
 // Jika data tidak ditemukan maka akan muncul alert belum ada data
 if(mysqli_num_rows($hasil) == 0)
-{echo "<script>alert('Belum ada data');location.replace('$base_url')</script>";}
+{echo "Belum ada data";}
         ?> 
 
 <p>Total Pembayaran adalah sebesar <strong>Rp, <?php echo $total_harga ?> </strong></p>
           <p>Batas Pembayaran Sebelum jam <strong style="color: red"><?php $besok = date('G:i ', strtotime("+1 day", strtotime(date("G:i ")))); echo $besok ?> </strong>tanggal<strong style="color: red"> <?php $besok = date('d-m-Y, ', strtotime("+1 day", strtotime(date("d-m-Y ")))); echo $besok ?> </strong></p>  
         <hr/>
 
-        <p>Pembayaran di tujukan kepada: </p>
-     
+      <p>Pembayaran di tujukan kepada: </p>
+        
         <P align="left"><img src="admin/images/bank/<?php echo $data1['img'];?>" alt="logo" style="width:140px; height:50px" ></P>
-        <P><strong> <?php echo $data1['no_rekening'] ?> </strong>AN : <?php echo $data1['nama_rekening'] ?></p>
+        <P><strong> <?php echo $data1['no_rekening'] ?> </strong> | <strong> <?php echo $data1['nama_bank'] ?> </strong> | AN :  <strong><?php echo $data1['nama_rekening'] ?> </strong></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id_pemesanan=<?php echo $id_pemesanan ?> ">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>&norek=<?=$norek ?>">klik disini</a></p>
         <hr>
   </div>
 </div>

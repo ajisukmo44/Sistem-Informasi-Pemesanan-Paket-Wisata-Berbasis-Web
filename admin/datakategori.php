@@ -93,8 +93,8 @@ include 'fungsi/cek_session.php';      // Panggil data setting
           <td>".$data['id_kategori']."</td>
           <td>".$data['nama_kategori']."</td>
           <td>
-          <a href='editkategori.php?id_kategori=$data[id_kategori]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i> edit</a>
-          <a href='#' data-href='modul/aksikategori/aksihapuskategori.php?id_kategori=$data[id_kategori]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i> hapus </a>
+          <a href='editkategori.php?id_kategori=$data[id_kategori]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+          <a href='#' data-href='modul/aksikategori/aksihapuskategori.php?id_kategori=$data[id_kategori]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
           </td>
          
             </tr>";

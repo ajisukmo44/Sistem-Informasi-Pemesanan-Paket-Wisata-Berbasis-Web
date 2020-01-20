@@ -6,7 +6,7 @@ $id_pemesanan = mysqli_real_escape_string($conn, $_GET['id_pemesanan']);
 
 if(isset($id_pembatalan))
 {
-  $sql = "UPDATE tabel_pemesanan a, tabel_pembatalan b SET a.status = 7, b.status = 3 WHERE a.id_pemesanan = '$id_pemesanan' AND b.id_pemesanan = '$id_pemesanan' ";
+  $sql = "UPDATE tabel_pemesanan a, tabel_pembatalan b SET a.status = 3, b.status = 3 WHERE a.id_pemesanan = '$id_pemesanan' AND b.id_pemesanan = '$id_pemesanan' ";
 
       if(mysqli_query($conn, $sql)) 
       {

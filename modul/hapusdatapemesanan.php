@@ -7,7 +7,7 @@ $sql = "DELETE FROM tabel_pemesanan WHERE id_pemesanan = '$no' ";
    
 if (mysqli_query($conn, $sql)) 
     {
-      echo "<script>alert('Hapus data berhasil! Klik ok untuk melanjutkan');location.replace('keranjang.php')</script>"; 
+      echo "<script>location.replace('keranjang.php')</script>"; 
     }
       else 
       {

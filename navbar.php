@@ -18,10 +18,10 @@ include 'fungsi/cek_session_public.php';
 	">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link mr-2" href="#"><b>Paket Wisata</b></a>
+            <a class="nav-link mr-2" href="paketwisata.php"><b>Paket Wisata</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mr-2" href="#"><b>Tentang Kami</b></a>
+            <a class="nav-link mr-2" href="profil.php"><b>Tentang Kami</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link mr-2" href="#"><b>Blog Wisata</b> </a>
