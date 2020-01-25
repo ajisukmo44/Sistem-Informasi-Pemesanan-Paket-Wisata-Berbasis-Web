@@ -123,7 +123,7 @@ if(mysqli_num_rows($hasil) == 0)
         <P><strong> <?php echo $data1['no_rekening'] ?> </strong> | <strong> <?php echo $data1['nama_bank'] ?> </strong> | AN :  <strong><?php echo $data1['nama_rekening'] ?> </strong></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>&norek=<?=$norek ?>">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>">klik disini</a></p>
         <hr>
   </div>
 </div>
@@ -138,7 +138,7 @@ if(mysqli_num_rows($hasil) == 0)
   <!-- Footer -->
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah2019</p>
+      <p class="m-0 text-center ">Copyright &copy; Anugrah2020</p>
     </div>
     <!-- /.container -->
   </footer>

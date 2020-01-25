@@ -4,12 +4,13 @@ include 'admin/fungsi/base_url.php';
 include 'fungsi/cek_session_public.php';
 include 'fungsi/cek_login_public.php'; 
 
-
 $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id']);
+$id_pemesanan     = mysqli_real_escape_string($conn,$_GET['idp']);
+
 
 ?>
 
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +44,7 @@ $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id']);
 }   
 </script>
 </head>
-
+<?= $id_pemesanan ?>
 <body>
   <!-- Navigation -->
   <?php include 'navbar.php'; ?>
@@ -73,7 +74,7 @@ $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id']);
     
     // Jika data tidak ditemukan maka akan muncul alert belum ada data
     if(mysqli_num_rows($hasil) == 0)
-    {echo "<script>location.reload();</script>";}
+    {echo "belum ada data";}
     ?>
     
   <form id="form1" name="form1" method="post" action="pemesananupdate.php?id_pemesanan=<?= $id_pemesanan ?>">
@@ -111,7 +112,7 @@ $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id']);
     
     // Jika data tidak ditemukan maka akan muncul alert belum ada data
     if(mysqli_num_rows($hasil) == 0)
-    {echo "<script>location.reload();</script>";}
+    {echo "<script>alert('Belum ada data');</script>";}
     ?>
           <td ><input name="jumlah_pax" type="number" style="width:97px; text-align:center;" min="<?= $min; ?>" max="<?= $max;?>" id="jumlah_pax"  onfocus="startCalculate()" onblur="stopCalc()" value="<?= $min; ?>"  required/></td>
 
@@ -139,15 +140,8 @@ $id_pemesanan     = mysqli_real_escape_string($conn,$_GET['id']);
          <td><input name="total_harga" type="hidden" id="total_harga" style="text-align:right; background-color:#F7F7F7" onfocus="startCalculate()" onblur="stopCalc()"  value="<?= $total; ?>" readonly/></td>
   
 <hr>
-<td > 
- <?php 
-
-$tampil = "<td> Tambah Peserta : <input class='name='tambahan' type='number' min='0'  style='width:100px; text-align:center;'  id='tambahan'  onfocus='startCalculate()' onblur='stopCalc()' value='0'/> </td> &nbsp; &nbsp;  Total Pax : <td><input style='background-color:#F7F7F7; width:80px; text-align:center' name='total_pax' id='total_pax' type='number' style='width:117px; text-align:center;'  onfocus='startCalculate()' onblur='stopCalc()' onchange='price()' value='$min' readonly/></td>";
-
-if ($max==15)
-   { echo $tampil ; 
-  }
-
+<td >  <?php if ($min==11)
+   { echo '<td> Tambah Peserta : <input class="name="tambahan" type="number" min="0"  style="width:100px; text-align:center;"  id="tambahan"  onfocus="startCalculate()" onblur="stopCalc()" value="0"/> </td> &nbsp; &nbsp;  Total Pax : <td><input style="background-color:#F7F7F7; width:80px; text-align:center" name="total_pax" id="total_pax" type="number" style="width:117px; text-align:center;"  onfocus="startCalculate()" onblur="stopCalc()" onchange="price()" value="11" readonly/></td>' ; }
    elseif ($min==4)
    { echo '<p><input name="tambahan" type="hidden" min="0"  style="width:117px; text-align:center;"  id="tambahan"  onfocus="startCalculate()" onblur="stopCalc()" value="0"/> <input name="total_pax" id="total_pax" type="hidden" style="width:117px; text-align:center;"  onfocus="startCalculate()" onblur="stopCalc()" onchange="price()" value="4"  /> </p>';
   }
@@ -228,7 +222,7 @@ if ($max==15)
    <!-- Footer -->
    <footer class="py-4 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright ©2019 | Anugerah Tour dan Travel</p>
+      <p class="m-0 text-center ">Copyright ©2020 | Anugerah Tour dan Travel</p>
     </div>
     <!-- /.container -->
   </footer>

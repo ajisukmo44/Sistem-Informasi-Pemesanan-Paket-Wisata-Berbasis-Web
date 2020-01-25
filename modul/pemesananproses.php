@@ -15,16 +15,16 @@ if(isset($_POST['submit']))
   $ket               = mysqli_real_escape_string($conn,$_POST['keterangan']);
   $tgl               = date('Y-m-d', strtotime($tglnew));
 
-
       // Proses insert data dari form ke db
       $sql = "INSERT INTO tabel_pemesanan (id_pemesanan,id_pelanggan, tgl_pesan, status) VALUES ('$id_pemesanan','$id_plg',now(),'0');";
 
-      $sql .= "INSERT INTO tabel_detail_pemesanan (id_pemesanan, id_paket_detail, tanggal_trip, harga, jumlah_pax, total_harga, keterangan, norek_tujuan) VALUES ('$id_pemesanan','$id_paket_detail','$tgl','$harga','','','$ket','')";
+      $sql .= "INSERT INTO tabel_detail_pemesanan (id_pemesanan, id_paket_detail, tanggal_trip, harga, jumlah_pax, total_harga, keterangan, norek_tujuan) VALUES ('$id_pemesanan','$id_paket_detail','$tgl','$harga','','','$ket','');";
 
+      $sql .= "INSERT INTO tabel_status (id, id_pemesanan, status_pemesanan, waktu) VALUES ('','$id_pemesanan','0',now())";
       
       if(mysqli_multi_query($conn, $sql)) 
       {
-        echo "<script>location.replace('../keranjang.php?id_pemesanan=$id_pemesanan')</script>";
+        echo "<script>location.replace('../keranjang.php?id=$id_pemesanan')</script>";
       } 
         else 
         {

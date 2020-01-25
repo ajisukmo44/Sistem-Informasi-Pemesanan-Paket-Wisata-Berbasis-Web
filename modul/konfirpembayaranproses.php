@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
   
         $allowed_ext  = array('jpg', 'jpeg', 'png', 'gif');
         $file_name    = $_FILES['img']['name']; // File adalah name dari tombol input pada form
-        $file_ext     = strtolower(end(explode('.', $file_name)));
+        $file_ext     = pathinfo($file_name, PATHINFO_EXTENSION);
         $file_size    = $_FILES['img']['size'];
         $file_tmp     = $_FILES['img']['tmp_name'];
         $lokasi       = '../images/bukti_transfer/'.$id.'.'.$file_ext;
@@ -32,12 +32,13 @@ if(isset($_POST['submit']))
           $sql = "INSERT INTO tabel_bayar ( id_pembayaran, id_pemesanan, norek_tujuan,nama_pengirim, bank, jumlah_transfer, tanggal_transfer, img, status) 
           VALUES ('$id','$no','$bt', '$np','$bank','$jt', '$tgl', '$img',1);";
 
-          $sql .= "UPDATE tabel_pemesanan SET status = 2 WHERE id_pemesanan = '$no'";
-
+          $sql .= "UPDATE tabel_pemesanan SET status = 2 WHERE id_pemesanan = '$no';";
+          
+          $sql .= "INSERT INTO tabel_status (id, id_pemesanan, status_pemesanan, waktu) VALUES ('','$no','2',now())";
 
                if(mysqli_multi_query($conn, $sql))  
                 {
-                  echo "<script>location.replace('../datatransaksi.php')</script>";
+                  echo "<script>location.replace('../invoicepembayaran.php')</script>";
                 } 
                   else 
                   {

@@ -111,19 +111,25 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <td><?= $th ?></td>
    
     <td> 
-           <?php if ($status==1) {
-              echo ' <h6> <span class="badge badge-danger">belum di bayar</span></h6>';
-            } elseif ($status==2) {
-              echo ' <h6> <span class="badge badge-warning">Menunggu pembayaran</span></h6>';
-            } elseif ($status==3) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            } elseif ($status==4) {
-              echo ' <h6> <span class="badge badge-success">pemesanan selesai</span></h6>';
-            } elseif ($status==5) {
-              echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
-            } elseif ($status==6) {
-              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
-            };
+           <?php if ($status==0) {
+        echo ' <h6> <span class="badge badge-danger">pemesanan di buat </span></h6>';
+      } elseif ($status==1) {
+        echo '<h6><span class="badge badge-danger">Menunggu pembayaran </span></h6>';
+      } elseif ($status==2) {
+        echo ' <h6> <span class="badge badge-warning">Menunggu validasi pembayaran </span></h6>';
+      } elseif ($status==3) {
+        echo ' <h6> <span class="badge badge-success">Pemesanan Berhasil </span></h6>';
+      } elseif ($status==4) {
+        echo ' <h6> <span class="badge badge-info">Menunggu Persetujuan Pembatalan  </span></h6>';
+      } elseif ($status==5) {
+        echo ' <h6> <span class="badge badge-danger">pembatalan di setujui </span></h6>';
+      } elseif ($status==6) {
+        echo ' <h6> <span class="badge badge-primary">pembatalan di tolak </span></h6>';
+      }elseif ($status==7) {
+        echo ' <h6> <span class="badge badge-danger">pemesanan di batalkan </span></h6>';
+      } elseif ($status==8) {
+        echo ' <h6> <span class="badge badge-success">selesai </span></h6>';
+      };
              ?>
            </td>
            <td> <h5><a href="modul/aksivalidasi/psnupdate.php?id_pemesanan=<?= $data['id_pemesanan'] ?>"  class="badge badge-success btn-sm"><i class='fa fa-check'></i>
@@ -224,19 +230,25 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <td><?= $th ?></td>
    
     <td> 
-    <?php if ($status==1) {
-              echo ' <h6> <span class="badge badge-danger">belum di bayar</span></h6>';
-            } elseif ($status==2) {
-              echo ' <h6> <span class="badge badge-warning">Menunggu pembayaran</span></h6>';
-            } elseif ($status==3) {
-              echo ' <h6> <span class="badge badge-success">pemesanan tervalidasi</span></h6>';
-            } elseif ($status==4) {
-              echo ' <h6> <span class="badge badge-success">pemesanan selesai</span></h6>';
-            } elseif ($status==5) {
-              echo ' <h6> <span class="badge badge-danger">pemesanan dibatalkan</span></h6>';
-            } elseif ($status==6) {
-              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
-            };
+    <?php if ($status==0) {
+        echo ' <h6> <span class="badge badge-danger">pemesanan di buat </span></h6>';
+      } elseif ($status==1) {
+        echo '<h6><span class="badge badge-danger">Menunggu pembayaran </span></h6>';
+      } elseif ($status==2) {
+        echo ' <h6> <span class="badge badge-warning">Menunggu validasi pembayaran </span></h6>';
+      } elseif ($status==3) {
+        echo ' <h6> <span class="badge badge-success">Pemesanan Berhasil </span></h6>';
+      } elseif ($status==4) {
+        echo ' <h6> <span class="badge badge-info">Menunggu Persetujuan Pembatalan  </span></h6>';
+      } elseif ($status==5) {
+        echo ' <h6> <span class="badge badge-danger">pembatalan di setujui </span></h6>';
+      } elseif ($status==6) {
+        echo ' <h6> <span class="badge badge-primary">pembatalan di tolak </span></h6>';
+      }elseif ($status==7) {
+        echo ' <h6> <span class="badge badge-danger">pemesanan di batalkan </span></h6>';
+      } elseif ($status==8) {
+        echo ' <h6> <span class="badge badge-success">selesai </span></h6>';
+      };
              ?>
            </td>
 
@@ -253,8 +265,11 @@ include 'fungsi/cek_session.php';      // Panggil data setting
               echo $a2;
           } else if ($status==6 ) 
           {
-              echo $a2;
+              echo $a1;
           } else if ($status==8 ) 
+          {
+              echo $a2;
+          } else if ($status==7 ) 
           {
               echo $a2;
           } else   

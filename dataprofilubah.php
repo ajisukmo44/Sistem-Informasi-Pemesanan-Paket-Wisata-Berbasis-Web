@@ -109,7 +109,7 @@ if(mysqli_num_rows($hasil) == 0)
   </div>
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+      <p class="m-0 text-center ">Copyright &copy; Anugrah2020</p>
     </div>
     <!-- /.container -->
   </footer>

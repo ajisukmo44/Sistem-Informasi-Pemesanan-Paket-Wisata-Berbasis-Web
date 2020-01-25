@@ -18,7 +18,10 @@ if(isset($_POST['submit']))
                           WHERE id_pemesanan = '$id_pemesanan'; ";
 
 $sql .= "UPDATE tabel_pemesanan SET status  = '1'
-                          WHERE id_pemesanan = '$id_pemesanan'";
+                          WHERE id_pemesanan = '$id_pemesanan';";
+
+
+$sql .= "INSERT INTO tabel_status (id, id_pemesanan, status_pemesanan, waktu) VALUES ('','$id_pemesanan','1',now())";
 
   if(mysqli_multi_query($conn, $sql)) 
   {

@@ -2,7 +2,7 @@
  <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
-        <span>Anugrah Tour & Travel &copy;2019</span>
+        <span>Anugrah Tour & Travel &copy;2020</span>
       </div>
     </div>
   </footer>

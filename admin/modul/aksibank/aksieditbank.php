@@ -8,10 +8,9 @@ if(isset($_POST['simpan']))
   $nama    = mysqli_real_escape_string($conn,$_POST['nama_rekening']);
   $bank    = mysqli_real_escape_string($conn,$_POST['nama_bank']);
 
-
       $allowed_ext  = array('jpg', 'jpeg', 'png', 'gif');
       $file_name    = $_FILES['img']['name']; // File adalah name dari tombol input pada form
-      $file_ext     = strtolower(end(explode('.', $file_name)));
+      $file_ext     = pathinfo($file_name, PATHINFO_EXTENSION);
       $file_size    = $_FILES['img']['size'];
       $file_tmp     = $_FILES['img']['tmp_name'];
       $lokasi       = '../../images/bank/'.$bank.'.'.$file_ext;

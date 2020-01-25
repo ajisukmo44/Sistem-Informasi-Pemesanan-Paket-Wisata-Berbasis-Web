@@ -6,7 +6,7 @@ include 'fungsi/tgl_indo.php';
 
 $id_pemesanan 	 = 	mysqli_real_escape_string($conn,$_GET['id_pemesanan']);
 // Membuat join query 3 tabel: reservasi, detail_reservasi 
-$sql = "SELECT *FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
+$sql = "SELECT * FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
 
 $hasil        = mysqli_query($conn,$sql);
 $data         = mysqli_fetch_array($hasil);
@@ -91,7 +91,7 @@ if(mysqli_num_rows($hasil) == 0)
         <P><strong> <?php echo $data1['no_rekening'] ?> </strong> | <strong> <?php echo $data1['nama_bank'] ?> </strong> | AN :  <strong><?php echo $data1['nama_rekening'] ?> </strong></p>
         <hr/>
         
-        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>&norek=<?=$norek ?>">klik disini</a></p>
+        <p>Apabila telah melakukan pembayaran, mohon konfirmasi ke halaman berikut: <a href="konfirpembayaran.php?id=<?=$id1?>">klik disini</a></p>
         <hr>
         <br>
         <p align="center"><b>Anugerah Tour & Travel</b> </p> 

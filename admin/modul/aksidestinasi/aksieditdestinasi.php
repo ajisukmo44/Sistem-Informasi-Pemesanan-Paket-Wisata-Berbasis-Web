@@ -10,7 +10,7 @@ if(isset($_POST['simpan']))
 
       $allowed_ext  = array('jpg', 'jpeg', 'png', 'gif');
       $file_name    = $_FILES['img']['name']; // File adalah name dari tombol input pada form
-      $file_ext     = strtolower(end(explode('.', $file_name)));
+      $file_ext     = pathinfo($file_name, PATHINFO_EXTENSION);
       $file_size    = $_FILES['img']['size'];
       $file_tmp     = $_FILES['img']['tmp_name'];
       $lokasi       = '../../images/paket/'.$id_destinasi.'.'.$file_ext;

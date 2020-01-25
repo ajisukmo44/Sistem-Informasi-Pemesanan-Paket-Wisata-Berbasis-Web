@@ -103,7 +103,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <label for="tanggal_trip" class="col-sm-3 col-form-label">Tanggal Trip</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="tanggal_trip" name="tanggal_trip" placeholder="-- pilih tanggal trip --" required>
+      <input type="text" class="form-control" id="tanggal_trip" name="tanggal_trip" autocomplete="off" placeholder="-- pilih tanggal trip --" required>
     </div>
   </div>
 
@@ -134,7 +134,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <div class="form-group row">
     <label for="destinasi" class="col-sm-3 col-form-label">Keterangan </label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" id="keterangan"  name="keterangan"  placeholder="masukan keterangaan atau catatan " required>  
+      <input type="text" class="form-control" id="keterangan"  name="keterangan"  autocomplete="off" placeholder="masukan keterangaan atau catatan">  
     </div>
   </div>
   
@@ -369,7 +369,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   <!-- Footer -->
   <footer class="py-4 bg-light sticky-footer">
     <div class="container">
-      <p class="m-0 text-center ">Copyright ©2019 | Anugerah Tour dan Travel</p>
+      <p class="m-0 text-center ">Copyright ©2020 | Anugerah Tour dan Travel</p>
     </div>
     <!-- /.container -->
   </footer>

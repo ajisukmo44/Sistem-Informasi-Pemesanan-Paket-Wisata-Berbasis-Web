@@ -59,7 +59,7 @@
 <hr>
 <!-- Copyright -->
 <div class="footer-copyright text-center py-3 mb-2">
- <p>Copyright ©2019 | Anugerah Tour dan Travel</p>
+ <p>Copyright ©2020 | Anugerah Tour dan Travel</p>
 </div>
 <!-- Copyright -->
 

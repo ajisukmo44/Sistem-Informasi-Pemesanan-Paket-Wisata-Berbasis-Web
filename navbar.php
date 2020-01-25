@@ -23,9 +23,6 @@ include 'fungsi/cek_session_public.php';
           <li class="nav-item">
             <a class="nav-link mr-2" href="profil.php"><b>Tentang Kami</b></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link mr-2" href="#"><b>Blog Wisata</b> </a>
-          </li>
           <?php 
        if(isset($_SESSION['username']))
        {

@@ -70,38 +70,68 @@ include 'fungsi/cek_session_public.php';
       $status = $data['status']; $norek = $data['norek_tujuan'] ?>
           <tr style='font-family:verdana; color:#000; text-align: center'>
             <td><?= $data['id_pemesanan'] ?></td>
+            
             <td><?= $tanggal ?></td>
-            <td><a href="invoice.php?id_pemesanan=<?= $data['id_pemesanan'] ?>"  class="badge badge-primary">lihat detail</a></h6></td>
+            <td>
+            <?php 
+            $idp = $data['id_pemesanan'] ;
+            $tampil = "<h6><a href='invoice.php?id_pemesanan=$idp'  class='badge badge-secondary'>lihat detail</a></h6>";
+            if ($status==0) {
+              echo '-';
+            } else {
+              echo $tampil;
+            }; ?>
+            
+            </td>
             <td> 
-           <?php if ($status==0) {
-              echo ' <h6> <span class="badge badge-danger">pemesanan gagal</span></h6>';
+           <?php
+            $s0 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-danger'>pemesanan gagal </span></a></h6>";
+            $s1 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-danger'>menunggu pembayaran </span></a></h6>";
+            $s2 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-warning'>menunggu validasi pembayaran </span></a></h6>";
+            $s3 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-success'>Pemesanan Berhasil </span></a></h6>";
+            $s4 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-info'>menunggu persetujuan pembatalan </span></a></h6>";
+            $s5 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-danger'>pembatalan di setujui </span></a></h6>";
+            $s6 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-primary'>pembatalan di tolak </span></a></h6>";
+            $s7 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-danger'>pemesanan di batalkan </span></a></h6>";
+            $s8 = "<h6><a href='status.php?id=$idp'> <span class='badge badge-success'>selesai </span></a></h6>";
+           
+
+           if ($status==0) {
+              echo $s0;
             } elseif ($status==1) {
-              echo ' <h6> <span class="badge badge-danger">belum di bayar</span></h6>';
+              echo $s1;
             } elseif ($status==2) {
-              echo ' <h6> <span class="badge badge-warning">Menunggu validasi pembayaran</span></h6>';
+              echo $s2 ;
             } elseif ($status==3) {
-              echo ' <h6> <span class="badge badge-success">pemesanan berhasil tervalidasi</span></h6>';
+              echo $s3;
             } elseif ($status==4) {
-              echo ' <h6> <span class="badge badge-success">selesai</span></h6>';
+              echo $s4;
             } elseif ($status==5) {
-              echo ' <h6> <span class="badge badge-danger">di batalkan</span></h6>';
+              echo $s5;
             } elseif ($status==6) {
-              echo ' <h6> <span class="badge badge-warning">menunggu persetujuan pembatalan</span></h6>';
+              echo $s6;
+            }
+            elseif ($status==7) {
+              echo $s7;
+            } elseif ($status==8) {
+              echo $s8;
             };?>
            </td>
             <td>
 
           <?php
-          $id = $data['id_pemesanan'];
-          $a1 = "<a href='konfirpembayaran.php?id=$id&norek=$norek'>
+          $a1 = "<a href='konfirpembayaran.php?id=$idp'>
                       <button type='submit' class='btn btn-info btn-sm mr-1'><i class='fa fa-edit'></i> Konfir Pembayaran</button>
                     </a>";
-          $a2 = "<a href='pembatalan.php?id_pemesanan=$id '>
+          $a2 = "<a href='pembatalan.php?id_pemesanan=$idp '>
                       <button type='submit' class='btn btn-danger btn-sm mr-1'><i class='fa fa-times'></i> Batalkan </button>
                     </a> 
-                    <a href='modul/statuspemesanan_acc.php?id_pemesanan=$id'>
+                    <a href='modul/statuspemesanan_acc.php?id_pemesanan=$idp'>
                       <button type='submit' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Selesai</button>
                     </a>";
+                    $a3 = "<a href='modul/statuspemesanan_acc.php?id_pemesanan=$idp'>
+                    <button type='submit' class='btn btn-success btn-sm'><i class='fa fa-check'></i> Selesai</button>
+                  </a>";
 
           if ($status==1 ){
           echo $a1;
@@ -111,9 +141,9 @@ include 'fungsi/cek_session_public.php';
           } else if ($status==3 ) 
           {
               echo $a2;
-          } else if ($status==4 ) 
+          } else if ($status==6 ) 
           {
-              echo'-';
+              echo $a3;
           } else   
           {
               echo '-';

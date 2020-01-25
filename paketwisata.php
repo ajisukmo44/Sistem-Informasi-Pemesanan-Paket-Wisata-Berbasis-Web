@@ -287,7 +287,7 @@ include 'fungsi/cek_session_public.php';
   <!-- Footer -->
   <footer class="py-4 bg-light sticky-footer">
     <div class="container">
-      <p class="m-0 text-center ">Copyright ©2019 | Anugerah Tour dan Travel</p>
+      <p class="m-0 text-center ">Copyright ©2020 | Anugerah Tour dan Travel</p>
     </div>
     <!-- /.container -->
   </footer>

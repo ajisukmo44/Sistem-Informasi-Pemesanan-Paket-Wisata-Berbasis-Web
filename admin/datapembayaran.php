@@ -84,8 +84,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                        <th>Bank</th>
                        <th>Jumlah&nbsp;Transfer</th>
                        <th>Tgl&nbsp;Transfer</th>
-                       <th>Detail</th>
-                       <th>Acc</th>
+                       <th>Detail/Acc</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -110,9 +109,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
     <td><?= $data['bank'] ?></td>
     <td><?= $jt ?></td>
     <td><?= $tgl ?></td><td><a href="#" type="button" class="badge badge-primary" data-toggle="modal" data-target="#myModal<?php echo $data['id_pemesanan']; ?>"><i class='fa fa-images'></i> Bukti Transfer </a></td> 
-    <td><h5><a href="modul/aksivalidasi/pbyupdate.php?id_pemesanan=<?= $data['id_pemesanan'] ?>"  class="badge badge-success btn-sm"><i class='fa fa-check'></i>
-
-    </a></h5></td>
+   
   </tr>
                          
                        <!-- Modal Edit -->
@@ -135,6 +132,9 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                         ?>
                    <img src='../images/bukti_transfer/<?= $img ?>' width='450px' height='600px'>
                    <hr>
+                   <center><h5><a href="modul/aksivalidasi/pbyupdate.php?id_pemesanan=<?= $data['id_pemesanan'] ?>" class="btn btn-success "><i class='fa fa-check'> VALIDASI PEMBAYARAN</i>
+
+    </a></h5></center>
                       <?php 
                         }
                         //mysql_close($host);

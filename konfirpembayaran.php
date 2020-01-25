@@ -3,7 +3,16 @@ include 'admin/koneksi.php';
 include "admin/fungsi/imgpreview.php";
 
 $id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id']);
-$norek  = mysqli_real_escape_string($conn, $_GET['norek']);
+
+$sql = "SELECT * FROM tabel_detail_pemesanan WHERE id_pemesanan = '$id_pemesanan' ORDER BY id_pemesanan";
+
+$hasil        = mysqli_query($conn,$sql);
+$data         = mysqli_fetch_array($hasil);
+$harga 	      = number_format($data['harga'], 0, ',', '.');	
+$total_harga 	= number_format($data['total_harga'], 0, ',', '.');	
+$norek        = $data['norek_tujuan'];
+$jml          = $data['jumlah_pax'];
+
 
 
 ?>
@@ -36,6 +45,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
 
   <!-- Custom fonts for this template-->
   
+  <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
@@ -63,8 +73,11 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
         <div class="row ">
           <div class="col-lg-12">
             <div class="p-5">
+            <center><p style="background-color:#F4F10E"><i class="fa fa-money-check-alt
+"></i> Harga : <?=$harga?> &nbsp;&nbsp; <i class="fa fa-id-card"></i>  Jumlah Pax : <?= $jml ?> &nbsp;&nbsp; <i class="fa fa-money-check-alt"></i> Total Harga : <?=$total_harga ?></p></center>
+            <hr>
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Form Konfirmasi Pembayaran</h1>
+                <h2 class="h4 text-gray-900 mb-4">FORM KONFIRMASI PEMBAYARAN</h2>
               </div>
               <hr>
               <form action="modul/konfirpembayaranproses.php" method="post" enctype="multipart/form-data">
@@ -143,7 +156,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   </div>
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+      <p class="m-0 text-center ">Copyright &copy; Anugrah2020</p>
     </div>
     <!-- /.container -->
   </footer>

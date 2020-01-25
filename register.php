@@ -102,7 +102,7 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   </div>
   <footer class="py-5 bg-light ">
     <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Anugrah019</p>
+    <p class="m-0 text-center ">Copyright ©2020 | Anugerah Tour dan Travel</p>
     </div>
     <!-- /.container -->
   </footer>
