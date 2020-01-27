@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> Login | Pelanggan</title>
+  <title> Lupa password</title>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
@@ -41,30 +41,17 @@
           <div class="col-lg-12">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">FORM LOGIN !</h1>
+                <h1 class="h4 text-gray-900 mb-4">Masukan Email Anda</h1>
               </div>
-              <form action="loginproses.php" method="post">
+              <form action="mail/send.php" method="post">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="username" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" require>
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" name="password" id="exampleInputPassword" placeholder="Password" require>
-                </div>
-                <div class="form-group">
-                  <div class="custom-control custom-checkbox small">
-                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                    <label class="custom-control-label" for="customCheck">Remember Me</label>
-                  </div>
+                  <input type="email" class="form-control" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="email anda" require>
                 </div>
                 <button  style="background-color:#E8191B; color:#fff" type="submit" name="submit" class="btn btn-light  btn-block">
-                  Login
+                  Kirim
                </button>
               </form>
               <hr>
-              <div class="text-center">
-                <a class="small" href="lupa_password.php">Lupa Password ?</a> | 
-                <a class="small" href="register.php">Buat akun baru ?</a>
-              </div>
             </div>
           </div>
         </div>
@@ -78,7 +65,7 @@
 </div>
   
   <!-- /.container -->
-
+<br><br><br><br>
   <!-- Footer -->
   <footer class="py-5 bg-light ">
     <div class="container">
