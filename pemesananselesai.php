@@ -55,7 +55,7 @@ if(mysqli_num_rows($hasil) == 0)
   <div class="card-body">
 
         <?php
-            $sql = "SELECT *FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
+                  $sql = "SELECT a.harga, c.nama, a.jumlah_pax, a.total_harga, a.tanggal_trip, g.nama_paket, a.norek_tujuan FROM tabel_detail_pemesanan a JOIN tabel_paket_detail d ON a.id_paket_detail = d.id_paket_detail LEFT JOIN tabel_paket g ON d.id_paket = g.id_paket JOIN tabel_pemesanan b ON a.id_pemesanan = b.id_pemesanan LEFT JOIN tabel_pelanggan c ON b.id_pelanggan = c.id_pelanggan WHERE a.id_pemesanan = '$id_pemesanan' ORDER BY b.id_pemesanan";
 
             $hasil     = mysqli_query($conn,$sql);
             $data      = mysqli_fetch_array($hasil);
