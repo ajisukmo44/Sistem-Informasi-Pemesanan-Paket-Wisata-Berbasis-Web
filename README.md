@@ -8,7 +8,7 @@
  <hr>
  <ul> 
 <h3> Halaman Pelanggan</h3>
-<li> Validasi Pendaftaran, Reset Password, Login, Register</li>
+<li> Validasi Pendaftaran, Reset Password, Login, Register, Riwayat Transaksi</li>
 <li> Pemesanan Paket, Konfirmasi Pembayaran, Pembatalan</li>
   
  </ul>
