@@ -28,14 +28,11 @@ $img = $data['img'];
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-
-  <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
  <!-- Page Wrapper -->
  <div id="wrapper">
-
 
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
@@ -48,29 +45,21 @@ $img = $data['img'];
 
     <!-- Topbar -->
 <?php include 'navbar.php'; ?>
-    <!-- End of Topbar -->
-
-    <!-- Begin Page Content -->
     <div class="container-fluid">
 
       <!-- Page Heading -->
 
       <div class="row">
-
-        <!-- Area Chart -->
         <div class="col-xl-8 col-lg-8">
           <div class="card shadow mb-5">
-            <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h6 class="m-0 font-weight-bold text-primary">Form Edit Data Bank </h6>
               <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
-             
               </div>
             </div>
-            <!-- Card Body -->
          
         <!-- DataTales Example -->
         <div class="card-body">
@@ -87,45 +76,31 @@ $img = $data['img'];
       <input type="text" class="form-control" id="nama_rekening" name="nama_rekening"  value="<?php echo $data['nama_rekening'] ?>" require>
     </div>
   </div>
-   
-
   <div class="form-group row">
     <label for="nama_bank" class="col-sm-3 col-form-label">Bank</label>
     <div class="col-sm-9">
       <input type="nama_bank" class="form-control" id="nama_bank"  name="nama_bank" value="<?php echo $data['nama_bank'] ?>">   </div>
   </div>
-
   <div class="form-group row">
   <label for="gambar" class="col-sm-3 col-form-label">Gambar Sebelumnya</label>
     <img style="margin-left:10px; margin-right:45px; margin-bottom:15px;" src="images/bank/<?php echo $img ?> " width="30%" height="20%" /><br> 
      </div>
-
-     
     <div class="form-group row">
     <label for="gambar" class="col-sm-3 col-form-label">Gambar Baru</label>
     <input type="file" name="img" id="img" onchange="tampilkanPreview(this,'preview')"/> 
             <img id="preview" src="" alt="" width="25%"/>
     </div>
-  
-  
   <div class="form-group row">
     <div class="col-sm-12">
     <button type="submit" name="simpan" class="btn btn-success float-right"></span><i class="fa fa-check"></i> Simpan</button>
     <a href="databank.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
-
-
-
-
 </form>
 </div>
 </div>
 </div>
-    <!-- /.container-fluid -->
-
   </div>
-  <!-- End of Main Content -->
 
   <!-- Footer -->
 

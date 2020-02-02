@@ -12,33 +12,10 @@ if(isset($_POST['submit']))
   $username   = mysqli_real_escape_string($conn,$_POST['username']);
   $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-  $sql = "SELECT * FROM tabel_pelanggan WHERE email = '$email' AND status = 'aktif' ";
+  $sql = "SELECT * FROM tabel_pelanggan WHERE email = '$email' OR username='$username' ";
   $cekdata  = mysqli_query($conn, $sql);
-          if(empty($nama))
-          {
-            echo "<script>alert('Nama harus diisi!');history.go(-1)</script>";
-          }
-          elseif(empty($username))
-          {
-            echo "<script>alert('Username harus diisi!');history.go(-1)</script>";
-          }
-          elseif(empty($alamat))
-          {
-            echo "<script>alert('alamat harus diisi!');history.go(-1)</script>";
-          }
-          elseif(empty($email))
-          {
-            echo "<script>alert('email harus diisi!');history.go(-1)</script>";
-          }
-          elseif(empty($password))
-          {
-            echo "<script>alert('password harus diisi!');history.go(-1)</script>";
-          }
-          elseif(empty($no_hp))
-          {
-            echo "<script>alert('no hp harus diisi!');history.go(-1)</script>";
-          }
-          elseif(mysqli_num_rows($cekdata) > 0)
+
+          if(mysqli_num_rows($cekdata) > 0)
           {
             // Alert/ pemberitahuan email yang dipakai telah ada/ tidak
             echo "<script>alert('username/email telah terpakai, silahkan gunakan  yang lain!');history.go(-1)</script>";
@@ -62,11 +39,11 @@ if(isset($_POST['submit']))
                                                 '$no_hp',
                                                 '$username',
                                                 '$password',
-                                                '1')";
+                                                '0')";
 
               if (mysqli_query($conn, $create)) 
               {
-                echo "<script>alert('Registrasi berhasil, Silahkan login!');location.replace('login.php')</script>";
+                echo "<script>location.replace('mail/send2.php?id=$id&email=$email')</script>";
               } 
               else 
               {

@@ -15,7 +15,7 @@ if(isset($_POST['submit']))
 
 
       // Proses insert data dari form ke db
-      $sql = "INSERT INTO tabel_pembatalan (id_pembatalan, id_pemesanan, keterangan, no_rekening_refund, nama_rekening, bank, status) VALUES ('$ib','$ip', '$ket','$nr', '$nrk', '$bank', 1);";
+      $sql = "INSERT INTO tabel_pembatalan (id_pembatalan, id_pemesanan, tanggal, keterangan, no_rekening_refund, nama_rekening, bank, status) VALUES ('$ib','$ip',now(), '$ket','$nr', '$nrk', '$bank', 1);";
 
       $sql .= "UPDATE tabel_pemesanan SET status = 4 WHERE id_pemesanan = '$ip'; ";
 

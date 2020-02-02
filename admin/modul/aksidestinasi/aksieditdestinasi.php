@@ -1,64 +1,55 @@
 <?php session_start();
-include '../../koneksi.php';                    // Panggil koneksi ke database
+include '../../koneksi.php'; 
+   // Panggil koneksi ke database
 
-if(isset($_POST['simpan']))
-{
-  $id_destinasi   = mysqli_real_escape_string($conn, $_POST['id_destinasi']);
-  $nama_destinasi = mysqli_real_escape_string($conn, $_POST['nama_destinasi']);
-  $lokasi_destinasi  = mysqli_real_escape_string($conn, $_POST['lokasi']);
-  $deskripsi_destinasi      = mysqli_real_escape_string($conn, $_POST['deskripsi_destinasi']);
+  $id     = $_POST['id_destinasi'];
+  $nd     = $_POST['nama_destinasi'];
+  $lk     = $_POST['lokasi'];
+  $dd     = $_POST['deskripsi_destinasi'];
 
-      $allowed_ext  = array('jpg', 'jpeg', 'png', 'gif');
-      $file_name    = $_FILES['img']['name']; // File adalah name dari tombol input pada form
-      $file_ext     = pathinfo($file_name, PATHINFO_EXTENSION);
-      $file_size    = $_FILES['img']['size'];
-      $file_tmp     = $_FILES['img']['tmp_name'];
-      $lokasi       = '../../images/paket/'.$id_destinasi.'.'.$file_ext;
-      $img          = $id_destinasi.'.'.$file_ext;
-
-      if(!empty($file_tmp))
-  {
-    if(in_array($file_ext, $allowed_ext) === true)
-    {
-      //Hapus photo yang lama jika ada
-      $del  = "SELECT img FROM tabel_destinasi WHERE id_destinasi = '$id_destinasi' LIMIT 1";
-      $res  = mysqli_query($conn, $del);
-      $d    = mysqli_fetch_object($res);
-      if(strlen($d->img)>3)
-      if(file_exists($d->img))
-      {
-        // Memutuskan koneksi file yang lama
-        unlink($d->img);
+  $gambar_produk = $_FILES['img']['name'];
+  //cek dulu jika merubah gambar produk jalankan coding ini
+  if($gambar_produk != "") {
+    $ekstensi_diperbolehkan = array('png','jpg'); //ekstensi file gambar yang bisa diupload 
+    $x = explode('.', $gambar_produk); //memisahkan nama file dengan ekstensi yang diupload
+    $ekstensi = strtolower(end($x));
+    $file_tmp = $_FILES['img']['tmp_name'];   
+    $angka_acak     = rand(1,999);
+    $nama_gambar_baru = $angka_acak.'-'.$gambar_produk; //menggabungkan angka acak dengan nama file sebenarnya
+    if(in_array($ekstensi, $ekstensi_diperbolehkan) === true)  {
+                  move_uploaded_file($file_tmp, '../../images/paket/'.$nama_gambar_baru); //memindah file gambar ke folder gambar
+                      
+                    // jalankan query UPDATE berdasarkan ID yang produknya kita edit
+                   $query  = "UPDATE tabel_destinasi SET nama_destinasi = '$nd', lokasi_destinasi = '$lk', img = '$nama_gambar_baru', deskripsi_destinasi = '$dd' ";
+                    $query .= "WHERE id_destinasi = '$id'";
+                    $result = mysqli_query($conn, $query);
+                    // periska query apakah ada error
+                    if(!$result){
+                        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+                             " - ".mysqli_error($conn));
+                    } else {
+                      //silahkan ganti index.php sesuai halaman yang akan dituju
+                      echo "<script>alert('Data berhasil diubah.');window.location='../../datadestinasi.php';</script>";
+                    }
+              } else {     
+               //jika file ekstensi tidak jpg dan png maka alert ini yang tampil
+                  echo "<script>alert('Ekstensi gambar yang boleh hanya jpg atau png.');window.location='../../datadestinasi.php';</script>";
+              }
+    } else {
+      // jalankan query UPDATE berdasarkan ID yang produknya kita edit
+      $query  = "UPDATE tabel_destinasi SET nama_destinasi = '$nd', lokasi_destinasi = '$lk', deskripsi_destinasi ='$dd'";
+      $query .= "WHERE id_destinasi = '$id'";
+      $result = mysqli_query($conn, $query);
+      // periska query apakah ada error
+      if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_errno($conn).
+                             " - ".mysqli_error($conn));
+      } else {
+        //silahkan ganti index.php sesuai halaman yang akan dituju
+          echo "<script>alert('Data berhasil diubah.');window.location='../../datadestinasi.php';</script>";
       }
-      move_uploaded_file($file_tmp, $lokasi);
-      // Update photo dengan yang baru
-      $update = "UPDATE tabel_destinasi SET img = '$img' WHERE id_destinasi = '$id_destinasi' ";
-      $upd = mysqli_query($conn, $update);
-    } 
-      else
-      {
-        echo "<script>alert('Format file tidak sesuai!');history.go(-1)</script>";
-      } 
-  }
-  
-  // Proses update data dari form ke db
-  $sql = "UPDATE tabel_destinasi SET id_destinasi      = '$id_destinasi',
-                                        nama_destinasi      = '$nama_destinasi',
-                                        deskripsi_destinasi     = '$deskripsi_destinasi',
-                                        lokasi_destinasi   = '$lokasi_destinasi'                  
-                                  WHERE id_destinasi    = '$id_destinasi' ";
+    }
 
-          if(mysqli_query($conn, $sql)) 
-          {
-            echo "<script>alert('Update data berhasil! Klik ok untuk melanjutkan');location.replace('../../datadestinasi.php')</script>";
-          } 
-            else 
-            {
-              echo "Error updating record: " . mysqli_error($conn);
-            }
-        }
-          else
-          {
-            echo "<script>alert('Gak boleh tembak langsung ya, pencet dulu tombol uploadnya!');history.go(-1)</script>";
-          } 
-        ?>
+
+    
+  

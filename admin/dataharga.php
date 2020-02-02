@@ -16,16 +16,12 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 
   <title>Admin | Data Harga Paket</title>
 
-      <!-- Custom fonts for this template-->
+  <!-- Font dan Css -->
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-        
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-      <!-- Custom styles for this template-->
+       <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
@@ -42,34 +38,27 @@ include 'fungsi/cek_session.php';      // Panggil data setting
   <!-- Main Content -->
   <div id="content">
 
-    <!-- Topbar -->
 <?php include 'navbar.php'; ?>
-    <!-- End of Topbar -->
 
-    <!-- Begin Page Content -->
     <div class="container-fluid">
 
       <!-- Page Heading -->
 
       <div class="row">
 
-        <!-- Area Chart -->
         <div class="col-xl-12 col-lg-8">
           <div class="card shadow mb-4">
-            <!-- Card Header - Dropdown -->
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h6 class="m-0 font-weight-bold text-primary">Data Harga 
-          <a href='tambahharga.php' class='badge badge-success'>Tambah Data Harga Paket</a> </h6>
+               <a href='tambahharga.php' class='badge badge-success'>Tambah Data Harga Paket</a> </h6>
               <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
-             
               </div>
             </div>
-            <!-- Card Body -->
-         
-             <!-- DataTales Example -->
+            
+             <!-- Data Harga -->
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-hover " id="dataTable" width="100%" cellspacing="0">
@@ -86,75 +75,76 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                   </thead>
                   
                   <tbody>
+
                       <!-- ambil data dari database -->
-    <?php
-      $sql = "SELECT * FROM tabel_harga_paket a JOIN tabel_paket b ON a.id_paket = b.id_paket JOIN tabel_hotel c ON a.id_hotel = c.id_hotel ORDER BY a.id_harga ASC";
-      $result = mysqli_query($conn, $sql);
-      if (mysqli_num_rows($result) > 0)
-      {
-        while ($data = mysqli_fetch_array($result))
-        {
-          echo "<tr style='font-family:verdana; text-align:center'>
-          <td>".$data['id_harga']."</td>
-          <td>".$data['nama_paket']."</td>
-          <td>".$data['nama_hotel']."</td>
-          <td>".$data['min']."</td>
-          <td>".$data['max']."</td>
-          <td>".$data['harga']."</td>
-          <td>
-          <a href='editharga.php?id_harga=$data[id_harga]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
-          <a href='#' data-href='modul/aksihargapaket/aksihapusharga.php?id_harga=$data[id_harga]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
-          </td>
-          </tr>";
-              }
-              }
-              else
-              {
-                echo "Belum ada data";
-              }
-              ?>
-            </tbody>
-            </table>
-            </div>
-            </div>
-            </div>
-            </div>
+                    <?php
+                      $sql = "SELECT * FROM tabel_harga_paket a JOIN tabel_paket b ON a.id_paket = b.id_paket JOIN tabel_hotel c ON a.id_hotel = c.id_hotel ORDER BY a.id_harga ASC";
+                      $result = mysqli_query($conn, $sql);
+                      if (mysqli_num_rows($result) > 0)
+                      {
+                        while ($data = mysqli_fetch_array($result))
+                        {
+                          echo "<tr style='font-family:verdana; text-align:center'>
+                          <td>".$data['id_harga']."</td>
+                          <td>".$data['nama_paket']."</td>
+                          <td>".$data['nama_hotel']."</td>
+                          <td>".$data['min']."</td>
+                          <td>".$data['max']."</td>
+                          <td>".$data['harga']."</td>
+                          <td>
+                          <a href='editharga.php?id_harga=$data[id_harga]' class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></a>
+                          <a href='#' data-href='modul/aksihargapaket/aksihapusharga.php?id_harga=$data[id_harga]' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#confirm-delete'><i class='fa fa-times'></i></a>
+                          </td>
+                          </tr>";
+                              }
+                              }
+                              else
+                              {
+                                echo "Belum ada data";
+                              }
+                              ?>
+                            </tbody>
+                            </table>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
 
-          </div>
-        </div>
+                          </div>
+                        </div>
 
 
-         </div>
+                        </div>
 
-    <!-- /.container-fluid -->
-    
+                    <!-- /.container-fluid -->
+                    
 
-<!-- Modal HTML -->
+                <!-- Modal HTML -->
 
-<?php include 'alerthapus.php' ?>
+                <?php include 'alerthapus.php' ?>
 
-  <!-- Footer -->
+                  <!-- Footer -->
 
-<?php include 'footer.php' ?>
+                <?php include 'footer.php' ?>
 
-<script>
-        $('#confirm-delete').on('show.bs.modal', function(e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        });
-    </script>
-    
-    <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <script>
+                        $('#confirm-delete').on('show.bs.modal', function(e) {
+                            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+                        });
+                    </script>
+        
+        <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+      <!-- Page level plugins -->
+      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+      <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+      <!-- Page level custom scripts -->
+      <script src="js/demo/datatables-demo.js"></script>

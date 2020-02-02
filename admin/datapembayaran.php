@@ -28,16 +28,10 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 </head>
  <!-- Page Wrapper -->
 
-
-
  <div id="wrapper">
-
 
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
-
-
-
 
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -51,9 +45,6 @@ include 'fungsi/cek_session.php';      // Panggil data setting
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
-      <!-- Page Heading -->
-    
 
       <!-- Content Row -->
       <div class="row">

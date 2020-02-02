@@ -5,9 +5,10 @@ include '../fungsi/cek_session.php';  // Panggil fungsi cek session public
 include '../fungsi/tgl_indo.php';  
 include '../fungsi/time.php';
 ?>
-
-
-
+<?php
+      $tanggalakhir1    = date('d-m-Y', strtotime($_POST['tanggal1']));
+      $tanggalawal1     = date('d-m-Y', strtotime($_POST['tanggal']));
+?>
         <html xmlns="http://www.w3.org/1999/xhtml"> <!-- Bagian halaman HTML yang akan konvert -->  
         
         	<head>  
@@ -31,46 +32,49 @@ include '../fungsi/time.php';
         	    border: 1px solid #dddddd;
         		}
 		</style>
-
           </head>
           <body>  
     <p align="center" style="font-size: 24px; float: center;"><b>DATA PEMBATALAN</b></p>        
             		  
 <hr/>
 <P align="center"><img src="../../images/logo11.png" alt="logo" ></P>
-
+<p align="center">Tanggal : <b><?= $tanggalawal1 ?></b>  sampai Tanggal : <b><?= $tanggalakhir1  ; ?></b></p>
         <table id="tabel2" class="tabel2" align="center" width="100%" cellspacing="0">
         <thead style="text-align: center; background-color:#C1C1C1">
 		    <tr>
           <th style="text-align: center; background-color:#f5f5f5">No</th>
-          <th style="text-align: center; background-color:#f5f5f5">Id Pembatalan </th>
-          <th style="text-align: center; background-color:#f5f5f5">No Pemesanan </th>
+          <th style="text-align: center; background-color:#f5f5f5">Id Batal </th>
+          <th style="text-align: center; background-color:#f5f5f5">Tanggal</th>
+          <th style="text-align: center; background-color:#f5f5f5">No Pesan </th>
           <th style="text-align: center; background-color:#f5f5f5">Norek Refund</th>
-          <th style="text-align: center; background-color:#f5f5f5">Nama Rek</th>
+          <th style="text-align: center; background-color:#f5f5f5">Nama Rekening</th>
           <th style="text-align: center; background-color:#f5f5f5">Bank</th>
-          <th style="text-align: center; background-color:#f5f5f5">Status</th>
         </tr>
 		  </thead>
 		  <tbody>
 	
    	  <?php
-      $sql = "SELECT * FROM tabel_pembatalan ORDER BY id_pembatalan ASC";
+       
+      $tanggalakhir  = date('Y-m-d', strtotime($_POST['tanggal1']));
+      $tanggalawal   = date('Y-m-d', strtotime($_POST['tanggal']));
+      $sql = "SELECT * FROM tabel_pembatalan WHERE tanggal between '$tanggalawal' AND '$tanggalakhir' ORDER BY id_pembatalan ASC";
 
       $result = mysqli_query($conn, $sql);
       $no = 1;
       if (mysqli_num_rows($result) > 0)
       {
         while ($data = mysqli_fetch_array($result))
-        { 
+        {  
+          $tgl1  = date('Y-m-d', strtotime($_POST['tanggal']));
 
           echo "<tr>
                   <td style='text-align: center'>".$no."</td>
                   <td style='text-align: center'>".$data['id_pembatalan']."</td>
+                  <td style='text-align: center'>".$tgl1."</td>
                   <td style='text-align: center'>".$data['id_pemesanan']."</td>
                   <td style='text-align: center'>".$data['no_rekening_refund']."</td>
                   <td style='text-align: center'>".$data['nama_rekening']."</td>
                   <td style='text-align: center'>".$data['bank']."</td>
-                  <td style='text-align: center'>".$data['status']."</td>
                   
                 </tr>";
                 $no++;
@@ -86,7 +90,6 @@ include '../fungsi/time.php';
   
 <br><br><br>
        <hr/>
-
     <h5 align="right"><?php echo $hr . ", " . $tgl . " " . $bln . " " . $thn ; ?> </h5>
 		<br>
 		<br>

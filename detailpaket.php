@@ -34,6 +34,8 @@ if(mysqli_num_rows($hasil) == 0)
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="tgl/date/bootstrap-datetimepicker.min.css" type="text/css" />
   <!-- end  -->
+  
+  <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="tgl/date/jquery.min.js"></script>
   <!-- Bootstrap Core CSS -->
   <link href="tgl/css/bootstrap.min.css" rel="stylesheet">
@@ -310,9 +312,6 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
   </div>
   <!-- end hotel -->
 
-
-
-
   <!-- itinerary -->
   <?php
     
@@ -327,8 +326,8 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
       ";}
     ?>
 
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-  <table class="table table-bordered mt-3" style="font-size:12px">
+  <div class="tab-pane fade mt-4" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  <table class="table table-bordered mt-5" id="dataTable" style="font-size:12px">
   <thead style="bacground-color:#ddd">
     <tr style="text-align:center;">
     
@@ -378,7 +377,13 @@ $tambah=$kode+1; //kode yang sudah di pecah di tambah 1
  
 </body>
 </html>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+
+<script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="admin/js/demo/datatables-demo.js"></script>
+  <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
   <script>
           Date.prototype.addDays = function(days) { 
           var date = new Date(this.valueOf());

@@ -36,25 +36,17 @@ $img = $data['img'];
  <!-- Page Wrapper -->
  <div id="wrapper">
 
-
 <!-- // Sidebar -->
 <?php include 'modul/sidebar.php'; ?>
 
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
-
-  <!-- Main Content -->
   <div id="content">
 
-    <!-- Topbar -->
 <?php include 'navbar.php'; ?>
-    <!-- End of Topbar -->
-
-    <!-- Begin Page Content -->
     <div class="container-fluid">
 
       <!-- Page Heading -->
-
       <div class="row">
 
         <!-- Area Chart -->
@@ -88,7 +80,6 @@ $img = $data['img'];
     </div>
   </div>
    
-
   <div class="form-group row">
     <label for="deskripsi_destinasi" class="col-sm-3 col-form-label">Deskripsi</label>
     <div class="col-sm-9">
@@ -105,13 +96,11 @@ $img = $data['img'];
     <img style="margin-left:10px; margin-right:45px; margin-bottom:15px;" src="images/paket/<?php echo $img ?> " width="30%" height="20%" /><br> 
      </div>
 
-     
     <div class="form-group row">
     <label for="gambar" class="col-sm-3 col-form-label">Gambar Baru</label>
     <input type="file" name="img" id="img" onchange="tampilkanPreview(this,'preview')"/> 
             <img id="preview" src="" alt="" width="25%"/>
     </div>
-  
   
   <div class="form-group row">
     <div class="col-sm-12">
@@ -119,15 +108,10 @@ $img = $data['img'];
     <a href="databank.php" class="btn btn-danger float-right mr-2"><i class="fa fa-times"></i> Batal</a>
 </div>
   </div>
-
-
-
-
 </form>
 </div>
 </div>
 </div>
-    <!-- /.container-fluid -->
 
   </div>
   <!-- End of Main Content -->

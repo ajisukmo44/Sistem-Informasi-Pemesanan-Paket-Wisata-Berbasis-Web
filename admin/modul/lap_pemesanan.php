@@ -62,8 +62,8 @@ include '../fungsi/time.php';
       $tanggalawal     = date('Y-m-d', strtotime($_POST['tanggal']));
 
       $sql = "SELECT a.id_pemesanan, a.jumlah_pax, f.tgl_pesan, a.total_harga, a.tanggal_trip, b.nama, b.id_pelanggan, r.nama_paket, b.alamat, f.status, a.harga
-      FROM tabel_detail_pemesanan a JOIN tabel_paket_detail c ON a.id_paket_detail = c.id_paket_detail LEFT JOIN tabel_paket r ON c.id_paket = r.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan 
-      LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE f.status = 3 OR f.status = 4 OR f.status = 5 OR f.status = 6 OR f.status = 7 OR f.status = 8  ORDER BY a.id_pemesanan";
+      FROM tabel_detail_pemesanan a JOIN tabel_paket_detail c ON a.id_paket_detail = c.id_paket_detail LEFT JOIN tabel_paket r ON c.id_paket = r.id_paket JOIN tabel_pemesanan f ON a.id_pemesanan = f.id_pemesanan  LEFT JOIN tabel_pelanggan b ON b.id_pelanggan = f.id_pelanggan WHERE f.status
+      BETWEEN '3' AND '8' AND f.tgl_pesan BETWEEN '$tanggalawal' AND '$tanggalakhir' ORDER BY f.id_pemesanan;";
 
       $result = mysqli_query($conn, $sql);
       $no = 1;

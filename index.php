@@ -22,6 +22,8 @@ include 'fungsi/cek_session_public.php';
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
   <link href="css/tampilpaket1.css" rel="stylesheet">
+
+    <link href="images/icon.ico" rel="shortcut icon"/>
 </head>
 <body>
 

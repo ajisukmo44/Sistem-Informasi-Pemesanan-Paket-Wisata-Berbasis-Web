@@ -19,6 +19,10 @@ include 'admin/fungsi/base_url.php';
         elseif($data['status'] == '2')
         {
           echo "<script>alert('Akun Anda telah di blokir!');history.go(-1)</script>";
+        } 
+        elseif($data['status'] == '0')
+        {
+          echo "<script>alert('Akun Anda belum tervalidasi !');history.go(-1)</script>";
         }
           else
           {
