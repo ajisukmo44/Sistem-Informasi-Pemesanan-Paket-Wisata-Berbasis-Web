@@ -49,7 +49,14 @@ include '../../koneksi.php';
           echo "<script>alert('Data berhasil diubah.');window.location='../../datadestinasi.php';</script>";
       }
     }
+<<<<<<< HEAD
 
 
     
   
+=======
+
+
+    
+  
+>>>>>>> a6be8e729144a2c46fedccfac861b26da2b48d68

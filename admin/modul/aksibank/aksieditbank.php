@@ -47,4 +47,8 @@ include '../../koneksi.php';    // Panggil koneksi ke database
     }
 
 
+<<<<<<< HEAD
         
+=======
+        
+>>>>>>> a6be8e729144a2c46fedccfac861b26da2b48d68
