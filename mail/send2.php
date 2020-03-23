@@ -13,7 +13,7 @@ $id = $_GET['id'];
 $email = $_GET['email']; 
 
 
-$email_pengirim = 'anugerahtravel13@gmail.com'; // Isikan dengan email pengirim
+$email_pengirim = 'admin@anugerahtour.com'; // Isikan dengan email pengirim
 $nama_pengirim = 'Anugerah Tour Travel'; // Isikan dengan nama pengirim
 $email_penerima = $email; // Ambil email penerima dari inputan form
 $subjek = 'VALIDASI PENDAFTARAN'; // Ambil subjek dari inputan form
@@ -21,9 +21,9 @@ $subjek = 'VALIDASI PENDAFTARAN'; // Ambil subjek dari inputan form
 $mail = new PHPMailer;
 $mail->isSMTP();
 
-$mail->Host = 'smtp.gmail.com';
+$mail->Host = 'mail.anugerahtour.com';
 $mail->Username = $email_pengirim; // Email Pengirim
-$mail->Password = 'rujebpypvbyttllo'; // Isikan dengan Password email pengirim
+$mail->Password = 'anugerah13'; // Isikan dengan Password email pengirim
 $mail->Port = 465;
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'ssl';
@@ -51,7 +51,7 @@ if(empty($attachment)){ // Jika tanpa attachment
         echo "<script>alert('Registrasi Berhasil, Silahkan Validasi Akun Melalui Email!');location.replace('../login.php')</script>";
 
     }else{ // Jika Email gagal dikirim
-        echo "<script>alert('Email Gagal, Terkirim!');location.replace('../login.php')</script>"; }
+        echo "<script>alert('Email Gagal, Terkirim!');location.replace('../register.php')</script>"; }
 
 };
 ?>

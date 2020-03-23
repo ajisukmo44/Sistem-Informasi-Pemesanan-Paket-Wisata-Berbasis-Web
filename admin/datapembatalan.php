@@ -63,7 +63,7 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                        <th>Bank</th>
                        <th>Keterangan</th>
                        <th>Status</th>
-                       <th>Aksi</th>
+                       <th>Aksi&nbsp;&nbsp;Persetujuan&nbsp;&nbsp;&nbsp;&nbsp;</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -97,8 +97,9 @@ include 'fungsi/cek_session.php';      // Panggil data setting
                       </td>
                                   
                         <td>
-                      <a href="modul/aksivalidasi/pbtupdate.php?id_pemesanan=<?= $data['id_pemesanan'] ?>&id_pembatalan=<?= $data['id_pembatalan'] ?>"  class="btn btn-danger btn-sm"><i class='fa fa-times'></i> tolak</a>
-                      <a href="modul/aksivalidasi/pbtupdate2.php?id_pemesanan=<?= $data['id_pemesanan'] ?>&id_pembatalan=<?= $data['id_pembatalan'] ?>"class="btn btn-success btn-sm"><i class='fa fa-check'></i> setujui</a>
+                      <a href="modul/aksivalidasi/pbtupdate.php?id_pemesanan=<?= $data['id_pemesanan'] ?>&id_pembatalan=<?= $data['id_pembatalan'] ?>" 
+                       class="btn btn-danger btn-sm"><i class='fa fa-times'></i> setujui</a>
+                      <a href="modul/aksivalidasi/pbtupdate2.php?id_pemesanan=<?= $data['id_pemesanan'] ?>&id_pembatalan=<?= $data['id_pembatalan'] ?>" class="btn btn-success btn-sm"><i class='fa fa-check'></i> tolak</a>
                       </td>
                         </tr>
                          

@@ -4,17 +4,11 @@ include "admin/fungsi/imgpreview.php";
 
 $id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id_pemesanan']);
 ?>
+
 <?php
-$query     = "select max(id_pembatalan)as kode from tabel_pembatalan"; 
-$cari_kd   = mysqli_query($conn,$query);
-$tm_cari   = mysqli_fetch_array($cari_kd);
-$kode      = substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
-$tambah=$kode+1; //kode yang sudah di pecah di tambah 1
-  if($tambah<10){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
-    $id="BTL00".$tambah;
-    }else{
-    $id="BTL0".$tambah;
-    }
+$ambil = $id_pemesanan;
+$hasil = substr($ambil,4);
+$id = 'BTL-'.$hasil;
 ?>
 
 <!DOCTYPE html>

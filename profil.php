@@ -7,9 +7,7 @@ include 'fungsi/cek_session_public.php';
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -30,7 +28,6 @@ include 'fungsi/cek_session_public.php';
   <link href="css/tampilpaket1.css" rel="stylesheet">
 
 </head>
-
 <body>
   <!-- Navigation -->
   <?php include 'navbar.php'; ?>
@@ -38,14 +35,15 @@ include 'fungsi/cek_session_public.php';
 <hr>
 <center><h3>PROFIL</h3></center>
 <hr>
-  <div class="row ml-5">
-  <div class="col-4 "><img src="images/att.png" alt="" style="width:400px; height:250px"></div>
-  <div class="col-7 "><p style="text-align:justify">Anugerah Tour & Travel merupakan perusahaan yang bergerak dibidang jasa travel agency.
+<div class="row ml-2">
+  <div class="col-sm-4 "><img src="images/att.png" alt="" style="width:400px; height:250px"></div>
+  <div class="col-sm-7"><p style="text-align:justify">Anugerah Tour & Travel merupakan perusahaan yang bergerak dibidang jasa travel agency.
    Perusahaan tersebut memiliki beberapa divisi yang terkait dengan kepariwisataan seperti pemesanan paket wisata.  
    Anugerah Tour & Travel juga menyediakan kendaraan yang cukup lengkap dan berkualitas sehingga dapat menyesuaikan dengan permintaan pelanggan.
-<br><br><br>
+</p><br><br><br>
 Lokasi dan alamat di Jl. Imogiri Timur No. 136 Giwangan, Umbulharjo, Kota Yogyakarta, Yogyakarta 55163, Telp: 087834455123.
 </p></div>
+
 </div>
   
   <!-- /.container -->

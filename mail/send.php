@@ -19,7 +19,7 @@ if(mysqli_num_rows($ada) == 0)
 }else {
 
 
-$email_pengirim = 'anugerahtravel13@gmail.com'; // Isikan dengan email pengirim
+$email_pengirim = 'admin@anugerahtour.com'; // Isikan dengan email pengirim
 $nama_pengirim = 'Anugerah Tour Travel'; // Isikan dengan nama pengirim
 $email_penerima = $email; // Ambil email penerima dari inputan form
 $subjek = 'RESET PASSWORD'; // Ambil subjek dari inputan form
@@ -27,9 +27,9 @@ $subjek = 'RESET PASSWORD'; // Ambil subjek dari inputan form
 $mail = new PHPMailer;
 $mail->isSMTP();
 
-$mail->Host = 'smtp.gmail.com';
+$mail->Host = 'mail.anugerahtour.com';
 $mail->Username = $email_pengirim; // Email Pengirim
-$mail->Password = 'rujebpypvbyttllo'; // Isikan dengan Password email pengirim
+$mail->Password = 'anugerah13'; // Isikan dengan Password email pengirim
 $mail->Port = 465;
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'ssl';

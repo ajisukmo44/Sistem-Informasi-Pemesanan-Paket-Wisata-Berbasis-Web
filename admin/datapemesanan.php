@@ -2,7 +2,13 @@
 include 'koneksi.php';              // Panggil koneksi ke database
 include 'fungsi/cek_login.php';    // Panggil fungsi cek sudah login/belum
 include 'fungsi/cek_session.php';      // Panggil data setting
+
+$lama = 7 ;
+$query = " DELETE FROM tabel_pemesanan WHERE status = 1 AND DATEDIFF(CURDATE(), tgl_pesan) > $lama ";
+$hasil = mysqli_query($conn, $query);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

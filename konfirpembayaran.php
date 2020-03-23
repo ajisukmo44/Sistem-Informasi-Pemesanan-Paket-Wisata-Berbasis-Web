@@ -1,6 +1,7 @@
 <?php session_start();
 include 'admin/koneksi.php';
 include "admin/fungsi/imgpreview.php";
+include 'fungsi/time.php';
 
 $id_pemesanan  = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -12,22 +13,12 @@ $harga 	      = number_format($data['harga'], 0, ',', '.');
 $total_harga 	= number_format($data['total_harga'], 0, ',', '.');	
 $norek        = $data['norek_tujuan'];
 $jml          = $data['jumlah_pax'];
-
-
-
 ?>
 
 <?php
-$query     = "select max(id_pembayaran)as kode from tabel_bayar"; 
-$cari_kd   = mysqli_query($conn,$query);
-$tm_cari   = mysqli_fetch_array($cari_kd);
-$kode      = substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
-$tambah=$kode+1; //kode yang sudah di pecah di tambah 1
-  if($tambah<10){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
-    $id="PBY00".$tambah;
-    }else{
-    $id="PBY0".$tambah;
-    }
+$ambil = $id_pemesanan;
+$hasil = substr($ambil,4);
+$id = 'PBY-'.$hasil;
 ?>
 
 <!DOCTYPE html>

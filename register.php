@@ -1,16 +1,13 @@
 <?php
 include 'admin/koneksi.php';
 
-$query     = "select max(id_pelanggan)as kode from tabel_pelanggan"; 
-$cari_kd   = mysqli_query($conn,$query);
-$tm_cari   = mysqli_fetch_array($cari_kd);
-$kode      = substr($tm_cari['kode'],3,6); //mengambil string mulai dari karakter pertama 'A' dan mengambil 4 karakter setelahnya. 
-$tambah=$kode+1; //kode yang sudah di pecah di tambah 1
-  if($tambah<10){ //jika kode lebih kecil dari 10 (9,8,7,6 dst) maka
-    $id="PLG00".$tambah;
-    }else{
-    $id="PLG0".$tambah;
-    }
+$angka=range(0,9); //code dibuat dari angka 0-9
+shuffle($angka); //untuk mengacak angka
+$ambilangka=array_rand($angka,4); //pengambilan angka sebanyak 4 digit
+$angkastring=implode($ambilangka); //membuat angka-angka yang digenerate 
+$id='PLG-'.$angkastring;
+     
+
 ?>
 
 <!DOCTYPE html>
